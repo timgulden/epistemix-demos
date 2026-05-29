@@ -9,6 +9,6 @@ static host (Netlify / Cloudflare Pages / GitHub Pages) serves them.
 
 ## Demos
 
-- [`/stoploss/`](./stoploss/) — Stop loss risk assessment
+- [`/stoploss/`](./stoploss/) — stoploss
 
-Last sync from the source repo: 2026-05-29 18:43 UTC
+Last sync from the source repo: 2026-05-29 18:57 UTC
