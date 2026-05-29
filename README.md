@@ -10,5 +10,7 @@ static host (Netlify / Cloudflare Pages / GitHub Pages) serves them.
 ## Demos
 
 - [`/stoploss/`](./stoploss/) — stoploss
+- [`/tonal-curve/`](./tonal-curve/) — tonal-curve
+- [`/tonal-states/`](./tonal-states/) — tonal-states
 
-Last sync from the source repo: 2026-05-29 18:57 UTC
+Last sync from the source repo: 2026-05-29 19:15 UTC
