@@ -13,4 +13,4 @@ static host (Netlify / Cloudflare Pages / GitHub Pages) serves them.
 - [`/tonal/`](./tonal/) — tonal
 - [`/wellbeing/`](./wellbeing/) — wellbeing
 
-Last sync from the source repo: 2026-05-29 19:43 UTC
+Last sync from the source repo: 2026-05-29 23:16 UTC
