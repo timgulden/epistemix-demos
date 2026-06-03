@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Epistemix · Wellbeing Strategy Advisor — Cardinal Markets</title>
+<title>Epistemix · Wellbeing Strategy Advisor — Cardinal Solutions</title>
 <style>
 html, body { margin: 0; padding: 0; }
 :root {
@@ -162,6 +162,10 @@ html, body { margin: 0; padding: 0; }
   .wb-hero-stat-value { font-size: 22px; font-weight: 500; line-height: 1.1;
     font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
   .wb-hero-stat-sub { font-size: 11px; color: var(--epx-blue-100); margin-top: 2px; }
+  /* Talent lens: four equal-weight outcome stats, no oversized single figure */
+  .wb-hero-breakdown.is-4up { grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px; border-top: none; padding-top: 0; }
+  .wb-hero-breakdown.is-4up .wb-hero-stat-value { font-size: 28px; }
 
   .wb-kpi-stack { display: flex; flex-direction: column; gap: 12px; }
   .wb-kpi { background: white; border: 1px solid var(--slate-200);
@@ -239,6 +243,20 @@ html, body { margin: 0; padding: 0; }
   /* composition / sankey-ish */
   .wb-composition { display: flex; flex-direction: column; gap: 12px;
     margin-top: 8px; }
+  /* enrollment-by-state table */
+  .wb-state-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .wb-state-table th { text-align: left; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--slate-500); font-weight: 600;
+    padding: 0 10px 8px; border-bottom: 1px solid var(--slate-200); }
+  .wb-state-table td { padding: 9px 10px; border-bottom: 1px solid var(--slate-100);
+    color: var(--slate-700); }
+  .wb-state-table tfoot td { font-weight: 700; color: var(--slate-900);
+    border-bottom: none; border-top: 2px solid var(--slate-200); }
+  .wb-state-bar { position: relative; height: 14px; }
+  .wb-state-bar-pop { position: absolute; left: 0; top: 0; height: 14px;
+    background: var(--epx-blue-200); border-radius: 3px; }
+  .wb-state-bar-emp { position: absolute; left: 0; top: 3px; height: 8px;
+    background: var(--epx-blue-600); border-radius: 3px; }
   .wb-comp-row { display: flex; flex-direction: column; gap: 5px; }
   .wb-comp-row-head { display: flex; justify-content: space-between;
     font-size: 12px; }
@@ -548,11 +566,11 @@ const {
 // (STYLES moved to <style> block in HTML head)
 
 /* ════════════════════════════════════════════════════════════════════
-   CARDINAL MARKETS — case data
+   CARDINAL SOLUTIONS — case data
    ════════════════════════════════════════════════════════════════════ */
 
 const CASE = {
-  name: 'Cardinal Markets',
+  name: 'Cardinal Solutions',
   industry: 'Regional grocery / general merchandise retail',
   naics: 'NAICS 4451 / 4523',
   hq: 'Charlotte, NC',
@@ -591,7 +609,7 @@ const INFERRED_CONDITIONS = [
   { name: 'Caregiver burden (eldercare or special-needs child)', overall: 17.1, band: 3.8 },
 ];
 
-// Age × sex pyramid bins (overall workforce)
+// Age × gender bins (employee population)
 const AGE_PYRAMID = [
   { age: '18-24', m: 480, f: 720 },
   { age: '25-34', m: 1480, f: 2110 },
@@ -599,6 +617,21 @@ const AGE_PYRAMID = [
   { age: '45-54', m: 880, f: 980 },
   { age: '55-64', m: 580, f: 540 },
   { age: '65+', m: 240, f: 188 },
+];
+
+// Enrollment by state. `employees` = the employee census Cardinal already has.
+// `population` = the full modeled household population around those employees
+// (employee + spouse/partner + dependents + other household members), which
+// the synthetic augmentation reveals and the census alone does not. This is
+// the "value of our data" comparison: who you employ vs. who you can actually
+// reach with a wellbeing strategy. Employee counts sum to CASE.employees.
+const STATE_ENROLLMENT = [
+  { code: 'NC', name: 'North Carolina', employees: 4100, population: 10250 },
+  { code: 'GA', name: 'Georgia',        employees: 2650, population: 6280 },
+  { code: 'SC', name: 'South Carolina', employees: 1900, population: 4940 },
+  { code: 'VA', name: 'Virginia',       employees: 1550, population: 3565 },
+  { code: 'TN', name: 'Tennessee',      employees: 1050, population: 2640 },
+  { code: 'AL', name: 'Alabama',        employees:  597, population: 1565 },
 ];
 
 /* ════════════════════════════════════════════════════════════════════
@@ -666,7 +699,7 @@ const LEVERS = [
   { id: 'eap', name: 'EAP (modernized)',
     section: 'core', evidence: 'moderate', dial: 'Visit cap & modality', unit: '%',
     deep: false, dependentsCapable: true,
-    mech: 'Modern EAP with 6–10 sessions per topic, digital + in-person modalities, BH / substance / legal / caregiving scope. Universal benefit; everyone offers some form of it.',
+    mech: 'Modern EAP with 6–10 sessions per topic, digital + in-person modalities, BH / substance / legal / caregiving scope. Table-stakes benefit; nearly every employer offers some form of it.',
     outcomes: 'Utilization · MH symptom prevalence · absenteeism · BH claims · turnover.',
     cite: 'Vendor 3–6:1 ROI claims selection-biased; lower-bound peer-reviewed estimates used here.',
     citeUrl: 'https://www.hhs.gov/surgeongeneral/reports-and-publications/workplace-well-being/index.html',
@@ -738,7 +771,7 @@ const SCENARIOS = {
     },
   },
   aggressive: {
-    label: 'Aggressive',
+    label: 'Max Activation',
     desc: 'Maximum effort across all wellbeing levers, including onsite primary care and manager training.',
     values: {
       physicals: 90, screenings: 90, biometric: 85, tobacco: 75, dpp: 90,
@@ -992,8 +1025,11 @@ function interpObj(score, baseObj, recObj, aggObj) {
 
 function computeMetrics(values, deps) {
   const score = computeScore(values, deps);
-  // pseudo-baseline payback ("never breakeven") for the interpolation low end
-  const baselinePayback = 96;
+  // Payback anchor for a just-above-baseline portfolio. Kept in the same
+  // 2-4 year band as the Recommended/Max-Activation anchors so the displayed
+  // figure stays consistent with the rest of the financials (a weak portfolio
+  // pays back slowly, but not on an implausible ~8-year horizon).
+  const baselinePayback = 42;
   return {
     score,
     npv: interp1D(score, NPV.baseline, NPV.recommended, NPV.aggressive),
@@ -1058,7 +1094,7 @@ function Header() {
           <BrandMark />
           <div>
             <h1>EPISTEMIX</h1>
-            <p>Wellbeing Strategy Advisor · Cardinal Markets</p>
+            <p>Wellbeing Strategy Advisor · Cardinal Solutions</p>
           </div>
         </div>
         <div className="wb-case-meta">
@@ -1113,7 +1149,9 @@ function ScenarioPicker({ activeScenario, onSelect, showLens, lens, setLens }) {
         color: activeScenario ? 'var(--slate-500)' : 'var(--epx-blue-600)',
         fontWeight: activeScenario ? 400 : 500, flex: 1 }}>
         {activeScenario
-          ? SCENARIOS[activeScenario].desc
+          ? (activeScenario === 'baseline' || activeScenario === 'recommended'
+              ? ''
+              : SCENARIOS[activeScenario].desc)
           : 'Custom configuration — outcomes computed from current slider values.'}
       </span>
       {showLens && (
@@ -1183,13 +1221,13 @@ function HeroCard({ lens, metrics, leverValues, deps }) {
     [leverValues, deps]);
 
   const heroLabel = isC ? '4-Year Cumulative Savings vs Baseline'
-    : 'Y4 Mental-Health Symptom Prevalence';
+    : 'Year 4 Workforce Outcomes · vs. status-quo baseline';
   const heroValue = isC
     ? '$' + cumSavings4yr.toFixed(1) + 'M'
-    : fmtPct(metrics.mh[4]);
+    : null;
   const heroSub = isC
     ? `Net of $${cumSpend4yr.toFixed(1)}M wellbeing spend over the same period · 5% NPV discount`
-    : `down from ${fmtPct(MH.baseline[4])} under status quo trend at Y4`;
+    : null;
 
   const heroStats = isC ? [
     { label: 'Y4 Medical+Rx PEPY', value: fmtMoneyFull(metrics.medPEPY[4]),
@@ -1200,20 +1238,22 @@ function HeroCard({ lens, metrics, leverValues, deps }) {
       value: '$' + metrics.npv.toFixed(1) + 'M',
       sub: 'at 5% discount' },
   ] : [
-    { label: 'Y4 Absenteeism', value: fmtDays(metrics.absent[4]),
+    { label: 'Absenteeism', value: fmtDays(metrics.absent[4]),
       sub: `vs ${fmtDays(ABSENT.baseline[4])} baseline` },
-    { label: 'Y4 Turnover', value: fmtPct(metrics.turnover[4]),
+    { label: 'Turnover', value: fmtPct(metrics.turnover[4]),
       sub: `vs ${fmtPct(TURNOVER.baseline[4])} baseline` },
-    { label: 'Y4 Chronic-disease burden', value: fmtPct(metrics.chronic[4], 2),
-      sub: 'prevalence of treated condition' },
+    { label: 'Mental-health symptoms', value: fmtPct(metrics.mh[4]),
+      sub: `vs ${fmtPct(MH.baseline[4])} baseline` },
+    { label: 'Chronic-disease burden', value: fmtPct(metrics.chronic[4], 2),
+      sub: `vs ${fmtPct(CHRONIC.baseline[4], 2)} baseline` },
   ];
 
   return (
     <div className="wb-hero-card wb-hero-solo">
       <span className="wb-label">{heroLabel}</span>
-      <div className="wb-hero-figure wb-num">{heroValue}</div>
-      <div className="wb-hero-sub">{heroSub}</div>
-      <div className="wb-hero-breakdown">
+      {heroValue && <div className="wb-hero-figure wb-num">{heroValue}</div>}
+      {heroSub && <div className="wb-hero-sub">{heroSub}</div>}
+      <div className={`wb-hero-breakdown${isC ? '' : ' is-4up'}`}>
         {heroStats.map((s, i) => (
           <div key={i}>
             <div className="wb-hero-stat-label">{s.label}</div>
@@ -1481,7 +1521,7 @@ function NetSavingsChart({ data }) {
    WORKFORCE TAB
    ════════════════════════════════════════════════════════════════════ */
 
-// Southeast metros — Cardinal Markets' footprint
+// Southeast metros — Cardinal Solutions' footprint
 const SE_METROS = [
   // (lat, lng, count, segmentMix) — segment = 'frontline' | 'distribution' | 'corporate'
   [35.23, -80.84, 1100, 'mixed-corp'], // Charlotte HQ (corporate + frontline)
@@ -1616,6 +1656,11 @@ function USMap() {
 function WorkforceTab() {
   const totalEmp = CASE.employees;
 
+  // State enrollment: employees (census) vs. full modeled household population
+  const totalStatePop = STATE_ENROLLMENT.reduce((s, r) => s + r.population, 0);
+  const totalStateEmp = STATE_ENROLLMENT.reduce((s, r) => s + r.employees, 0);
+  const maxStatePop = Math.max(...STATE_ENROLLMENT.map(r => r.population));
+
   // Age pyramid SVG dimensions
   const pyramidH = 280, pyramidW = 400;
   const binH = 32, gap = 6;
@@ -1630,7 +1675,7 @@ function WorkforceTab() {
   return (
     <div className="wb-tab-active">
       <div className="wb-wf-framing">
-        <div className="wb-wf-framing-title">Cardinal Markets workforce — census + synthetic augmentation</div>
+        <div className="wb-wf-framing-title">Cardinal Solutions workforce — census + synthetic augmentation</div>
         <div className="wb-wf-framing-body">
           The view below combines Cardinal's <strong>employee census</strong>
           {' '}(address, DOB, hire date, workforce indicator, medical plan enrollment, coverage tier){' '}
@@ -1703,11 +1748,77 @@ function WorkforceTab() {
         </div>
       </div>
 
+      <div className="wb-panel" style={{ marginTop: 20 }}>
+        <div className="wb-panel-head">
+          <div className="wb-panel-title">Enrollment by state</div>
+          <div className="wb-panel-meta">employee census vs. full modeled household population</div>
+        </div>
+        <div style={{ fontSize: 12, color: 'var(--slate-600)', lineHeight: 1.5,
+          marginBottom: 14, maxWidth: 760 }}>
+          The census tells Cardinal who it <strong>employs</strong>. The synthetic
+          augmentation reveals the full <strong>household population</strong> around each
+          employee — spouses, partners, and dependents a wellbeing strategy can actually
+          reach. The gap between the two columns is the population the census alone misses.
+        </div>
+        <table className="wb-state-table">
+          <thead>
+            <tr>
+              <th>State</th>
+              <th style={{ textAlign: 'right' }}>Employees</th>
+              <th style={{ textAlign: 'right' }}>Full population</th>
+              <th style={{ textAlign: 'right' }}>Reach&nbsp;×</th>
+              <th style={{ width: 180 }} aria-label="comparison" />
+            </tr>
+          </thead>
+          <tbody>
+            {STATE_ENROLLMENT.map(s => {
+              const mult = s.population / s.employees;
+              const popPct = (s.population / maxStatePop) * 100;
+              const empPct = (s.employees / maxStatePop) * 100;
+              return (
+                <tr key={s.code}>
+                  <td>{s.name}<span style={{ color: 'var(--slate-400)' }}> · {s.code}</span></td>
+                  <td className="wb-num" style={{ textAlign: 'right' }}>{s.employees.toLocaleString()}</td>
+                  <td className="wb-num" style={{ textAlign: 'right' }}>{s.population.toLocaleString()}</td>
+                  <td className="wb-num" style={{ textAlign: 'right' }}>{mult.toFixed(1)}×</td>
+                  <td>
+                    <div className="wb-state-bar">
+                      <div className="wb-state-bar-pop" style={{ width: popPct + '%' }} />
+                      <div className="wb-state-bar-emp" style={{ width: empPct + '%' }} />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Total</td>
+              <td className="wb-num" style={{ textAlign: 'right' }}>{totalStateEmp.toLocaleString()}</td>
+              <td className="wb-num" style={{ textAlign: 'right' }}>{totalStatePop.toLocaleString()}</td>
+              <td className="wb-num" style={{ textAlign: 'right' }}>{(totalStatePop / totalStateEmp).toFixed(1)}×</td>
+              <td />
+            </tr>
+          </tfoot>
+        </table>
+        <div style={{ display: 'flex', gap: 16, marginTop: 12, fontSize: 11,
+          color: 'var(--slate-500)' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+            <span style={{ width: 11, height: 11, borderRadius: 2,
+              background: 'var(--epx-blue-200)' }} /> Full modeled population
+          </span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+            <span style={{ width: 11, height: 8, borderRadius: 2,
+              background: 'var(--epx-blue-600)' }} /> Employees (census)
+          </span>
+        </div>
+      </div>
+
       <div className="wb-wf-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
         <div className="wb-panel">
           <div className="wb-panel-head">
-            <div className="wb-panel-title">Age × sex distribution</div>
-            <div className="wb-panel-meta">Frontline skews younger and female; corporate older and balanced</div>
+            <div className="wb-panel-title">Age × gender distribution</div>
+            <div className="wb-panel-meta">Employee population · {totalEmp.toLocaleString()} employees</div>
           </div>
           <svg viewBox={`0 0 ${pyramidW} ${pyramidH}`} className="wb-pyramid">
             {AGE_PYRAMID.map((bin, i) => {
@@ -1893,8 +2004,24 @@ function PortfolioTab({ values, setValues, deps, setDeps }) {
 
   return (
     <div className="wb-tab-active">
+      <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap',
+        gap: '6px 16px', margin: '0 0 16px', fontSize: 11.5, color: 'var(--slate-500)' }}>
+        <span style={{ textTransform: 'uppercase', letterSpacing: '0.12em',
+          fontWeight: 600, color: 'var(--slate-600)', fontSize: 10.5 }}>
+          Evidence base — strength of the published evidence behind each lever
+        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+          <span className="wb-evidence-chip is-strong">strong</span> RCT / peer-reviewed
+        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+          <span className="wb-evidence-chip is-moderate">moderate</span> mixed or observational
+        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+          <span className="wb-evidence-chip is-emerging">emerging</span> early / limited signal
+        </span>
+      </div>
       <div className="wb-levers-section-title">
-        Core wellbeing — universal benefit + incentives
+        Core Wellbeing Programs and Incentives
       </div>
       {coreLevers.map(l => (
         <LeverRow key={l.id} lever={l} value={values[l.id]}
