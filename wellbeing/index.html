@@ -1863,21 +1863,18 @@ function WorkforceTab() {
               <th>State</th>
               <th style={{ textAlign: 'right' }}>Employees</th>
               <th style={{ textAlign: 'right' }}>Full population</th>
-              <th style={{ textAlign: 'right' }}>Reach&nbsp;×</th>
-              <th style={{ width: 180 }} aria-label="comparison" />
+              <th style={{ width: 220 }} aria-label="comparison" />
             </tr>
           </thead>
           <tbody>
             {STATE_ENROLLMENT.map(s => {
-              const mult = s.population / s.employees;
               const popPct = (s.population / maxStatePop) * 100;
               const empPct = (s.employees / maxStatePop) * 100;
               return (
                 <tr key={s.code}>
-                  <td>{s.name}<span style={{ color: 'var(--slate-400)' }}> · {s.code}</span></td>
+                  <td>{s.name}<span style={{ color: 'var(--color-text-muted)' }}> · {s.code}</span></td>
                   <td className="wb-num" style={{ textAlign: 'right' }}>{s.employees.toLocaleString()}</td>
                   <td className="wb-num" style={{ textAlign: 'right' }}>{s.population.toLocaleString()}</td>
-                  <td className="wb-num" style={{ textAlign: 'right' }}>{mult.toFixed(1)}×</td>
                   <td>
                     <div className="wb-state-bar">
                       <div className="wb-state-bar-pop" style={{ width: popPct + '%' }} />
@@ -1893,7 +1890,6 @@ function WorkforceTab() {
               <td>Total</td>
               <td className="wb-num" style={{ textAlign: 'right' }}>{totalStateEmp.toLocaleString()}</td>
               <td className="wb-num" style={{ textAlign: 'right' }}>{totalStatePop.toLocaleString()}</td>
-              <td className="wb-num" style={{ textAlign: 'right' }}>{(totalStatePop / totalStateEmp).toFixed(1)}×</td>
               <td />
             </tr>
           </tfoot>
