@@ -915,8 +915,8 @@ const YEARS = ['Y0', 'Y1', 'Y2', 'Y3', 'Y4', 'Y5'];
 // cumulative savings continue to grow against the rising baseline trend.
 const MED_PEPY = {
   baseline:    [18500, 19702, 20982, 22346, 23798, 25345],
-  recommended: [18500, 19560, 20340, 21004, 21956, 23203],
-  aggressive:  [18500, 19520, 20180, 20720, 21620, 22790],
+  recommended: [18500, 19450, 19930, 20450, 21300, 22450],
+  aggressive:  [18500, 19320, 19480, 19650, 20600, 21650],
 };
 
 // Confidence band width as % of central (constant per scenario for simplicity)
@@ -987,8 +987,8 @@ const PHARM_SHARE = {
 
 // Helper: 5-year NPV per scenario (rough — net savings minus spend, 5% discount rate
 // chosen to approximate a corporate-bond-yield benchmark for benefits NPV work)
-const NPV = { baseline: 0, recommended: 33.1, aggressive: 39.1 }; // $M
-const PAYBACK_MO = { baseline: null, recommended: 26, aggressive: 34 };
+const NPV = { baseline: 0, recommended: 40.0, aggressive: 45.0 }; // $M, 5-yr net (savings − spend), ~5% discount
+const PAYBACK_MO = { baseline: null, recommended: 31, aggressive: 36 };
 
 /* helpers */
 
@@ -1121,7 +1121,12 @@ function interpObj(score, baseObj, recObj, aggObj) {
 }
 
 function computeMetrics(values, deps) {
-  const score = computeScore(values, deps);
+  // Interpolation position is computed WITHOUT deps so the anchor scenarios land
+  // exactly on their anchors (SCENARIO_SCORES is deps-free too). This makes the
+  // Baseline scenario read exactly $0 savings vs no-action. Dependents still
+  // drive cost via computeSpend's own multiplier — they just don't secretly
+  // shift the outcome curve, which previously lifted Baseline above its anchor.
+  const score = computeScore(values);
   // Payback anchor for a just-above-baseline portfolio. Kept in the same
   // 2-4 year band as the Recommended/Max-Activation anchors so the displayed
   // figure stays consistent with the rest of the financials (a weak portfolio
@@ -1317,18 +1322,18 @@ function HeroCard({ lens, metrics, leverValues, deps }) {
     (computeSpend(leverValues, deps) * CASE.employees * 4) / 1e6,
     [leverValues, deps]);
 
-  const heroLabel = isC ? '4-Year Cumulative Savings vs Baseline'
-    : 'Year 4 Workforce Outcomes · vs. status-quo baseline';
+  const heroLabel = isC ? '4-Year Medical Savings vs No Action'
+    : 'Year 4 Workforce Outcomes · vs. no action';
   const heroValue = isC
     ? '$' + cumSavings4yr.toFixed(1) + 'M'
     : null;
   const heroSub = isC
-    ? `Net of $${cumSpend4yr.toFixed(1)}M wellbeing spend over the same period · 5% NPV discount`
+    ? `gross, on $${cumSpend4yr.toFixed(1)}M wellbeing spend${cumSpend4yr > 0 ? ` · ≈ $${(cumSavings4yr / cumSpend4yr).toFixed(2)} saved per $1` : ''}`
     : null;
 
   const heroStats = isC ? [
     { label: 'Y4 Medical+Rx PEPY', value: fmtMoneyFull(metrics.medPEPY[4]),
-      sub: `vs ${fmtMoneyFull(MED_PEPY.baseline[4])} baseline trend` },
+      sub: `vs ${fmtMoneyFull(MED_PEPY.baseline[4])} no-action trend` },
     { label: 'Payback', value: metrics.paybackMo ? fmtMonths(metrics.paybackMo) : 'n/a',
       sub: 'months to breakeven' },
     { label: '5-Year NPV',
@@ -1336,13 +1341,13 @@ function HeroCard({ lens, metrics, leverValues, deps }) {
       sub: 'at 5% discount' },
   ] : [
     { label: 'Absenteeism', value: fmtDays(metrics.absent[4]),
-      sub: `vs ${fmtDays(ABSENT.baseline[4])} baseline` },
+      sub: `vs ${fmtDays(ABSENT.baseline[4])} no action` },
     { label: 'Turnover', value: fmtPct(metrics.turnover[4]),
-      sub: `vs ${fmtPct(TURNOVER.baseline[4])} baseline` },
+      sub: `vs ${fmtPct(TURNOVER.baseline[4])} no action` },
     { label: 'Mental-health symptoms', value: fmtPct(metrics.mh[4]),
-      sub: `vs ${fmtPct(MH.baseline[4])} baseline` },
+      sub: `vs ${fmtPct(MH.baseline[4])} no action` },
     { label: 'Chronic-disease burden', value: fmtPct(metrics.chronic[4], 2),
-      sub: `vs ${fmtPct(CHRONIC.baseline[4], 2)} baseline` },
+      sub: `vs ${fmtPct(CHRONIC.baseline[4], 2)} no action` },
   ];
 
   return (
@@ -1435,8 +1440,8 @@ function OutcomesTab({ lens, metrics, leverValues, deps, subgroupDecomp, setSubg
   }, [isC, metrics]);
 
   const primaryTitle = isC
-    ? 'Medical + Rx PEPY savings vs baseline · 4-year trendline'
-    : 'Absenteeism days reduced vs baseline · 4-year trendline';
+    ? 'Medical + Rx PEPY savings vs no action · 4-year trendline'
+    : 'Absenteeism days reduced vs no action · 4-year trendline';
   const primaryFormatter = safeFormat(
     isC ? v => '$' + Math.round(v).toLocaleString()
         : v => v.toFixed(1) + ' days'
@@ -1456,11 +1461,11 @@ function OutcomesTab({ lens, metrics, leverValues, deps, subgroupDecomp, setSubg
     if (isC) {
       const blGap = MED_PEPY_SUBGROUP_Y5.baseline.frontline - MED_PEPY_SUBGROUP_Y5.baseline.corporate;
       const scGap = metrics.medSubY5.frontline - metrics.medSubY5.corporate;
-      return `Frontline–corporate cost gap at Y5: ${fmtMoneyFull(blGap)} under baseline · ${fmtMoneyFull(scGap)} under this portfolio. The portfolio reduces absolute spend most where baseline is highest.`;
+      return `Frontline–corporate cost gap at Y5: ${fmtMoneyFull(blGap)} under no action · ${fmtMoneyFull(scGap)} under this portfolio. The portfolio reduces absolute spend most where the no-action cost is highest.`;
     } else {
       const blGap = ABSENT_SUBGROUP_Y5.baseline.frontline - ABSENT_SUBGROUP_Y5.baseline.corporate;
       const scGap = metrics.absentSubY5.frontline - metrics.absentSubY5.corporate;
-      return `Frontline–corporate absenteeism gap at Y5: ${blGap.toFixed(1)} days under baseline · ${scGap.toFixed(1)} days under this portfolio. The gap visibly narrows — equity benefit of the portfolio.`;
+      return `Frontline–corporate absenteeism gap at Y5: ${blGap.toFixed(1)} days under no action · ${scGap.toFixed(1)} days under this portfolio. The gap visibly narrows — equity benefit of the portfolio.`;
     }
   }, [subgroupDecomp, isC, metrics]);
 
@@ -1507,7 +1512,7 @@ function OutcomesTab({ lens, metrics, leverValues, deps, subgroupDecomp, setSubg
               <ReferenceLine y={0} stroke="var(--color-border-strong)" strokeWidth={1} />
               <Area type="monotone" dataKey="range" name="80% credible interval"
                 stroke="none" fill="var(--color-border)" fillOpacity={1} />
-              <Line type="monotone" dataKey="delta" name={isC ? 'Savings vs baseline' : 'Days reduced vs baseline'}
+              <Line type="monotone" dataKey="delta" name={isC ? 'Savings vs no action' : 'Days reduced vs no action'}
                 stroke="var(--color-brand)" strokeWidth={2.4} dot={{ r: 3 }} />
             </ComposedChart>
           )}
@@ -1529,7 +1534,7 @@ function OutcomesTab({ lens, metrics, leverValues, deps, subgroupDecomp, setSubg
         ) : (
           <>
             <DeltaChart
-              title="Turnover reduction vs baseline · 4-year trendline"
+              title="Turnover reduction vs no action · 4-year trendline"
               scenarioArr={metrics.turnover.slice(0, 5)}
               baselineArr={TURNOVER.baseline.slice(0, 5)}
               formatter={safeFormat(v => v.toFixed(2) + ' pp')}
@@ -1538,7 +1543,7 @@ function OutcomesTab({ lens, metrics, leverValues, deps, subgroupDecomp, setSubg
               seriesName="Turnover reduction"
             />
             <DeltaChart
-              title="Mental-health symptom prevalence vs baseline · 4-year trendline"
+              title="Mental-health symptom prevalence vs no action · 4-year trendline"
               scenarioArr={metrics.mh.slice(0, 5)}
               baselineArr={MH.baseline.slice(0, 5)}
               formatter={safeFormat(v => v.toFixed(2) + ' pp')}
@@ -1547,7 +1552,7 @@ function OutcomesTab({ lens, metrics, leverValues, deps, subgroupDecomp, setSubg
               seriesName="Symptom prevalence reduction"
             />
             <DeltaChart
-              title="Chronic-disease burden vs baseline · 4-year trendline"
+              title="Chronic-disease burden vs no action · 4-year trendline"
               scenarioArr={metrics.chronic.slice(0, 5)}
               baselineArr={CHRONIC.baseline.slice(0, 5)}
               formatter={safeFormat(v => v.toFixed(2) + ' pp')}
@@ -2310,6 +2315,35 @@ function MethodsTab() {
                 standalone lever (deferred to v2 — currently absorbed into uptake
                 priors).</li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="wb-panel">
+        <div className="wb-panel-head">
+          <div className="wb-panel-title">Savings &amp; ROI basis</div>
+          <div className="wb-panel-meta">how the dollar figures are derived and where they sit in the literature</div>
+        </div>
+        <div style={{ fontSize: 12.5, color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
+          The headline figure is <strong>gross medical + Rx savings</strong>: the reduction
+          in modeled per-employee-per-year spend versus the <strong>no-action</strong>
+          trajectory, summed over four years across the workforce. Divided by wellbeing
+          spend over the same period, the Recommended portfolio is tuned to
+          ≈ <strong>$1.50 saved per $1</strong>; Max Activation deliberately lands lower
+          (more spend, diminishing efficiency). NPV uses a 5% discount over five years.
+          <div style={{ marginTop: 8 }}>
+            That ratio sits toward the optimistic end of the published range, and is
+            defensible only because the portfolio is weighted to higher-ROI clinical levers
+            and modeled over a multi-year horizon:
+          </div>
+          <ul style={{ margin: '6px 0 0', paddingLeft: 18 }}>
+            <li><strong>RAND (2013):</strong> ~1.5:1 overall — 3.8:1 for disease management vs 0.5:1 for lifestyle management.</li>
+            <li><strong>Baicker et al. (2010):</strong> ~3.27:1 medical savings — widely cited but observational / selection-biased (upper bound).</li>
+            <li><strong>Illinois Workplace Wellness RCT (2019):</strong> no significant medical-spend effect at 18 months — the skeptical lower bound; too short to capture chronic-disease savings.</li>
+          </ul>
+          <div style={{ marginTop: 8 }}>
+            These are illustrative, literature-anchored priors — not a validated actuarial
+            projection.
           </div>
         </div>
       </div>
