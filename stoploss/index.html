@@ -296,6 +296,77 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* ─── Group risk profile (manual rate inputs) ─────────────────── */
+  .risk-profile {
+    background: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 12px;
+    padding: 20px 24px 18px;
+    margin: 20px 0;
+  }
+  .risk-profile .panel-head { margin-bottom: 14px; }
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .risk-chip {
+    background: var(--slate-50);
+    border: 1px solid var(--slate-100);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .risk-chip .chip-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+  }
+  .risk-chip .chip-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--slate-900);
+    line-height: 1.25;
+    margin-top: 2px;
+  }
+  .risk-chip .chip-sub {
+    font-size: 12px;
+    color: var(--slate-500);
+  }
+  .risk-chip .chip-indicator {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    line-height: 1.3;
+  }
+  .risk-chip .chip-indicator .arrow {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1;
+  }
+  .risk-chip.is-up    .chip-indicator { color: var(--epx-danger); }
+  .risk-chip.is-down  .chip-indicator { color: #0f9b6e; }
+  .risk-chip.is-flat  .chip-indicator { color: var(--slate-500); }
+  .risk-profile .risk-disclaimer {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--slate-100);
+    font-size: 12px;
+    color: var(--slate-500);
+    line-height: 1.55;
+  }
+  .risk-profile .risk-disclaimer strong {
+    color: var(--slate-700);
+    font-weight: 500;
+  }
+
   .toggle-row {
     display: flex; justify-content: space-between; align-items: center;
     padding: 14px 22px;
@@ -825,6 +896,56 @@
         <svg id="severity-pie" viewBox="0 0 200 200"></svg>
         <div class="severity-legend" id="severity-legend"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- Group risk profile — manual rate inputs (per Ryan's review) -->
+  <div class="risk-profile">
+    <div class="panel-head">
+      <span class="panel-title">Group risk profile</span>
+      <span class="panel-meta">Manual rate inputs · pre-screen variables</span>
+    </div>
+    <div class="risk-grid">
+
+      <div class="risk-chip is-flat">
+        <div class="chip-label">Size</div>
+        <div class="chip-value">1,402 EE</div>
+        <div class="chip-sub">~3,140 covered lives</div>
+        <div class="chip-indicator"><span class="arrow">—</span>Above mid-market</div>
+      </div>
+
+      <div class="risk-chip is-up">
+        <div class="chip-label">Age / sex mix</div>
+        <div class="chip-value">41 yrs · 48% F</div>
+        <div class="chip-sub">vs. typical 38–40</div>
+        <div class="chip-indicator"><span class="arrow">↑</span>Slightly older</div>
+      </div>
+
+      <div class="risk-chip is-down">
+        <div class="chip-label">Industry</div>
+        <div class="chip-value">Financial services</div>
+        <div class="chip-sub">NAICS 52 · white-collar</div>
+        <div class="chip-indicator"><span class="arrow">↓</span>Below-avg load</div>
+      </div>
+
+      <div class="risk-chip is-flat">
+        <div class="chip-label">Geography</div>
+        <div class="chip-value">47 states</div>
+        <div class="chip-sub">NE-corridor concentration</div>
+        <div class="chip-indicator"><span class="arrow">—</span>Broadly distributed</div>
+      </div>
+
+      <div class="risk-chip is-down">
+        <div class="chip-label">Financial stability</div>
+        <div class="chip-value">Mid-cap · stable</div>
+        <div class="chip-sub">~$2B revenue band</div>
+        <div class="chip-indicator"><span class="arrow">↓</span>Favorable</div>
+      </div>
+
+    </div>
+    <div class="risk-disclaimer">
+      <strong>Pre-screen variables for your underwriting manual.</strong>
+      Comparison thresholds illustrative — customized per carrier.
     </div>
   </div>
 
