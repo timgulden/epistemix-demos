@@ -696,6 +696,27 @@
     color: var(--slate-400);
     margin-bottom: 4px;
   }
+  .scen-control .hereditary-flag {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #fef9ec;
+    border-left: 3px solid var(--epx-warn);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--slate-700);
+    line-height: 1.5;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .scen-control .hereditary-flag .flag-icon {
+    color: var(--epx-warn);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .scen-control .hereditary-flag strong {
+    color: var(--slate-900);
+  }
   .scen-control .ctrl-desc {
     font-size: 12px;
     color: var(--slate-500);
@@ -957,7 +978,7 @@
       </button>
       <div class="toggle-text">
         <strong>Late-billing tail overlay</strong>
-        <small>Whether this applies depends on how the contract is written (paid basis vs. incurred and paid limits) — a basis for discussion, sized from the carrier's own lag pattern</small>
+        <small><strong>Inpatient claims at BUCAs</strong> drive the tail. Whether this applies depends on contract terms (paid basis vs. incurred and paid limits) — sized from the carrier's own lag pattern.</small>
       </div>
     </div>
   </div>
@@ -984,6 +1005,10 @@
           <span style="width: 12px; height: 12px; border-radius: 3px; background: var(--epx-warn);"></span>
           Late-billing tail
         </div>
+      </div>
+      <div id="late-bill-context" hidden style="margin-top: 12px; padding: 10px 12px; background: #fef9ec; border-left: 3px solid var(--epx-warn); border-radius: 4px; font-size: 12px; color: var(--slate-700); line-height: 1.55;">
+        <strong>Inpatient at BUCAs drives the tail.</strong>
+        3 hotspot facilities identified in this population's network. Policy-boundary switching can create gap or non-disclosure exposure — worth flagging at renewal.
       </div>
     </div>
 
@@ -1322,7 +1347,7 @@
       <div class="scen-control">
         <div class="scen-section">Coverage Changes</div>
         <h4>GLP-1 coverage</h4>
-        <div class="ctrl-desc">Add Wegovy / Zepbound / Mounjaro for weight management. Affects emergence of claimants that cross the $150K threshold.</div>
+        <div class="ctrl-desc">Add Wegovy / Zepbound / Mounjaro for weight management. Specific stop-loss impact is small (most spend doesn't cross spec); most cost lives in aggregate factors. <em>Multi-year offset — avoided cardiac / oncology events in Y2–Y3 — favors 3-year policy terms.</em></div>
         <div class="ctrl-row">
           <div>
             <label>Coverage</label>
@@ -1344,12 +1369,20 @@
       <div class="scen-control">
         <div class="scen-section">Market Changes</div>
         <h4>Gene therapy pipeline</h4>
-        <div class="ctrl-desc">Model one catastrophic gene-therapy case landing in the renewal year. On-market candidates for a group this size: Casgevy / Lyfgenia (sickle cell, $2.2–3.1M), Hemgenix (hemophilia B, $3.5M), Elevidys (DMD, $3.2M). Excludes therapies withdrawn in 2025 (Roctavian, Beqvez).</div>
-        <div class="scen-toggle-row">
-          <span class="toggle-label">Include one case in Year 1</span>
-          <button class="switch" id="scen-gene" aria-label="Gene therapy toggle">
-            <span class="knob"></span>
-          </button>
+        <div class="ctrl-desc">On-market candidates: Casgevy / Lyfgenia (sickle cell, $2.2–3.1M), Hemgenix (hemophilia B, $3.5M), Elevidys (DMD, $3.2M). Excludes therapies withdrawn in 2025 (Roctavian, Beqvez). <em>Large direct writers pool risk across their book; smaller MGUs typically carve out.</em></div>
+        <div class="ctrl-row">
+          <div>
+            <label>Pricing model</label>
+            <select id="scen-gene">
+              <option value="carve-out">Excluded / carve-out (smaller MGU)</option>
+              <option value="pooled" selected>Pooled (large direct writer)</option>
+              <option value="modeled">Modeled in renewal year (worst case)</option>
+            </select>
+          </div>
+        </div>
+        <div class="hereditary-flag">
+          <span class="flag-icon">⚠</span>
+          <span><strong>Hereditary risk flag:</strong> known hemophilia A in covered pop · 2 male siblings under 18 inferred from family structure.</span>
         </div>
       </div>
     </div>
@@ -1688,6 +1721,8 @@ lateBtn?.addEventListener('click', () => {
   lateOn = !lateOn;
   lateBtn.classList.toggle('is-on', lateOn);
   if (lateBarLegend) lateBarLegend.hidden = !lateOn;
+  const lbCtx = document.getElementById('late-bill-context');
+  if (lbCtx) lbCtx.hidden = !lateOn;
   document.getElementById('proj-y1-hero').textContent = lateOn ? '$4.5M'  : '$4.2M';
   document.getElementById('proj-y2').textContent      = lateOn ? '$5.7M'  : '$5.3M';
   document.getElementById('proj-y3').textContent      = lateOn ? '$7.7M'  : '$6.6M';
@@ -1968,41 +2003,51 @@ const NETWORK_PCT = {
   'aetna':   { pct:  0.06, label: 'Aetna Open Access' },
   'uhc':     { pct:  0,    label: 'UnitedHealthcare' },
 };
-// GLP-1: dollars added per year (recurs).
+// GLP-1: per-year specific stop-loss impact. Y1 = small add (drug cost rarely
+// crosses spec); Y2/Y3 = avoided cardiac/oncology events that WOULD trigger
+// SSL. Per Ryan: GLP-1 mostly shifts AGGREGATE factors, not specific —
+// multi-year framing favors longer policy terms.
 const GLP1_PER_YEAR = {
-  'none':          { add: 0,    label: 'not covered' },
-  'diabetes-only': { add: 0.12, label: 'diabetes only' },
-  'bmi-30':        { add: 0.30, label: 'BMI ≥ 30' },
-  'bmi-27':        { add: 0.50, label: 'BMI ≥ 27' },
+  'none':          { y1: 0,    y2: 0,     y3: 0,     label: 'not covered' },
+  'diabetes-only': { y1: 0.02, y2: -0.04, y3: -0.06, label: 'diabetes only' },
+  'bmi-30':        { y1: 0.04, y2: -0.10, y3: -0.18, label: 'BMI ≥ 30' },
+  'bmi-27':        { y1: 0.07, y2: -0.15, y3: -0.30, label: 'BMI ≥ 27' },
 };
-// Gene therapy: one catastrophic case landing in the renewal year (Y1).
-const GENE_Y1 = 2.1;
+// Gene therapy: three pricing models per Ryan's review.
+//   carve-out: excluded — separate policy or simply not covered ($0)
+//   pooled:    large direct writer shares book-wide expected loss as a small
+//              recurring PMPM (~$0.3M/yr) — Casgevy / Lyfgenia / etc. expected
+//              counts pooled across $1.5B in premium.
+//   modeled:   smaller MGU pricing the worst-case one-trigger-this-year
+//              scenario directly into the group's exposure.
+const GENE_OPTIONS = {
+  'carve-out': { y1: 0,   y2: 0,   y3: 0,   label: 'excluded / carve-out' },
+  'pooled':    { y1: 0.3, y2: 0.3, y3: 0.3, label: 'pooled across book' },
+  'modeled':   { y1: 2.1, y2: 0,   y3: 0,   label: 'one case modeled (Y1)' },
+};
 
-let geneOn = false;
-const geneBtn = document.getElementById('scen-gene');
-geneBtn?.addEventListener('click', () => {
-  geneOn = !geneOn;
-  geneBtn.classList.toggle('is-on', geneOn);
-  recompute();
-});
+const geneSelect = document.getElementById('scen-gene');
+geneSelect?.addEventListener('change', recompute);
 
 function recompute() {
   const net  = document.getElementById('scen-network').value;
   const glp1 = document.getElementById('scen-glp1').value;
+  const gene = geneSelect ? geneSelect.value : 'pooled';
   const nD = NETWORK_PCT[net]   || NETWORK_PCT['bcbs-sc'];
   const gD = GLP1_PER_YEAR[glp1] || GLP1_PER_YEAR['none'];
+  const geneD = GENE_OPTIONS[gene] || GENE_OPTIONS['pooled'];
 
-  // per-year scenario exposure
+  // per-year scenario exposure — each lever now has per-year impact
+  const glp1Years = [gD.y1, gD.y2, gD.y3];
+  const geneYears = [geneD.y1, geneD.y2, geneD.y3];
   const scenario = SCEN_BASE_YEARS.map((b, i) => {
-    let v = b * (1 + nD.pct) + gD.add;
-    if (i === 0 && geneOn) v += GENE_Y1;
-    return v;
+    return b * (1 + nD.pct) + glp1Years[i] + geneYears[i];
   });
 
   // Year-1 attribution (the primary view)
   const networkY1 = SCEN_BASE_YEARS[0] * nD.pct;
-  const glp1Y1    = gD.add;
-  const geneY1    = geneOn ? GENE_Y1 : 0;
+  const glp1Y1    = gD.y1;
+  const geneY1    = geneD.y1;
   const netY1     = networkY1 + glp1Y1 + geneY1;
 
   document.getElementById('scen-total').textContent = fmtM(scenario[0]);
@@ -2024,7 +2069,7 @@ function recompute() {
   }
   setRow('d-network', networkY1, 'Network · ' + nD.label);
   setRow('d-glp1', glp1Y1, 'GLP-1 · ' + gD.label);
-  setRow('d-gene', geneY1, 'Gene therapy · ' + (geneOn ? 'one case modeled (Y1)' : 'excluded'));
+  setRow('d-gene', geneY1, 'Gene therapy · ' + geneD.label);
   const tot = document.getElementById('d-total');
   tot.textContent = fmtDelta(netY1);
   tot.classList.toggle('pos', netY1 > 0.005);

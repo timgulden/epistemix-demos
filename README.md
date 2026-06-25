@@ -14,4 +14,4 @@ static host (Netlify / Cloudflare Pages / GitHub Pages) serves them.
 - [`/wellbeing/`](./wellbeing/) — wellbeing
 - [`/tiered-copay/`](./tiered-copay/) — tiered-copay
 
-Last sync from the source repo: 2026-06-25 18:25 UTC
+Last sync from the source repo: 2026-06-25 18:39 UTC
