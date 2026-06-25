@@ -296,6 +296,118 @@
     font-variant-numeric: tabular-nums;
   }
 
+  /* ─── Book-of-business fit (Ryan Tier 3) ─────────────────── */
+  .book-fit-panel { margin-top: 20px; }
+  .book-fit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .book-chip {
+    background: var(--slate-50);
+    border: 1px solid var(--slate-100);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .book-chip .bc-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+    margin-bottom: 4px;
+  }
+  .book-chip .bc-value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--slate-900);
+    line-height: 1.25;
+  }
+  .book-chip .bc-sub {
+    font-size: 12px;
+    color: var(--slate-500);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .book-chip .bc-sub.is-favorable { color: #0f9b6e; font-weight: 500; }
+  .book-chip .bc-sub.is-neutral   { color: var(--slate-500); }
+  .book-fit-verdict {
+    margin-top: 14px;
+    padding: 10px 12px;
+    background: #ecfdf5;
+    border-left: 3px solid #0f9b6e;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--slate-700);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .book-fit-verdict .verdict-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #0f9b6e;
+    color: white;
+  }
+  .book-fit-disclaimer {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--slate-100);
+    font-size: 12px;
+    color: var(--slate-500);
+    line-height: 1.55;
+  }
+  .book-fit-disclaimer strong { color: var(--slate-700); font-weight: 500; }
+
+  /* ─── Cost hotspots in network (Ryan Tier 3) ─────────────────── */
+  .hotspots-panel { margin-top: 20px; }
+  .hotspots-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .hotspots-table th {
+    text-align: left;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    border-bottom: 1px solid var(--slate-200);
+    background: var(--slate-50);
+  }
+  .hotspots-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--slate-100);
+    color: var(--slate-700);
+  }
+  .hotspots-table tr:last-child td { border-bottom: 0; }
+  .hotspots-table .multiplier {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .hotspots-table .multiplier.hot  { color: var(--epx-danger); }
+  .hotspots-table .multiplier.warm { color: #d97706; }
+  .hotspots-footer {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--slate-100);
+    font-size: 12px;
+    color: var(--slate-500);
+    line-height: 1.55;
+  }
+  .hotspots-footer strong { color: var(--slate-700); font-weight: 500; }
+
   /* ─── Group risk profile (manual rate inputs) ─────────────────── */
   .risk-profile {
     background: white;
@@ -696,6 +808,52 @@
     color: var(--slate-400);
     margin-bottom: 4px;
   }
+  .scen-control .pipeline-outlook {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--slate-200);
+    border-radius: 6px;
+    background: var(--slate-50);
+  }
+  .scen-control .pipeline-outlook .pipeline-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+    margin-bottom: 6px;
+  }
+  .scen-control .pipeline-outlook .pipeline-list {
+    margin: 0; padding: 0; list-style: none;
+    font-size: 12px;
+    color: var(--slate-700);
+    line-height: 1.5;
+  }
+  .scen-control .pipeline-outlook .pipeline-list li {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 12px;
+    padding: 3px 0;
+    align-items: baseline;
+  }
+  .scen-control .pipeline-outlook .pipeline-list .dx {
+    color: var(--slate-900); font-weight: 500;
+  }
+  .scen-control .pipeline-outlook .pipeline-list .px {
+    color: var(--slate-500); font-size: 11px;
+  }
+  .scen-control .pipeline-outlook .pipeline-list .cost {
+    color: var(--slate-700); font-variant-numeric: tabular-nums;
+    font-weight: 500;
+  }
+  .scen-control .pipeline-outlook .pipeline-footer {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--slate-200);
+    font-size: 11px;
+    color: var(--slate-500);
+    font-style: italic;
+  }
   .scen-control .hereditary-flag {
     margin-top: 12px;
     padding: 10px 12px;
@@ -1019,6 +1177,92 @@
         <span class="panel-meta">Year 1 · 2027 · all 14 large claimants</span>
       </div>
       <div id="category-list"></div>
+    </div>
+  </div>
+
+  <!-- Cost hotspots — provider / geography where same condition costs more (Ryan Tier 3) -->
+  <div class="panel hotspots-panel">
+    <div class="panel-head">
+      <span class="panel-title">Cost hotspots in network</span>
+      <span class="panel-meta">Provider / geography where the same condition costs more than typical</span>
+    </div>
+    <table class="hotspots-table">
+      <thead>
+        <tr>
+          <th>Facility</th>
+          <th>Location</th>
+          <th>Driver</th>
+          <th style="text-align: right;">vs. typical</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>St. Mary's Children's Hospital</td>
+          <td>St. Louis, MO</td>
+          <td>NICU · pediatric specialty</td>
+          <td class="multiplier hot">1.8×</td>
+        </tr>
+        <tr>
+          <td>Northeast Cancer Center</td>
+          <td>Boston, MA</td>
+          <td>Oncology · CAR-T capable</td>
+          <td class="multiplier warm">1.4×</td>
+        </tr>
+        <tr>
+          <td>Cascade Heart Institute</td>
+          <td>Seattle, WA</td>
+          <td>Cardiac transplant</td>
+          <td class="multiplier warm">1.6×</td>
+        </tr>
+        <tr>
+          <td>Riverside General</td>
+          <td>Memphis, TN</td>
+          <td>Inpatient · late-billing prone</td>
+          <td class="multiplier warm">1.5×</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="hotspots-footer">
+      <strong>Illustrative — derived from large-scale claims data processing.</strong>
+      Replace with your carrier's own claims learnings. Lack of competition in most metro areas (typically 2 health systems) drives much of the variation; children's hospitals and inpatient specialty centers are common outliers.
+    </div>
+  </div>
+
+  <!-- Book-of-business fit (Ryan Tier 3) — how this case sits within the carrier's broader book -->
+  <div class="panel book-fit-panel">
+    <div class="panel-head">
+      <span class="panel-title">Book-of-business fit</span>
+      <span class="panel-meta">How this case sits within the carrier's projected book</span>
+    </div>
+    <div class="book-fit-grid">
+      <div class="book-chip">
+        <div class="bc-label">Book size</div>
+        <div class="bc-value">$1.5B premium</div>
+        <div class="bc-sub">~850 groups</div>
+      </div>
+      <div class="book-chip">
+        <div class="bc-label">This case's share</div>
+        <div class="bc-value">~0.3% of book</div>
+        <div class="bc-sub">by Y1 specific premium</div>
+      </div>
+      <div class="book-chip">
+        <div class="bc-label">Industry mix</div>
+        <div class="bc-value">Fin services 12%</div>
+        <div class="bc-sub is-favorable">↓ Below target (15–20%) — room to add</div>
+      </div>
+      <div class="book-chip">
+        <div class="bc-label">Geographic balance</div>
+        <div class="bc-value">NE-heavy book</div>
+        <div class="bc-sub is-neutral">— Case fits regional concentration</div>
+      </div>
+    </div>
+    <div class="book-fit-verdict">
+      <span class="verdict-tag favorable">Underweight in target industry</span>
+      <span class="verdict-text">Onboarding this case nudges the book toward target composition without materially shifting concentration.</span>
+    </div>
+    <div class="book-fit-disclaimer">
+      <strong>Illustrative book composition.</strong>
+      Replace with your carrier's actual book targets and current mix in deployment. The tool surfaces the case-level variables; book context is the carrier's own.
     </div>
   </div>
 </section>
@@ -1379,6 +1623,15 @@
               <option value="modeled">Modeled in renewal year (worst case)</option>
             </select>
           </div>
+        </div>
+        <div class="pipeline-outlook">
+          <div class="pipeline-label">Pipeline outlook · 2027–2029</div>
+          <ul class="pipeline-list">
+            <li><span class="dx">β-thalassemia (Casgevy extension)</span><span class="px">est. Q2 2027</span><span class="cost">~$2.4M</span></li>
+            <li><span class="dx">Cystic fibrosis (CSL-103)</span><span class="px">Phase III · est. 2028</span><span class="cost">~$2.6M</span></li>
+            <li><span class="dx">Hunter syndrome (REN-225)</span><span class="px">Phase III · est. 2029</span><span class="cost">~$3.2M</span></li>
+          </ul>
+          <div class="pipeline-footer">3-year window · 1+ trigger likelihood across population: ~12%</div>
         </div>
         <div class="hereditary-flag">
           <span class="flag-icon">⚠</span>
