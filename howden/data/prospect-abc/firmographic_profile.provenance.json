@@ -1,0 +1,39 @@
+{
+  "step": "1 \u2014 Firmographic / plan profile",
+  "tier": "factual",
+  "prospect": "Prospect ABC",
+  "sources": [
+    {
+      "dataset": "DOL/EBSA Form 5500 dataset (main form), plan year 2024",
+      "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_5500_2024_Latest.zip",
+      "vintage": "PY2024 'Latest' release",
+      "retrieved": "2026-06-30"
+    },
+    {
+      "dataset": "DOL/EBSA Form 5500 Schedule A (insurance), plan year 2024",
+      "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_SCH_A_2024_Latest.zip",
+      "vintage": "PY2024 'Latest' release",
+      "retrieved": "2026-06-30"
+    }
+  ],
+  "filing_identity": {
+    "ack_id": "20250930125243NAL0005497795001",
+    "sponsor_ein": "390989248",
+    "plan_number": "501",
+    "plan_year": "2024-01-01 \u2192 2024-12-31"
+  },
+  "method": "Stream-filtered the all-filers datasets to this EIN + plan number, selected the most-recent filing by tax-period end, decoded line-8b welfare benefit codes via the DOL instructions, and aggregated the filing's Schedule A rows by arrangement. No values were modeled or imputed; absent items (e.g. Schedule C) are flagged, not filled.",
+  "evidence": [
+    {
+      "claim": "Participants are EMPLOYEES; covered lives (incl. dependents) are estimated at ~1.9\u00d7 (children \u2248 \u00bc \u2192 covered adults \u2248 1.4\u00d7).",
+      "source": "KFF Employer-Sponsored Health Insurance 101",
+      "url": "https://www.kff.org/health-costs/health-policy-101-employer-sponsored-health-insurance/"
+    }
+  ],
+  "limitations": [
+    "The participant count is the WHOLE-PLAN headcount from the main Form 5500 \u2014 captured regardless of funding, so it INCLUDES the self-funded population (here ~9\u00d7 the fully-insured Schedule A lives). Self-insured headcount is not missing.",
+    "The 5500 does NOT report self-funded claims or spend; health burden is modeled from public data (Steps 2\u20133) and reconciled once a client census/claims feed arrives (Mode 1B).",
+    "Carrier/broker visibility comes from Schedule A/C. A purely self-insured plan with no insured carve-outs would show little here; Home Depot is a favorable example (31 carve-outs). Schedule C (advisor of record) not attached here.",
+    "Annual filing \u2014 figures are ~1 year old by the time they publish."
+  ]
+}

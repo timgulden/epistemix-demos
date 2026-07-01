@@ -1,0 +1,24 @@
+{
+  "prospect": "Prospect ABC",
+  "worksite_count": 355,
+  "geocode_failures": 0,
+  "states_covered": 15,
+  "by_state": {
+    "IL": 61,
+    "WI": 47,
+    "MN": 43,
+    "IN": 38,
+    "MI": 35,
+    "OH": 34,
+    "IA": 25,
+    "MO": 22,
+    "NE": 14,
+    "KS": 9,
+    "SD": 8,
+    "ND": 7,
+    "KY": 7,
+    "WY": 3,
+    "WV": 2
+  },
+  "unique_worksite_blocks": 343
+}

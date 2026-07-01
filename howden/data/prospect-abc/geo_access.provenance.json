@@ -1,0 +1,25 @@
+{
+  "step": "4 \u2014 Geo-access (modeled overlay of factual designations)",
+  "tier": "modeled",
+  "prospect": "prospect-abc",
+  "sources": [
+    {
+      "dataset": "HRSA HPSA Primary Care, full detail (designated)",
+      "url": "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_PC.csv",
+      "retrieved": "2026-06-30",
+      "note": "Federal primary-care shortage-area designations with severity scores (0\u201325)."
+    },
+    {
+      "dataset": "Member geography (Step 2b)",
+      "url": "artifacts/<prospect>/member_geography.csv",
+      "retrieved": "2026-06-30"
+    }
+  ],
+  "method": "Reduced HRSA designated PC-HPSA records to the worst score per county; joined to county-aggregated modeled members; computed the share of members in shortage counties and the member-weighted mean HPSA score.",
+  "design_choice": "HRSA HPSA used as the authoritative access-adequacy measure; NPPES provider density is a documented box-side enhancement (full file ~1 GB), not v1.",
+  "limitations": [
+    "County-level mapping of sub-county HPSAs (granularity caveat).",
+    "Exposure inherits Step 2b's MODELED member distribution.",
+    "Primary care only in v1 (dental/mental HPSAs, MUA/P not yet included)."
+  ]
+}

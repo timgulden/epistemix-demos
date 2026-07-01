@@ -1,0 +1,21 @@
+{
+  "prospect": "prospect-abc",
+  "synth_pop_version": "US_2025.v0",
+  "sample": {
+    "tracts_requested": 40,
+    "tracts_found": 39,
+    "persons_pooled": 174329,
+    "method": "PPS by modeled members (seeded)",
+    "seed": 42
+  },
+  "sex_share": {
+    "0": 0.5106608768477993,
+    "1": 0.48933912315220074
+  },
+  "age_bands": {
+    "le_29": 0.39967532653775334,
+    "30_to_54": 0.32087604472004083,
+    "ge_55": 0.27944862874220583
+  },
+  "age_band_detail_note": "Residential synthpop in member tracts; workforce age reweighting (LODES SA) available as a refinement."
+}

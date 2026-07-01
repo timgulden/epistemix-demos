@@ -1,0 +1,59 @@
+{
+  "step": "3 \u2014 Cost drivers (modeled, with workforce adjustment)",
+  "tier": "modeled",
+  "prospect": "prospect-abc",
+  "sources": [
+    {
+      "dataset": "CDC PLACES: Census Tract Data (GIS Friendly Format), 2025 release",
+      "url": "https://data.cdc.gov/resource/yjkw-uj5s",
+      "retrieved": "2026-06-30",
+      "note": "Model-based small-area CRUDE prevalence (BRFSS), with 95% CIs."
+    },
+    {
+      "dataset": "Member geography + workforce age (Step 2b)",
+      "url": "artifacts/<prospect>/member_geography*",
+      "retrieved": "2026-06-30"
+    },
+    {
+      "dataset": "National age-specific prevalence + adult age distribution (cited constants)",
+      "url": "see NATIONAL_AGE_SPECIFIC_PREV / NATIONAL_ADULT_AGE_DIST + WORKFORCE_ADJUSTMENT.md",
+      "retrieved": "2026-06-30",
+      "note": "NHANES/CDC age-specific rates; ACS/Census age mix."
+    },
+    {
+      "dataset": "Incremental cost-of-illness ranges (MEPS/ADA-derived)",
+      "url": "see COST_COEFFS",
+      "retrieved": "2026-06-30",
+      "note": "Per-person incremental annual cost RANGES with citations; never summed."
+    }
+  ],
+  "method": "Joined PLACES crude tract prevalence to modeled members; emitted BOTH a naive residential estimate and a workforce-adjusted estimate (A1 age-standardization to the workforce age mix; A2 compositional shrinkage toward the national member mean by \u03bb). Sized each condition as affected \u00d7 incremental-cost RANGE.",
+  "integrity": [
+    "Cost driver = size of burden, NOT a saving.",
+    "Conditions separate; never summed.",
+    "Workforce adjustment exposed (toggle + \u03bb documented), not hidden.",
+    "Limits stated: area-based LODES, national age rates, partial uniformity capture."
+  ],
+  "evidence": [
+    {
+      "claim": "For a male-skewed workforce, obesity barely tracks income \u2014 among men obesity is roughly flat across income (higher for Black men); the income\u2192lower-obesity pattern is mainly a White-women phenomenon. So poor-area members are NOT meaningfully healthier on this measure; obesity is largely environmental.",
+      "source": "CDC NCHS Data Brief 50 (obesity & SES)",
+      "url": "https://www.cdc.gov/nchs/products/databriefs/db50.htm"
+    },
+    {
+      "claim": "Income\u2013obesity association differs sharply by sex and race \u2014 weak/absent for men.",
+      "source": "Income inequality & obesity: Does Sex Matter? (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8297230/"
+    },
+    {
+      "claim": "Burden is sized on COVERED ADULTS (employees + adult dependents), not just employees \u2014 \u22481.9 covered lives per subscriber, ~\u00bc children \u2192 adults \u2248 1.4\u00d7 participants. Retail/part-time workforces skew lower, so this is an upper estimate; the census (Mode 1B) refines it.",
+      "source": "KFF Employer-Sponsored Health Insurance 101",
+      "url": "https://www.kff.org/health-costs/health-policy-101-employer-sponsored-health-insurance/"
+    }
+  ],
+  "limitations": [
+    "The workforce adjustment shrinks residential prevalence toward the national member mean, but does NOT apply a LOCAL relative-standing correction. For income-sensitive conditions (diabetes control, hypertension) poor-area burden may be modestly overstated; obesity's weak income gradient limits this for the headline measure.",
+    "Member SEX is not modeled (LODES carries no sex). Pulling occupational sex ratios (BLS) would let the obesity gradient be weighted properly \u2014 door-open.",
+    "The rigorous fix is a joint model where member income/standing drives BOTH burden and engageability consistently (the agent-based roadmap)."
+  ]
+}

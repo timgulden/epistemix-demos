@@ -1,0 +1,48 @@
+{
+  "step": "1b \u2014 Covered-lives ratio refinement (age + dual-coverage)",
+  "tier": "modeled",
+  "prospect": "Prospect ABC",
+  "method": "ratio = 1 + national_dependent_load \u00d7 age_factor \u00d7 dual_coverage_haircut, then shrunk toward the naive 1.9\u00d7 anchor by \u03bb. The age factor re-weights a relative dependent-load shape (by worker age band) to the workforce's own age marginal, anchored so the national age mix returns 1.0. The dual-coverage haircut removes, for working-spouse / own-ESI households, the spouse and ~half their children from this employer's dependent load.",
+  "inputs": {
+    "participants": 14143,
+    "workforce_age_profile": {
+      "le_29": 0.3796,
+      "30_to_54": 0.3984,
+      "ge_55": 0.222
+    },
+    "ratio_naive": 1.9,
+    "ratio_pre_shrinkage": 1.633,
+    "ratio_adjusted": 1.713,
+    "age_factor": 0.891,
+    "dual_coverage_haircut": 0.79,
+    "lambda": 0.3
+  },
+  "outputs": {
+    "estimated_covered_lives": 24227,
+    "estimated_covered_lives_naive": 26872,
+    "estimated_covered_adults": 17928,
+    "reconciliation_covered_lives": 20798
+  },
+  "sources": [
+    {
+      "dataset": "KFF 2025 Employer Health Benefits Survey",
+      "url": "https://www.kff.org/health-costs/2025-employer-health-benefits-survey/",
+      "note": "National covered-lives-per-worker anchor (~1.9); working-spouse rules/surcharges among firms \u2265200 workers (~10% exclude, ~13% surcharge)."
+    },
+    {
+      "dataset": "AHRQ MEPS Insurance Component",
+      "url": "https://meps.ahrq.gov/data_files/publications/cb27/cb27.shtml",
+      "note": "Dual-offer availability among married workers (spousal own-ESI access)."
+    },
+    {
+      "dataset": "Member geography (LODES OD worker ages)",
+      "url": "artifacts/prospect-abc/member_geography_summary.json",
+      "note": "Workforce age marginal driving the age factor."
+    }
+  ],
+  "limitations": [
+    "DEP_SHAPE is an illustrative relative shape, not a measured age\u00d7dependent table; replace with ACS PUMS household composition for the member geography to remove the assumption.",
+    "The spouse-decline rate is a conservative national default; an employer's actual working-spouse rule (if any) would set it precisely.",
+    "Public-data estimate only \u2014 reconciled against the client's census (Mode 1B), whose ground-truth covered lives is held as reconciliation_covered_lives."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "step": "5 \u2014 Propensity-to-change (modeled, relative; +relative-standing adjustment)",
+  "tier": "modeled",
+  "prospect": "prospect-abc",
+  "sources": [
+    {
+      "dataset": "ACS 2023 5-year (state), via Census API",
+      "url": "https://api.census.gov/data/2023/acs/acs5",
+      "variables": [
+        "B19013_001E",
+        "B28002_001E",
+        "B28002_004E",
+        "B15003_001E",
+        "B15003_022E",
+        "B15003_023E",
+        "B15003_024E",
+        "B15003_025E",
+        "B08201_001E",
+        "B08201_002E"
+      ],
+      "retrieved": "2026-06-30"
+    },
+    {
+      "dataset": "BEA Regional Price Parities (state, All items)",
+      "url": "https://apps.bea.gov/regional/zip/SARPP.zip",
+      "retrieved": "2026-06-30",
+      "note": "Cost-of-living index; real value of a constant wage."
+    },
+    {
+      "dataset": "Cost-driver burden (Step 3, workforce-adjusted)",
+      "url": "artifacts/<prospect>/cost_drivers_summary.json",
+      "retrieved": "2026-06-30"
+    }
+  ],
+  "method": "Selected top workforce-adjusted-burden states; computed a naive absolute-SES index and a workforce-adjusted relative-standing index (real wage value via BEA RPP; wage-to-local-median via ACS; broadband). Min-max normalized within candidates; ranked.",
+  "integrity": [
+    "Relative across all 50 states + DC; never a per-person probability.",
+    "Screening heuristic, not a value judgment about under-resourced geographies.",
+    "Anchor wage cancels in ranking (documented); OEWS state wages = door-open refinement.",
+    "ABM diffusion deliberately out of v1 (door open)."
+  ],
+  "evidence": [
+    {
+      "claim": "Voluntary health-program participation skews toward higher-SES, already-healthier employees (selection / 'healthy-participant bias') \u2014 and the same selection is why such programs often show small ROI. So 'more engageable' is NOT 'more savings'; validate against real engagement data.",
+      "source": "Illinois Workplace Wellness Study, QJE 2019 (RCT: selection + near-null effects)",
+      "url": "https://academic.oup.com/qje/article/134/4/1747/5550759"
+    },
+    {
+      "claim": "Lower-SES employees participate less in, and comply less with, workplace health-promotion programs.",
+      "source": "IPD meta-analysis of SES inequalities in workplace health promotion (2020)",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7650284/"
+    },
+    {
+      "claim": "Cost-adjusted pay is grounded in financial bandwidth, not affluence: financial scarcity consumes the cognitive bandwidth needed for non-urgent preventive health \u2014 a better-motivated lever than 'higher income engages more'.",
+      "source": "Mullainathan & Shafir, Scarcity (2013)",
+      "url": null
+    }
+  ],
+  "limitations": [
+    "Engageability is a literature-informed SCREENING PRIOR, not a fitted coefficient; strength and even direction vary by program design and population.",
+    "'More engageable' \u2260 'more savings' (healthy-participant bias): the most engageable members may need intervention least.",
+    "Relative standing is applied to engageability but NOT symmetrically to burden (see Step 3); a joint member-SES \u2192 (burden, engageability) model is the rigorous fix (ABM/research)."
+  ]
+}

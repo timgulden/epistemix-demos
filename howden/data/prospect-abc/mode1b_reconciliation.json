@@ -1,0 +1,40 @@
+{
+  "prospect": "prospect-abc",
+  "spine_sample": {
+    "tracts_requested": 40,
+    "tracts_found": 39,
+    "persons_pooled": 174329,
+    "method": "PPS by modeled members (seeded)",
+    "seed": 42
+  },
+  "reconciliation": {
+    "tiering_note": "Spec \u00a76.3: sex ratio and broad age bands reconcile STRONGLY (the synthpop spine is census-grounded); condition prevalence (Step 3) reconciles only MODERATELY. Figures here are computed, not asserted.",
+    "sex_ratio": {
+      "tier": "strong",
+      "predicted_1A": {
+        "0": 0.5106608768477993,
+        "1": 0.48933912315220074
+      },
+      "demo_census_1B": {
+        "0": 0.5115265166379771,
+        "1": 0.48847348336202295
+      },
+      "agreement_pct": 99.9,
+      "encoding_note": "Synthpop sex encoded 0/1; M/F mapping not yet confirmed."
+    },
+    "age_bands": {
+      "tier": "strong",
+      "predicted_1A": {
+        "le_29": 0.39967532653775334,
+        "30_to_54": 0.32087604472004083,
+        "ge_55": 0.27944862874220583
+      },
+      "demo_census_1B": {
+        "le_29": 0.4105463035163687,
+        "30_to_54": 0.3256701591362712,
+        "ge_55": 0.26378353734736004
+      },
+      "agreement_pct": 98.4
+    }
+  }
+}

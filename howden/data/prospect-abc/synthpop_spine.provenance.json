@@ -1,0 +1,26 @@
+{
+  "step": "Spine + Mode 1B reconciliation",
+  "tier": "census-grounded (spine) / illustrative (demo census)",
+  "prospect": "prospect-abc",
+  "sources": [
+    {
+      "dataset": "Populus synth-pop DB, US_2025.v0 (box, via Tailscale)",
+      "url": "populus.agent_attribute (age/sex) via tract\u2192place\u2192agent",
+      "retrieved": "2026-06-25",
+      "note": "PPS sample of 39 member tracts; 174,329 residents pooled."
+    },
+    {
+      "dataset": "Member geography (Step 2b)",
+      "url": "artifacts/<prospect>/member_geography.csv",
+      "retrieved": "2026-06-25",
+      "note": "Defines tract sampling probabilities (\u221d modeled members)."
+    }
+  ],
+  "method": "Pulled age/sex for synthetic residents of a member-weighted tract sample; pooled to a member-representative distribution (the spine). Demo census = spine sampled with seeded lognormal perturbation (spec \u00a76.2). Reconciliation overlap computed per attribute.",
+  "integrity": [
+    "Demo census perturbed from real distribution \u2014 a fair test, not rigged.",
+    "Structural attributes reconcile strongly because synthpop is census-grounded.",
+    "Bounded PPS sample; scale to full member tracts on the box (door open).",
+    "Sex encoding 0/1 \u2014 M/F mapping unconfirmed."
+  ]
+}

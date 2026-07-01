@@ -1,0 +1,104 @@
+{
+  "prospect": "prospect-abc",
+  "measure": "HRSA Geographic Primary-Care HPSA (whole-area shortage), designated",
+  "designation_filter": "Geographic HPSA + High Needs Geographic HPSA only (population-group, facility, FQHC/RHC, correctional, and IHS/tribal designations excluded \u2014 see provenance).",
+  "share_members_in_pc_hpsa_county": 0.1804,
+  "members_in_pc_hpsa_county": 2547,
+  "member_weighted_avg_hpsa_score": 13.13,
+  "hpsa_score_scale": "0\u201325; higher = greater shortage",
+  "counties_with_members": 1580,
+  "counties_with_designation": 398,
+  "designation_types_all_designated": {
+    "HPSA Population": 11733,
+    "Geographic HPSA": 3091,
+    "Rural Health Clinic": 1835,
+    "Federally Qualified Health Center": 1351,
+    "Indian Health Service, Tribal Health, and Urban Indian Health Organizations": 928,
+    "High Needs Geographic HPSA": 639,
+    "Correctional Facility": 550,
+    "Federally Qualified Health Center Look A Like": 171,
+    "Other Facility": 9
+  },
+  "designation_types_used": {
+    "Geographic HPSA": 3091,
+    "High Needs Geographic HPSA": 639
+  },
+  "granularity_caveat": "HPSAs can be sub-county (tracts, population groups); mapped to county FIPS taking the worst designated PC-HPSA score per county. County-level exposure is a standard approximation.",
+  "top_shortage_counties_by_member_exposure": [
+    {
+      "county_geoid": "17031",
+      "modeled_members": 639,
+      "pc_hpsa_score": 16.0
+    },
+    {
+      "county_geoid": "55079",
+      "modeled_members": 397,
+      "pc_hpsa_score": 11.0
+    },
+    {
+      "county_geoid": "18089",
+      "modeled_members": 264,
+      "pc_hpsa_score": 14.0
+    },
+    {
+      "county_geoid": "27137",
+      "modeled_members": 123,
+      "pc_hpsa_score": 14.0
+    },
+    {
+      "county_geoid": "56005",
+      "modeled_members": 85,
+      "pc_hpsa_score": 11.0
+    },
+    {
+      "county_geoid": "56021",
+      "modeled_members": 45,
+      "pc_hpsa_score": 18.0
+    },
+    {
+      "county_geoid": "39085",
+      "modeled_members": 54,
+      "pc_hpsa_score": 14.0
+    },
+    {
+      "county_geoid": "19155",
+      "modeled_members": 68,
+      "pc_hpsa_score": 10.0
+    },
+    {
+      "county_geoid": "39043",
+      "modeled_members": 41,
+      "pc_hpsa_score": 15.0
+    },
+    {
+      "county_geoid": "56025",
+      "modeled_members": 33,
+      "pc_hpsa_score": 18.0
+    },
+    {
+      "county_geoid": "46093",
+      "modeled_members": 34,
+      "pc_hpsa_score": 13.0
+    },
+    {
+      "county_geoid": "39089",
+      "modeled_members": 31,
+      "pc_hpsa_score": 13.0
+    },
+    {
+      "county_geoid": "17073",
+      "modeled_members": 26,
+      "pc_hpsa_score": 14.0
+    },
+    {
+      "county_geoid": "19187",
+      "modeled_members": 35,
+      "pc_hpsa_score": 10.0
+    },
+    {
+      "county_geoid": "27027",
+      "modeled_members": 23,
+      "pc_hpsa_score": 14.0
+    }
+  ]
+}

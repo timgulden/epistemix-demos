@@ -1,0 +1,30 @@
+{
+  "step": "2b \u2014 Member geography (modeled)",
+  "tier": "modeled",
+  "prospect": "Prospect ABC",
+  "sources": [
+    {
+      "dataset": "LEHD LODES8 OD (JT00, main+aux), vintage 2023",
+      "url": "https://lehd.ces.census.gov/data/lodes/LODES8/<st>/od/<st>_od_(main|aux)_JT00_2023.csv.gz",
+      "retrieved": "2026-06-30"
+    },
+    {
+      "dataset": "Worksite blocks (Step 2a)",
+      "url": "artifacts/<prospect>/worksites.json",
+      "retrieved": "2026-06-30"
+    },
+    {
+      "dataset": "Active participant total (Step 1, Form 5500)",
+      "url": "artifacts/<prospect>/firmographic_profile.json",
+      "retrieved": "2026-06-30"
+    }
+  ],
+  "method": "Filtered LODES8 OD (main+aux, both read to capture multi-state home leakage) to flows whose work-end block is a prospect worksite block. Aggregated the SI02 (Trade/Transport/Utilities \u2014 retail's super-sector) job marginal by home tract to get a modeled member-home distribution, then distributed the FACTUAL active-participant count (Form 5500) across tracts by that modeled share. Workforce age/earnings profiles are the OD SA/SE marginals over the in-scope flows.",
+  "tier_rationale": "MODELED, area-based, not firm-specific: OD at a worksite block reflects all establishments in that block. Fair for big-box-dominated blocks (see representativeness.worksite_si02_share), noisier for mixed-use blocks. Never presented as factual member addresses.",
+  "deviation_from_methodology": "METHODOLOGY.md states OD has no industry/age/earnings segments; the LODES8 OD files DO (SA/SE/SI columns, verified). This pipeline uses those directly instead of combining WAC/RAC under assumption. See the module docstring. METHODOLOGY.md should be updated.",
+  "limitations": [
+    "SA/SE/SI are independent marginals of S000; no joint industry\u00d7age.",
+    "LODES covers 50 states + DC only; territory worksites excluded here.",
+    "Coarse 3-band segments; no finer demographic precision claimed."
+  ]
+}

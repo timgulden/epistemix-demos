@@ -1,0 +1,25 @@
+{
+  "step": "2a \u2014 Worksite locations (spatial spine of member geography)",
+  "tier": "factual",
+  "prospect": "Prospect ABC",
+  "sources": [
+    {
+      "dataset": "OpenStreetMap (Overpass API)",
+      "url": "https://overpass-api.de/api/interpreter",
+      "query": "nwr[brand=\"Menards\"] in US area; out center",
+      "retrieved": "2026-06-30",
+      "note": "Filtered to brand-tagged store footprints; entrances/HQ/venue records sharing the name string are excluded by the brand filter."
+    },
+    {
+      "dataset": "FCC Census Block API (2020 vintage)",
+      "url": "https://geo.fcc.gov/api/census/block/find",
+      "retrieved": "2026-06-30",
+      "note": "Point-in-block assignment, lat/lon \u2192 2020 census block FIPS."
+    }
+  ],
+  "transformation": "Geocoded each worksite to its 2020 census block. These blocks are the LODES work-end geographies (w_geocode) for Step 2b. A store's block is a fair proxy for its workers only because a big-box store dominates its block (METHODOLOGY.md Step 2, trap #2).",
+  "caveats": [
+    "0 worksite(s) failed block geocoding and were dropped.",
+    "OSM coverage is community-maintained; count (~2,000) is consistent with Home Depot's public US store count but is not an official roster."
+  ]
+}

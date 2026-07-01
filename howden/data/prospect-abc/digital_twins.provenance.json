@@ -1,0 +1,31 @@
+{
+  "step": "Digital-twin workforce (synthetic individuals matched to member workforce)",
+  "tier": "synthetic individuals (census-grounded) / modeled member workforce",
+  "prospect": "prospect-abc",
+  "sources": [
+    {
+      "dataset": "Populus synth-pop DB, US_2025.v0 (box, via Tailscale)",
+      "url": "populus.place (geom) + agent_place (workplace) + agent_attribute + place_attribute (income)",
+      "retrieved": "2026-06-30",
+      "note": "12,000 synthetic workers from 699 member tracts; workplace-linked agents only; household coordinates from place.geom (PostGIS)."
+    },
+    {
+      "dataset": "Member geography (Step 2b)",
+      "url": "artifacts/prospect-abc/member_geography.csv",
+      "retrieved": "2026-06-30",
+      "note": "Tract sampling probabilities (\u221d modeled members) + LODES workforce age/earnings targets."
+    }
+  ],
+  "method": "PPS sample of member tracts (\u221d modeled members, seeded); within each, take an UNBIASED md5-ordered sample, keep working-age adults (16\u201374), and dedupe to one per household \u2192 a raw worker pool. The pool is JOINTLY reweighted to THIS employer's LODES workforce AGE shape (SA01\u201303, working-age window 16\u201374) and a member-representative HOUSEHOLD INCOME target (the member workforce's LODES earnings shares, lifted individual\u2192household by a 1.6\u00d7 earner uplift) by sampling \u221d (age \u00d7 income) target/observed. Sex, race and ethnicity are NOT reweighted \u2014 they carry the real signal of who the members are. Each twin is a synthetic person at its household point.",
+  "integrity": [
+    "Synthetic individuals (digital twins) \u2014 modeled, not real people; a stratified sample matched to the member workforce.",
+    "Workforce proxy: working-age adults (16\u201374), one per household \u2014 excludes children and the elderly and avoids overlapping same-household dots. (A workplace-link filter is more precise but ~18s/tract; the age window already removes non-workers by age.)",
+    "Within-tract draw is md5-ordered (unbiased), not agent_id-ordered.",
+    "Age reweighted to the LODES workforce shape (16\u201374); household income reweighted toward member households (a residential draw over-states income \u2014 it's the AREA median, but member households hold a lower-wage retail worker). The income uplift (1.6\u00d7, range 1.4\u20131.8) is a documented assumption reconciled by a census in Mode 1B.",
+    "Sex / race / ethnicity left at their values and validated, not adjusted.",
+    "Absurd ages (>100) and absurd incomes (\u2265$500K) dropped/nulled per the db-access rules.",
+    "Coordinates are household points (place.geom); placement is the synthpop's own.",
+    "Member-weighting is the MODELED commute geography, not factual member addresses.",
+    "race/sex/hispanic are integer codes; M/F (sex 0/1) mapping unconfirmed."
+  ]
+}
