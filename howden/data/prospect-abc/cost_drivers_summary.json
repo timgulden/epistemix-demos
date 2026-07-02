@@ -50,27 +50,27 @@
           31.79,
           42.69
         ],
-        "affected_covered_adults_modeled": 6646,
+        "affected_covered_adults_modeled": 5706,
         "affected_participants_basis": 5243,
         "annual_cost_driver_burden_usd": [
-          12628170,
-          22597779
+          10841152,
+          19399956
         ]
       },
       "workforce_adjusted": {
         "member_weighted_prevalence_pct": 36.81,
-        "affected_covered_adults_modeled": 6590,
+        "affected_covered_adults_modeled": 5657,
         "affected_participants_basis": 5198,
         "annual_cost_driver_burden_usd": [
-          12520235,
-          22404632
+          10748491,
+          19234141
         ]
       },
       "incremental_cost_per_person_usd": [
         1900,
         3400
       ],
-      "burden_basis": "covered adults (employees + adult dependents); \u22481.27\u00d7 participants",
+      "burden_basis": "covered adults (employees + adult dependents); \u22481.09\u00d7 participants",
       "cost_basis": "Excess annual medical expenditure per adult with non-severe obesity. Cawley et al. 2021 (~$2,505, MEPS); class 1\u20132 ~$2,580 (Ward et al. 2021). Severe (class 3) materially higher (~$6,300).",
       "usd_year": "2014\u20132021"
     },
@@ -81,27 +81,27 @@
           10.45,
           13.71
         ],
-        "affected_covered_adults_modeled": 2152,
+        "affected_covered_adults_modeled": 1848,
         "affected_participants_basis": 1698,
         "annual_cost_driver_burden_usd": [
-          20659862,
-          25872174
+          17736275,
+          22210990
         ]
       },
       "workforce_adjusted": {
         "member_weighted_prevalence_pct": 9.34,
-        "affected_covered_adults_modeled": 1671,
+        "affected_covered_adults_modeled": 1435,
         "affected_participants_basis": 1319,
         "annual_cost_driver_burden_usd": [
-          16046074,
-          20094365
+          13775386,
+          17250801
         ]
       },
       "incremental_cost_per_person_usd": [
         9600,
         12022
       ],
-      "burden_basis": "covered adults (employees + adult dependents); \u22481.27\u00d7 participants",
+      "burden_basis": "covered adults (employees + adult dependents); \u22481.09\u00d7 participants",
       "cost_basis": "Excess per-person annual medical expenditure attributable to diabetes. ADA Economic Costs of Diabetes (2022 data): ~$19,736 vs ~$7,714 \u2192 excess ~$12,022; ~$9,600 lower bound from prior MEPS analyses.",
       "usd_year": "2017\u20132022"
     },
@@ -112,27 +112,27 @@
           31.54,
           38.32
         ],
-        "affected_covered_adults_modeled": 6246,
+        "affected_covered_adults_modeled": 5362,
         "affected_participants_basis": 4927,
         "annual_cost_driver_burden_usd": [
-          11992551,
-          19019437
+          10295480,
+          16327987
         ]
       },
       "workforce_adjusted": {
         "member_weighted_prevalence_pct": 29.56,
-        "affected_covered_adults_modeled": 5291,
+        "affected_covered_adults_modeled": 4542,
         "affected_participants_basis": 4174,
         "annual_cost_driver_burden_usd": [
-          10158702,
-          16111066
+          8721139,
+          13831181
         ]
       },
       "incremental_cost_per_person_usd": [
         1920,
         3045
       ],
-      "burden_basis": "covered adults (employees + adult dependents); \u22481.27\u00d7 participants",
+      "burden_basis": "covered adults (employees + adult dependents); \u22481.09\u00d7 participants",
       "cost_basis": "Incremental per-person annual expenditure attributable to hypertension. Kirkland et al. 2018 (~$1,920, MEPS); 2024 MEPS analysis of privately-insured adults 18\u201364 ~$1,761\u2013$3,045 (2021 USD).",
       "usd_year": "2018\u20132021"
     }

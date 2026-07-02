@@ -25,13 +25,13 @@
       "MD"
     ]
   },
-  "priority_definition": "Default 'Opportunity' lens = burden-rate \u00d7 workforce-adjusted engageability \u00d7 log(members) (volume DAMPENED), normalized 0\u2013100. Volume-aware without collapsing to the biggest states. obesity_burden_usd is the literal $-at-stake, shown for context but not the ranking basis. Obesity is the single representative driver (NOT summed with diabetes/hypertension). See docs/PROVISIONAL_DECISIONS.md #1/#12.",
+  "priority_definition": "Opportunity = the selected condition's member prevalence (individual-level, from the enriched digital twins) \u00d7 workforce-adjusted engageability (how far the wage goes locally) \u00d7 log(members) \u2014 volume-aware without collapsing to the biggest states, normalized 0\u2013100. Switch the condition and the map + ranking re-rank on that condition's burden.",
   "index_definitions": {
     "opportunity": "Default. burden-rate \u00d7 engageability \u00d7 log(members), normalized 0\u2013100.",
     "naive": "Mean of min-max-normalized ACS median income, broadband, bachelor's+, vehicle access. Describes neighbors, not members; a wealth map.",
     "workforce_adjusted": "Mean of min-max-normalized real_wage_value (anchor/RPP), wage_to_local_median (anchor/median income), broadband. Relative standing of a constant HD wage \u2014 'good job here / bad job here'."
   },
-  "interpretation_caveat": "Relative across all 50 states + DC; NOT a probability; NOT individual-level. A SCREENING heuristic, not a verdict that low-index geographies aren't worth serving.",
+  "interpretation_caveat": "A relative SCREENING heuristic across the material member states \u2014 not a probability, and not a verdict that low-index geographies aren't worth serving. Condition prevalence is modeled (enriched twins); the ranking is state-level guidance.",
   "ranking": [
     {
       "state": "OH",

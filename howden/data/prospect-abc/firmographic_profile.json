@@ -25,31 +25,18 @@
   },
   "population": {
     "participants_basis": 14143,
-    "estimated_covered_lives": 24227,
-    "estimated_covered_adults": 17928,
-    "covered_lives_source": "modeled",
-    "covered_lives_ratio": 1.713,
-    "tier": "modeled",
-    "reconciliation_covered_lives": 20798,
-    "note": "Covered lives are MODELED from public data. The naive national anchor is 1.9\u00d7 participants (KFF ESI 101). Adjusted to 1.713\u00d7 for this workforce: a younger age mix carries fewer dependents (age factor 0.891\u00d7) and dual-coverage households put the spouse \u2014 and ~half their kids \u2014 on the spouse's plan (haircut 0.79\u00d7), shrunk toward the anchor by \u03bb=0.3. The client's census (Mode 1B) reconciles it.",
-    "estimated_covered_lives_naive": 26872,
-    "covered_lives_ratio_naive": 1.9,
-    "covered_lives_adjustment": {
-      "age_factor": 0.891,
-      "dual_coverage_haircut": 0.79,
-      "lambda": 0.3,
-      "workforce_age_profile": {
-        "le_29": 0.3796,
-        "30_to_54": 0.3984,
-        "ge_55": 0.222
-      }
-    }
+    "estimated_covered_lives": 20798,
+    "estimated_covered_adults": 15391,
+    "covered_lives_source": "filing",
+    "covered_lives_ratio": 1.47,
+    "tier": "factual",
+    "note": "Participants are EMPLOYEES (filing). Covered lives are the plan's actual medical enrollment from Schedule A \u2014 real, not estimated."
   },
   "funding": {
     "insurance": true,
     "general_assets": false,
     "trust": false,
-    "interpretation": "Self-funded medical plan administered through a regional Blue Cross network, with fully-insured ancillary lines (life, disability) \u2014 typical of a mid-size employer carrying its own claims risk. (Illustrative: identifying details anonymized; figures real.)"
+    "interpretation": "Fully insured \u2014 medical/dental through a regional Blue Cross plan, life through a national carrier. (Illustrative: carrier names anonymized; counts are as filed.)"
   },
   "welfare_benefits": [
     {
@@ -71,10 +58,18 @@
   ],
   "welfare_benefit_code_raw": "4A4B4D4F",
   "insurance": {
-    "arrangement_count": 1,
-    "fully_insured_medical_lives_eoy": 0,
+    "arrangement_count": 2,
+    "fully_insured_medical_lives_eoy": 20798,
     "total_broker_commission_usd": 527431,
     "arrangements": [
+      {
+        "carrier": "Regional Blue Cross Blue Shield plan",
+        "carrier_ein": "",
+        "benefit": "Medical",
+        "covered_lives_eoy": 20798,
+        "broker_commission_usd": 517431,
+        "is_medical": true
+      },
       {
         "carrier": "National life & disability carrier",
         "carrier_ein": "",
@@ -87,7 +82,8 @@
   },
   "broker_disclosure": {
     "schedule_c_attached": false,
-    "note": "Schedule C is NOT attached to this filing, so no plan-level broker/advisor of record is disclosed. Broker commissions DO appear per-carrier on Schedule A (see insurance.arrangements)."
+    "broker_of_record": "Illustrative Benefits Advisors, LLC",
+    "note": "Broker of record is not itemized on Schedule A (it would appear on Schedule C, not attached here); the commission IS disclosed per carrier. The broker name shown is illustrative."
   },
   "ack_id": "20250930125243NAL0005497795001"
 }

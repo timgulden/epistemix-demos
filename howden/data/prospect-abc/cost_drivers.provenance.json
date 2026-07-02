@@ -6,24 +6,24 @@
     {
       "dataset": "CDC PLACES: Census Tract Data (GIS Friendly Format), 2025 release",
       "url": "https://data.cdc.gov/resource/yjkw-uj5s",
-      "retrieved": "2026-06-30",
+      "retrieved": "2026-07-01",
       "note": "Model-based small-area CRUDE prevalence (BRFSS), with 95% CIs."
     },
     {
       "dataset": "Member geography + workforce age (Step 2b)",
       "url": "artifacts/<prospect>/member_geography*",
-      "retrieved": "2026-06-30"
+      "retrieved": "2026-07-01"
     },
     {
       "dataset": "National age-specific prevalence + adult age distribution (cited constants)",
       "url": "see NATIONAL_AGE_SPECIFIC_PREV / NATIONAL_ADULT_AGE_DIST + WORKFORCE_ADJUSTMENT.md",
-      "retrieved": "2026-06-30",
+      "retrieved": "2026-07-01",
       "note": "NHANES/CDC age-specific rates; ACS/Census age mix."
     },
     {
       "dataset": "Incremental cost-of-illness ranges (MEPS/ADA-derived)",
       "url": "see COST_COEFFS",
-      "retrieved": "2026-06-30",
+      "retrieved": "2026-07-01",
       "note": "Per-person incremental annual cost RANGES with citations; never summed."
     }
   ],

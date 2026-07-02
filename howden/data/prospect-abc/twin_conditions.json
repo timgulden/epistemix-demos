@@ -1,0 +1,116 @@
+{
+  "prospect": "prospect-abc",
+  "n_twins": 12000,
+  "min_state_twins": 50,
+  "covered_adults_per_participant": 1.088,
+  "conditions": {
+    "obesity": {
+      "national_prevalence_pct": 36.4,
+      "by_state_prevalence_pct": {
+        "MO": 38.9,
+        "IL": 37.2,
+        "IN": 37.1,
+        "OH": 36.8,
+        "KS": 36.5,
+        "MN": 36.4,
+        "NE": 36.1,
+        "WI": 35.9,
+        "IA": 35.8,
+        "MI": 35.6,
+        "ND": 35.5,
+        "KY": 35.1,
+        "SD": 34.5,
+        "WY": 32.1
+      },
+      "cost_per_person_usd": [
+        1900,
+        3400
+      ],
+      "affected_covered_adults": 5607,
+      "annual_burden_usd": [
+        10653300,
+        19063800
+      ]
+    },
+    "diabetes": {
+      "national_prevalence_pct": 9.4,
+      "by_state_prevalence_pct": {
+        "KY": 12.5,
+        "IN": 10.9,
+        "MI": 10.4,
+        "OH": 10.0,
+        "MO": 9.8,
+        "SD": 9.6,
+        "WI": 9.6,
+        "IL": 8.9,
+        "KS": 8.4,
+        "NE": 8.3,
+        "MN": 7.2,
+        "IA": 7.1,
+        "ND": 5.4,
+        "WY": 3.7
+      },
+      "cost_per_person_usd": [
+        9600,
+        12022
+      ],
+      "affected_covered_adults": 1447,
+      "annual_burden_usd": [
+        13891200,
+        17395834
+      ]
+    },
+    "hypertension": {
+      "national_prevalence_pct": 30.7,
+      "by_state_prevalence_pct": {
+        "SD": 34.9,
+        "WI": 33.0,
+        "NE": 32.7,
+        "IN": 32.3,
+        "MN": 31.7,
+        "IL": 30.7,
+        "KS": 30.5,
+        "ND": 30.2,
+        "KY": 30.0,
+        "OH": 29.6,
+        "MO": 29.5,
+        "WY": 29.4,
+        "IA": 29.3,
+        "MI": 29.3
+      },
+      "cost_per_person_usd": [
+        1920,
+        3045
+      ],
+      "affected_covered_adults": 4728,
+      "annual_burden_usd": [
+        9077760,
+        14396760
+      ]
+    }
+  },
+  "comorbidity": {
+    "conditions": [
+      "obesity",
+      "diabetes",
+      "hypertension"
+    ],
+    "all_three_pct": 2.8,
+    "two_plus_pct": 20.6,
+    "none_pct": 46.9
+  },
+  "extra_conditions_national_pct": {
+    "depression": 26.1,
+    "arthritis / MSK": 21.2,
+    "prediabetes": 16.8,
+    "asthma (current)": 11.8,
+    "current smoker": 11.6,
+    "diabetes (measured, incl. undiagnosed)": 7.8,
+    "COPD": 5.2,
+    "kidney disease": 2.8,
+    "coronary heart disease": 2.6,
+    "heart attack (history)": 2.6,
+    "stroke (history)": 2.3
+  },
+  "tier": "modeled"
+}
