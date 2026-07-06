@@ -1,8 +1,61 @@
 {
-  "step": "5 \u2014 Propensity-to-change (modeled, relative; +relative-standing adjustment)",
+  "step": "Propensity to change",
   "tier": "modeled",
   "prospect": "prospect-abc",
-  "sources": [
+  "summary": [
+    "Where should an engagement program start? This page ranks states by opportunity \u2014 where three things coincide: a high burden of the selected condition, members with the financial headroom to engage with a health program (we use how far the employer's wage goes against local prices as the proxy), and enough members for a program to matter.",
+    "It is a relative screen for comparing states, not a prediction about any individual \u2014 and 'more engageable' is not the same as 'more savings': research consistently shows the members most likely to engage are often the ones who need intervention least."
+  ],
+  "moves": [
+    {
+      "headline": "The opportunity index",
+      "detail": "opportunity = condition prevalence \u00d7 cost-adjusted pay \u00d7 log(members), normalized 0\u2013100 across the states where members actually live. The log dampens volume so the ranking doesn't simply collapse to the biggest states. Prevalence is the twin-cohort rate for the selected condition (see Clinical cost drivers).",
+      "citations": []
+    },
+    {
+      "headline": "Cost-adjusted pay (the engageability proxy)",
+      "detail": "A constant anchor wage deflated by each state's cost of living (BEA Regional Price Parities) and compared to the local median income (ACS), with broadband access folded in. The anchor cancels in the ranking; it only makes the dollar values interpretable.",
+      "citations": [
+        {
+          "label": "Census ACS 2023 5-year (state)",
+          "url": "https://api.census.gov/data/2023/acs/acs5"
+        },
+        {
+          "label": "BEA Regional Price Parities",
+          "url": "https://apps.bea.gov/regional/zip/SARPP.zip"
+        }
+      ]
+    },
+    {
+      "headline": "Dollars at stake",
+      "detail": "members \u00d7 covered-adults ratio \u00d7 condition prevalence \u00d7 the cited per-person annual cost (see the Clinical cost drivers methodology for each cost basis). Context, not the ranking basis.",
+      "citations": []
+    },
+    {
+      "headline": "Why financial headroom, not affluence",
+      "detail": "Financial scarcity consumes the attention needed for non-urgent, preventive health; and voluntary program participation skews toward higher-SES, already-healthier employees. Both effects are why the index reads 'wage vs. local prices' rather than raw area income.",
+      "citations": [
+        {
+          "label": "Illinois Workplace Wellness Study (QJE 2019, RCT)",
+          "url": "https://academic.oup.com/qje/article/134/4/1747/5550759"
+        },
+        {
+          "label": "SES inequalities in workplace health promotion (IPD meta-analysis, 2020)",
+          "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7650284/"
+        },
+        {
+          "label": "Mullainathan & Shafir, Scarcity (2013)",
+          "url": null
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "A screening heuristic \u2014 engageability is a literature-informed prior, not a coefficient fitted to this employer's engagement data.",
+    "'More engageable' \u2260 'more savings' (healthy-participant bias): the most engageable members may need intervention least.",
+    "State-level and relative \u2014 never a per-person probability, and not a verdict that low-index geographies aren't worth serving."
+  ],
+  "sources_detail": [
     {
       "dataset": "ACS 2023 5-year (state), via Census API",
       "url": "https://api.census.gov/data/2023/acs/acs5",
@@ -18,47 +71,17 @@
         "B08201_001E",
         "B08201_002E"
       ],
-      "retrieved": "2026-06-30"
+      "retrieved": "2026-07-02"
     },
     {
       "dataset": "BEA Regional Price Parities (state, All items)",
       "url": "https://apps.bea.gov/regional/zip/SARPP.zip",
-      "retrieved": "2026-06-30",
-      "note": "Cost-of-living index; real value of a constant wage."
+      "retrieved": "2026-07-02"
     },
     {
-      "dataset": "Cost-driver burden (Step 3, workforce-adjusted)",
+      "dataset": "Cost-driver burden (workforce-adjusted)",
       "url": "artifacts/<prospect>/cost_drivers_summary.json",
-      "retrieved": "2026-06-30"
+      "retrieved": "2026-07-02"
     }
-  ],
-  "method": "Selected top workforce-adjusted-burden states; computed a naive absolute-SES index and a workforce-adjusted relative-standing index (real wage value via BEA RPP; wage-to-local-median via ACS; broadband). Min-max normalized within candidates; ranked.",
-  "integrity": [
-    "Relative across all 50 states + DC; never a per-person probability.",
-    "Screening heuristic, not a value judgment about under-resourced geographies.",
-    "Anchor wage cancels in ranking (documented); OEWS state wages = door-open refinement.",
-    "ABM diffusion deliberately out of v1 (door open)."
-  ],
-  "evidence": [
-    {
-      "claim": "Voluntary health-program participation skews toward higher-SES, already-healthier employees (selection / 'healthy-participant bias') \u2014 and the same selection is why such programs often show small ROI. So 'more engageable' is NOT 'more savings'; validate against real engagement data.",
-      "source": "Illinois Workplace Wellness Study, QJE 2019 (RCT: selection + near-null effects)",
-      "url": "https://academic.oup.com/qje/article/134/4/1747/5550759"
-    },
-    {
-      "claim": "Lower-SES employees participate less in, and comply less with, workplace health-promotion programs.",
-      "source": "IPD meta-analysis of SES inequalities in workplace health promotion (2020)",
-      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7650284/"
-    },
-    {
-      "claim": "Cost-adjusted pay is grounded in financial bandwidth, not affluence: financial scarcity consumes the cognitive bandwidth needed for non-urgent preventive health \u2014 a better-motivated lever than 'higher income engages more'.",
-      "source": "Mullainathan & Shafir, Scarcity (2013)",
-      "url": null
-    }
-  ],
-  "limitations": [
-    "Engageability is a literature-informed SCREENING PRIOR, not a fitted coefficient; strength and even direction vary by program design and population.",
-    "'More engageable' \u2260 'more savings' (healthy-participant bias): the most engageable members may need intervention least.",
-    "Relative standing is applied to engageability but NOT symmetrically to burden (see Step 3); a joint member-SES \u2192 (burden, engageability) model is the rigorous fix (ABM/research)."
   ]
 }

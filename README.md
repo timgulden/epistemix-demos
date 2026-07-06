@@ -15,4 +15,4 @@ static host (Netlify / Cloudflare Pages / GitHub Pages) serves them.
 - [`/tiered-copay/`](./tiered-copay/) — tiered-copay
 - [`/howden/`](./howden/) — howden
 
-Last sync from the source repo: 2026-07-02 20:17 UTC
+Last sync from the source repo: 2026-07-06 16:11 UTC

@@ -1,30 +1,77 @@
 {
-  "step": "2b \u2014 Member geography (modeled)",
+  "step": "Synthetic member profile",
   "tier": "modeled",
   "prospect": "Prospect ABC",
-  "sources": [
+  "summary": [
+    "The filing says how many people the plan covers \u2014 not who they are or where they live. This page models that. We start from the company's store locations, then use the Census Bureau's journey-to-work data \u2014 real, anonymized commuting flows between home and work \u2014 to estimate where the people who work at each location live.",
+    "On that geography we place a synthetic workforce: thousands of computer-generated individuals drawn from Census-based population data, matched to this workforce's age and income profile, each at a realistic household location. Every dot on the map is synthetic \u2014 no real person's data appears \u2014 but in aggregate the cohort looks and behaves like the real workforce. When a client shares an actual census, the real roster replaces this model."
+  ],
+  "moves": [
+    {
+      "headline": "Locate the worksites",
+      "detail": "Store locations from OpenStreetMap, geocoded to 2020 Census blocks (the geography the commute data uses).",
+      "citations": [
+        {
+          "label": "OpenStreetMap (Overpass API)",
+          "url": "https://overpass-api.de"
+        },
+        {
+          "label": "FCC Census Block API (2020)",
+          "url": "https://geo.fcc.gov/api/census/"
+        }
+      ]
+    },
+    {
+      "headline": "Follow the commute data home",
+      "detail": "members(tract) = participants \u00d7 [retail-sector commute flows from that tract into the worksite blocks \u00f7 all such flows]. Flows are LEHD LODES8 origin\u2013destination (vintage 2023, main + aux), retail super-sector (SI02); the workforce age and earnings profiles are the SA/SE marginals over the same flows.",
+      "citations": [
+        {
+          "label": "Census LEHD LODES8 OD, vintage 2023",
+          "url": "https://lehd.ces.census.gov/data/"
+        },
+        {
+          "label": "Form 5500 participant count (Step 1)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "headline": "Populate with synthetic people",
+      "detail": "Tracts sampled with probability proportional to modeled members; individuals drawn from the Census-based synthetic population and reweighted so the cohort matches the workforce's age shape (LODES) and earnings distribution (individual earnings lifted to household income by \u00d71.6). Each twin carries age, sex, race/ethnicity, and household income at a realistic household coordinate.",
+      "citations": [
+        {
+          "label": "Epistemix synthetic population (US_2025, Census-based)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "headline": "Add modeled health & engagement",
+      "detail": "Each twin also carries a modeled clinical and engagement profile \u2014 see the Clinical cost drivers methodology for how those are attached.",
+      "citations": []
+    }
+  ],
+  "limitations": [
+    "A modeled estimate of where members live \u2014 never actual member addresses.",
+    "Commute flows are block-level and cover every employer in a block; blocks dominated by a single big-box store are a good proxy, mixed-use blocks are noisier.",
+    "Age and earnings inputs are coarse 3-band Census marginals; no finer precision is claimed."
+  ],
+  "sources_detail": [
     {
       "dataset": "LEHD LODES8 OD (JT00, main+aux), vintage 2023",
       "url": "https://lehd.ces.census.gov/data/lodes/LODES8/<st>/od/<st>_od_(main|aux)_JT00_2023.csv.gz",
-      "retrieved": "2026-06-30"
+      "retrieved": "2026-07-02"
     },
     {
       "dataset": "Worksite blocks (Step 2a)",
       "url": "artifacts/<prospect>/worksites.json",
-      "retrieved": "2026-06-30"
+      "retrieved": "2026-07-02"
     },
     {
       "dataset": "Active participant total (Step 1, Form 5500)",
       "url": "artifacts/<prospect>/firmographic_profile.json",
-      "retrieved": "2026-06-30"
+      "retrieved": "2026-07-02"
     }
   ],
-  "method": "Filtered LODES8 OD (main+aux, both read to capture multi-state home leakage) to flows whose work-end block is a prospect worksite block. Aggregated the SI02 (Trade/Transport/Utilities \u2014 retail's super-sector) job marginal by home tract to get a modeled member-home distribution, then distributed the FACTUAL active-participant count (Form 5500) across tracts by that modeled share. Workforce age/earnings profiles are the OD SA/SE marginals over the in-scope flows.",
-  "tier_rationale": "MODELED, area-based, not firm-specific: OD at a worksite block reflects all establishments in that block. Fair for big-box-dominated blocks (see representativeness.worksite_si02_share), noisier for mixed-use blocks. Never presented as factual member addresses.",
-  "deviation_from_methodology": "METHODOLOGY.md states OD has no industry/age/earnings segments; the LODES8 OD files DO (SA/SE/SI columns, verified). This pipeline uses those directly instead of combining WAC/RAC under assumption. See the module docstring. METHODOLOGY.md should be updated.",
-  "limitations": [
-    "SA/SE/SI are independent marginals of S000; no joint industry\u00d7age.",
-    "LODES covers 50 states + DC only; territory worksites excluded here.",
-    "Coarse 3-band segments; no finer demographic precision claimed."
-  ]
+  "deviation_from_methodology": "METHODOLOGY.md states OD has no industry/age/earnings segments; the LODES8 OD files DO (SA/SE/SI columns, verified). This pipeline uses those directly instead of combining WAC/RAC under assumption."
 }

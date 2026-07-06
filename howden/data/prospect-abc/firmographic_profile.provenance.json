@@ -1,39 +1,52 @@
 {
-  "step": "1 \u2014 Firmographic / plan profile",
+  "step": "Form 5500 data",
   "tier": "factual",
   "prospect": "Prospect ABC",
-  "sources": [
+  "summary": [
+    "Everything on this page comes directly from the company's own annual benefits filing \u2014 the Form 5500 that nearly every U.S. employer with a benefits plan must file with the Department of Labor, together with its Schedule A insurance attachments. Nothing here is estimated: the participant count, covered lives, carriers, and broker commissions are shown as filed.",
+    "For this demonstration the company and carrier names are anonymized, but the figures are real. Filings publish on a lag, so this snapshot reflects the 2024 plan year \u2014 the most recent available."
+  ],
+  "moves": [
     {
-      "dataset": "DOL/EBSA Form 5500 dataset (main form), plan year 2024",
-      "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_5500_2024_Latest.zip",
-      "vintage": "PY2024 'Latest' release",
-      "retrieved": "2026-07-01"
+      "headline": "Find the filing",
+      "detail": "Filtered the DOL all-filers dataset to this employer's EIN + plan number and took the most recent plan year (2024-01-01 \u2192 2024-12-31).",
+      "citations": [
+        {
+          "label": "DOL/EBSA Form 5500, PY2024 latest release",
+          "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_5500_2024_Latest.zip"
+        },
+        {
+          "label": "Schedule A (insurance), PY2024",
+          "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_SCH_A_2024_Latest.zip"
+        }
+      ]
     },
     {
-      "dataset": "DOL/EBSA Form 5500 Schedule A (insurance), plan year 2024",
-      "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_SCH_A_2024_Latest.zip",
-      "vintage": "PY2024 'Latest' release",
-      "retrieved": "2026-07-01"
+      "headline": "Report it as filed",
+      "detail": "Participants (active employees) from the main form; covered lives, carriers, and per-carrier broker commissions from Schedule A; benefit codes decoded per the DOL line-8b instructions. Nothing modeled or imputed \u2014 absent items (e.g. Schedule C) are flagged, not filled.",
+      "citations": []
+    },
+    {
+      "headline": "Participants vs. covered lives",
+      "detail": "Participants counts EMPLOYEES; covered lives counts everyone enrolled, including spouses and children (Schedule A enrollment). Both appear on this page and they answer different questions.",
+      "citations": [
+        {
+          "label": "KFF \u2014 Employer-Sponsored Health Insurance 101",
+          "url": "https://www.kff.org/health-costs/health-policy-101-employer-sponsored-health-insurance/"
+        }
+      ]
     }
+  ],
+  "limitations": [
+    "Annual filing \u2014 figures are roughly a year old by the time they publish.",
+    "The broker of record is disclosed on Schedule C, which is not attached to this filing; the broker name shown is illustrative. Commissions are as filed.",
+    "Filing fields are self-reported by the plan sponsor.",
+    "Anonymization changes names only \u2014 never counts or dollars."
   ],
   "filing_identity": {
     "ack_id": "20250930125243NAL0005497795001",
     "sponsor_ein": "390989248",
     "plan_number": "501",
-    "plan_year": "2024-01-01 \u2192 2024-12-31"
-  },
-  "method": "Stream-filtered the all-filers datasets to this EIN + plan number, selected the most-recent filing by tax-period end, decoded line-8b welfare benefit codes via the DOL instructions, and aggregated the filing's Schedule A rows by arrangement. No values were modeled or imputed; absent items (e.g. Schedule C) are flagged, not filled.",
-  "evidence": [
-    {
-      "claim": "Participants are EMPLOYEES; covered lives (incl. dependents) are estimated at ~1.9\u00d7 (children \u2248 \u00bc \u2192 covered adults \u2248 1.4\u00d7).",
-      "source": "KFF Employer-Sponsored Health Insurance 101",
-      "url": "https://www.kff.org/health-costs/health-policy-101-employer-sponsored-health-insurance/"
-    }
-  ],
-  "limitations": [
-    "The participant count is the WHOLE-PLAN headcount from the main Form 5500 \u2014 captured regardless of funding, so it INCLUDES the self-funded population (here ~9\u00d7 the fully-insured Schedule A lives). Self-insured headcount is not missing.",
-    "The 5500 does NOT report self-funded claims or spend; health burden is modeled from public data (Steps 2\u20133) and reconciled once a client census/claims feed arrives (Mode 1B).",
-    "Carrier/broker visibility comes from Schedule A/C. A purely self-insured plan with no insured carve-outs would show little here; Home Depot is a favorable example (31 carve-outs). Schedule C (advisor of record) not attached here.",
-    "Annual filing \u2014 figures are ~1 year old by the time they publish."
-  ]
+    "retrieved": "2026-07-02"
+  }
 }

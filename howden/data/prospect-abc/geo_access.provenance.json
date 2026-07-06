@@ -1,25 +1,36 @@
 {
-  "step": "4 \u2014 Geo-access (modeled overlay of factual designations)",
+  "step": "Access to care",
   "tier": "modeled",
   "prospect": "prospect-abc",
-  "sources": [
+  "summary": [
+    "This page asks a simple question: how easy is it for members to reach primary care where they live? The federal Health Resources & Services Administration (HRSA) designates parts of the country that are short of primary-care providers and scores each shortage area from 0 to 25 by severity.",
+    "We overlay the modeled member geography on those designations: how many members live in a shortage county, and how severe the shortage is where they live. The shortage designations are federal fact; which members live in them comes from our commute-based model."
+  ],
+  "moves": [
     {
-      "dataset": "HRSA HPSA Primary Care, full detail (designated)",
-      "url": "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_PC.csv",
-      "retrieved": "2026-06-30",
-      "note": "Federal primary-care shortage-area designations with severity scores (0\u201325)."
+      "headline": "Score every county",
+      "detail": "HRSA geographic primary-care HPSA designations, reduced to the worst designated score per county (designations can be sub-county; taking the worst is the standard conservative mapping).",
+      "citations": [
+        {
+          "label": "HRSA HPSA \u2014 Primary Care (designated, full detail)",
+          "url": "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_PC.csv"
+        }
+      ]
     },
     {
-      "dataset": "Member geography (Step 2b)",
-      "url": "artifacts/<prospect>/member_geography.csv",
-      "retrieved": "2026-06-30"
+      "headline": "Overlay the members",
+      "detail": "exposure = modeled members living in designated counties \u00f7 all members; severity = the member-weighted mean HPSA score. Member locations come from the commute-based member geography (see the Synthetic member profile methodology).",
+      "citations": [
+        {
+          "label": "Member geography (Step 2b artifact)",
+          "url": null
+        }
+      ]
     }
   ],
-  "method": "Reduced HRSA designated PC-HPSA records to the worst score per county; joined to county-aggregated modeled members; computed the share of members in shortage counties and the member-weighted mean HPSA score.",
-  "design_choice": "HRSA HPSA used as the authoritative access-adequacy measure; NPPES provider density is a documented box-side enhancement (full file ~1 GB), not v1.",
   "limitations": [
-    "County-level mapping of sub-county HPSAs (granularity caveat).",
-    "Exposure inherits Step 2b's MODELED member distribution.",
-    "Primary care only in v1 (dental/mental HPSAs, MUA/P not yet included)."
+    "Shortage areas can be smaller than a county; mapping to counties is a standard approximation and can overstate exposure at the edges.",
+    "Which members live where is modeled from commute data, not actual addresses.",
+    "Primary care only in this version \u2014 dental and mental-health shortage designations are a straightforward extension."
   ]
 }
