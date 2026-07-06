@@ -143,7 +143,16 @@
         "ND": 14.5,
         "SD": 12.9
       },
-      "affected_covered_adults": 2584
+      "affected_covered_adults": 2584,
+      "cost_per_person_usd": [
+        400,
+        600
+      ],
+      "annual_burden_usd": [
+        1033600,
+        1550400
+      ],
+      "cost_basis": "\u2248$500/yr excess medical cost per person with prediabetes (Dall et al., Diabetes Care 2019; 2017 data)."
     },
     "asthma": {
       "label": "Asthma (current)",
@@ -164,7 +173,16 @@
         "IL": 10.6,
         "MO": 8.1
       },
-      "affected_covered_adults": 1821
+      "affected_covered_adults": 1821,
+      "cost_per_person_usd": [
+        900,
+        3300
+      ],
+      "annual_burden_usd": [
+        1638900,
+        6009300
+      ],
+      "cost_basis": "Treated-asthma-attributable ~$901/yr among workers (CDC MMWR 2020, MEPS 2011\u201315) to incremental $3,266/yr all-adult (Nurmagambetov 2018, MEPS 2008\u201313)."
     },
     "smoker": {
       "label": "Current smoker",
@@ -245,7 +263,16 @@
         "WI": 3.6,
         "ND": 3.3
       },
-      "affected_covered_adults": 800
+      "affected_covered_adults": 800,
+      "cost_per_person_usd": [
+        700,
+        4300
+      ],
+      "annual_burden_usd": [
+        560000,
+        3440000
+      ],
+      "cost_basis": "COPD-attributable ~$681/yr among workers (CDC MMWR 2020) to ~$4,300/patient/yr (Ford et al. 2015 projections)."
     },
     "kidney": {
       "label": "Kidney disease",
@@ -266,7 +293,16 @@
         "WY": 1.8,
         "ND": 1.2
       },
-      "affected_covered_adults": 427
+      "affected_covered_adults": 427,
+      "cost_per_person_usd": [
+        3000,
+        10000
+      ],
+      "annual_burden_usd": [
+        1281000,
+        4270000
+      ],
+      "cost_basis": "Early-stage (G3a) CKD ~$3,060/patient/yr rising to ~$10K/yr excess in comorbid analyses (Inside CKD programme; AJMC CKD cost studies). Non-dialysis basis \u2014 dialysis is far higher."
     },
     "heart": {
       "label": "Heart disease",
@@ -287,7 +323,16 @@
         "KS": 3.1,
         "ND": 1.7
       },
-      "affected_covered_adults": 622
+      "affected_covered_adults": 622,
+      "cost_per_person_usd": [
+        8000,
+        13000
+      ],
+      "annual_burden_usd": [
+        4976000,
+        8086000
+      ],
+      "cost_basis": "Established cardiovascular disease ~$8K/yr excess to coronary heart disease ~$13,000/person/yr (2020-data CVD burden analyses)."
     },
     "stroke": {
       "label": "Stroke (history)",
@@ -308,7 +353,16 @@
         "NE": 1.5,
         "IA": 1.3
       },
-      "affected_covered_adults": 358
+      "affected_covered_adults": 358,
+      "cost_per_person_usd": [
+        10000,
+        35000
+      ],
+      "annual_burden_usd": [
+        3580000,
+        12530000
+      ],
+      "cost_basis": "Stroke-survivor excess ~$10,168/yr (comorbid analyses) to ~$35,000/person/yr incl. acute-year care (2020-data CVD burden). Wide because ongoing vs acute-year costs differ sharply."
     }
   },
   "comorbidity": {
