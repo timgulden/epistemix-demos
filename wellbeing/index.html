@@ -546,24 +546,6 @@ html, body { margin: 0; padding: 0; }
   .wb-rollup-sub { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
 
   /* methods tab */
-  .wb-matrix-table { width: 100%; border-collapse: collapse;
-    font-size: 11px; }
-  .wb-matrix-table th, .wb-matrix-table td {
-    padding: 6px 8px; text-align: center;
-    border: 1px solid var(--slate-100);
-  }
-  .wb-matrix-table th { background: var(--slate-50); color: var(--slate-600);
-    font-weight: 500; }
-  .wb-matrix-table th.row-head { text-align: left; padding-left: 12px; }
-  .wb-matrix-table td.row-head { text-align: left; padding-left: 12px;
-    background: var(--slate-50); color: var(--slate-700); font-weight: 500; }
-  .wb-matrix-cell { font-weight: 600; color: var(--color-text-primary); }
-  .wb-matrix-cell.is-mult { background: var(--color-highlight-blue-fill); }
-  .wb-matrix-cell.is-add { background: var(--color-highlight-yellow-fill); }
-  .wb-matrix-cell.is-sub { background: var(--color-highlight-red-fill); }
-  .wb-matrix-cell.is-med { background: var(--color-highlight-green-fill); }
-  .wb-matrix-cell.is-self { background: var(--color-surface-muted); color: var(--color-text-muted); }
-
   .wb-tti { display: flex; flex-direction: column; gap: 8px;
     margin-top: 4px; }
   .wb-tti-row { display: grid; grid-template-columns: 220px 1fr;
@@ -2390,34 +2372,6 @@ function PortfolioTab({ values, setValues, deps, setDeps }) {
    METHODS TAB
    ════════════════════════════════════════════════════════════════════ */
 
-// Interaction matrix data
-// Cell encodes (type, label)
-const MATRIX_LEVER_ORDER = ['physicals', 'screenings', 'biometric', 'tobacco', 'dpp',
-  'mental_health', 'financial', 'eap', 'navigation', 'apc', 'manager_capability'];
-const MATRIX_SHORT = {
-  physicals: 'Phys.', screenings: 'Screen', biometric: 'Biom.',
-  tobacco: 'Tob.', dpp: 'DPP', mental_health: 'MH', financial: 'Fin.',
-  eap: 'EAP', navigation: 'Nav.', apc: 'APC', manager_capability: 'Mgr.',
-};
-
-// Sparse interaction table (only non-trivial pairs are populated).
-// All cells use percentage notation with sign: +X% means amplifies, −X% means
-// substitutes (avoids double-counting).
-const INTERACTIONS = {
-  'navigation:screenings':   { t: 'mult', l: '+40%' },
-  'navigation:physicals':    { t: 'mult', l: '+35%' },
-  'navigation:dpp':          { t: 'mult', l: '+30%' },
-  'navigation:eap':          { t: 'mult', l: '+30%' },
-  'navigation:biometric':    { t: 'mult', l: '+20%' },
-  'apc:dpp':                 { t: 'sub',  l: '−30%' },
-  'apc:screenings':          { t: 'mult', l: '+15%' },
-  'financial:mental_health': { t: 'med',  l: '+20%' },
-  'mental_health:eap':       { t: 'mult', l: '+10%' },
-  'manager_capability:mental_health': { t: 'mult', l: '+25%' },
-  'manager_capability:dpp':  { t: 'mult', l: '+15%' },
-  'manager_capability:eap':  { t: 'mult', l: '+15%' },
-};
-
 /* Provenance chip — three-way epistemic source label. Every Methods panel
    (and Workforce data panel) declares where its content comes from:
    literature (published evidence), case data (this illustrative case),
@@ -2444,49 +2398,33 @@ function MethodsTab() {
       <div className="wb-methods-grid">
         <div className="wb-panel">
           <div className="wb-panel-head">
-            <div className="wb-panel-title">Lever-interaction matrix<ProvChip kind="logic" /></div>
-            <div className="wb-panel-meta">non-trivial interactions only · prevents double-counting</div>
+            <div className="wb-panel-title">How the numbers move<ProvChip kind="logic" /></div>
+            <div className="wb-panel-meta">the calculation, in plain terms</div>
           </div>
-          <div style={{ marginBottom: 14, fontSize: 12.5, color: 'var(--slate-600)',
-            lineHeight: 1.55 }}>
-            <strong style={{ color: 'var(--slate-800)' }}>How to read this:</strong>{' '}
-            Each row asks: "when the row lever is active, how does it modify the column lever's effect?"
-            Cells show a signed percentage. <span style={{ color: 'var(--epx-blue-700)', fontWeight: 600 }}>+%</span> means the row amplifies the column's effect;
-            <span style={{ color: 'var(--epx-danger)', fontWeight: 600 }}> −%</span> means the row substitutes for some of the column's activity, preventing double-counting in the model.
-            Blank cells mean no modeled interaction.
-          </div>
-          <table className="wb-matrix-table">
-            <thead>
-              <tr>
-                <th className="row-head" style={{ minWidth: 60 }}>amplifies&nbsp;↓ /&nbsp;target&nbsp;→</th>
-                {MATRIX_LEVER_ORDER.map(id => (
-                  <th key={id}>{MATRIX_SHORT[id]}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {MATRIX_LEVER_ORDER.map(rowId => (
-                <tr key={rowId}>
-                  <td className="row-head">{MATRIX_SHORT[rowId]}</td>
-                  {MATRIX_LEVER_ORDER.map(colId => {
-                    if (rowId === colId)
-                      return <td key={colId} className="wb-matrix-cell is-self">—</td>;
-                    const key = `${rowId}:${colId}`;
-                    const inter = INTERACTIONS[key];
-                    if (!inter) return <td key={colId}></td>;
-                    return <td key={colId} className={`wb-matrix-cell is-${inter.t}`}>
-                      {inter.l}
-                    </td>;
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <div style={{ display: 'flex', gap: 14, marginTop: 14, fontSize: 11,
-            color: 'var(--slate-600)', flexWrap: 'wrap' }}>
-            <div><span className="wb-matrix-cell is-mult" style={{ padding: '2px 6px', borderRadius: 3 }}>+30%</span> amplifies the column lever</div>
-            <div><span className="wb-matrix-cell is-sub" style={{ padding: '2px 6px', borderRadius: 3 }}>−30%</span> substitutes activity (avoids double-counting)</div>
-            <div><span className="wb-matrix-cell is-med" style={{ padding: '2px 6px', borderRadius: 3 }}>+20%</span> mediates outcome shift</div>
+          <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', lineHeight: 1.6, maxWidth: 760 }}>
+            <p style={{ margin: '0 0 10px' }}>
+              Each program slider feeds one overall portfolio score — larger,
+              higher-impact programs move it more. That score places the case
+              between three tuned trajectories (no action → recommended →
+              maximum effort), and every outcome on the Strategy page reads
+              off that curve. The trajectories are hand-tuned to the published
+              evidence below — they are not computed from claims.
+            </p>
+            <p style={{ margin: '0 0 10px' }}>
+              Programs are not independent: some amplify each other and some
+              overlap. The tuned trajectories net this out, so combined savings
+              are less than the sum of the parts. For example:
+            </p>
+            <ul style={{ margin: '0 0 10px', paddingLeft: 18 }}>
+              <li>Care navigation raises completion of screenings and physicals.</li>
+              <li>Onsite primary care absorbs some of what the Diabetes Prevention Program would otherwise deliver.</li>
+              <li>Financial-wellbeing coaching supports the mental-health programs' effect.</li>
+            </ul>
+            <p style={{ margin: 0 }}>
+              In a full engagement, this same structure is implemented as a
+              simulation on the synthetic population — program by program,
+              person by person — rather than a tuned curve.
+            </p>
           </div>
         </div>
       </div>
