@@ -1804,7 +1804,7 @@ function PersonCard({ person, onClose }) {
           </div>
           {h.relevance.length > 0 && (
             <>
-              <div className="wb-person-section-label">Programs that reach this person</div>
+              <div className="wb-person-section-label">Indicated programs — matched to modeled conditions, not participation</div>
               <div className="wb-person-chips">
                 {h.relevance.map(rl => (
                   <span key={rl} className="wb-person-chip is-lever">{rl}</span>
@@ -1812,7 +1812,7 @@ function PersonCard({ person, onClose }) {
               </div>
             </>
           )}
-          <div className="wb-person-section-label">Engagement</div>
+          <div className="wb-person-section-label">Engagement propensity — modeled</div>
           <div className="wb-person-chips">
             <span className="wb-person-chip">{h.engagement} adopter</span>
             <span className="wb-person-chip">
