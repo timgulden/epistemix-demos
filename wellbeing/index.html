@@ -1907,7 +1907,9 @@ function USMap() {
 
   const onPointerDown = e => {
     if (e.button !== 0) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
+    // Do NOT capture here: capturing at pointerdown retargets the derived
+    // click event to the svg, so the dot circles' onClick never fires.
+    // Capture only once the drag threshold is crossed (in onPointerMove).
     dragRef.current = { px: e.clientX, py: e.clientY, view, moved: false };
   };
   const onPointerMove = e => {
@@ -1916,7 +1918,10 @@ function USMap() {
     const rect = svgRef.current.getBoundingClientRect();
     const dx = (e.clientX - d.px) / rect.width * d.view.w;
     const dy = (e.clientY - d.py) / rect.height * d.view.h;
-    if (Math.abs(e.clientX - d.px) + Math.abs(e.clientY - d.py) > 3) d.moved = true;
+    if (!d.moved && Math.abs(e.clientX - d.px) + Math.abs(e.clientY - d.py) > 3) {
+      d.moved = true;
+      svgRef.current.setPointerCapture(e.pointerId);  // pan continues off-svg
+    }
     if (d.moved) setView(clampView({ ...d.view, x: d.view.x - dx, y: d.view.y - dy }));
   };
   const onPointerUp = () => { setTimeout(() => { dragRef.current = null; }, 0); };
