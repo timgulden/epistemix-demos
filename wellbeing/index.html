@@ -334,32 +334,6 @@ html, body { margin: 0; padding: 0; }
   .wb-state-bar-emp { position: absolute; left: 0; top: 3px; height: 8px;
     background: var(--color-brand); border-radius: var(--radius-sm); }
 
-  /* "What we'd ask you" closing screen — styled as the first page of an
-     engagement deliverable (discovery questions), per the consulting-firm
-     talk track: "here's what else we'd want to know to make it more precise." */
-  .wb-ask-page { max-width: 860px; margin: 0 auto; background: var(--color-surface);
-    border: 1px solid var(--color-border); border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-card); padding: 40px 48px 36px; }
-  .wb-ask-doc-label { font-size: var(--font-size-xs); font-weight: var(--font-weight-medium);
-    letter-spacing: var(--label-letter-spacing); text-transform: uppercase;
-    color: var(--color-text-secondary); display: flex; justify-content: space-between; }
-  .wb-ask-title { font-size: var(--font-size-xl); font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary); margin: 10px 0 4px; letter-spacing: -0.01em; }
-  .wb-ask-sub { font-size: var(--font-size-base); color: var(--color-text-secondary);
-    margin-bottom: 26px; max-width: 640px; line-height: 1.5; }
-  .wb-ask-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px;
-    padding: 16px 0; border-top: 1px solid var(--color-border); }
-  .wb-ask-num { font-family: var(--font-mono); font-size: 20px;
-    color: var(--color-text-muted); font-variant-numeric: tabular-nums; padding-top: 1px; }
-  .wb-ask-q { font-size: var(--font-size-md); font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary); line-height: 1.45; }
-  .wb-ask-sharpens { font-size: var(--font-size-sm); color: var(--color-text-secondary);
-    margin-top: 5px; line-height: 1.55; }
-  .wb-ask-sharpens strong { color: var(--color-text-primary); font-weight: var(--font-weight-semibold); }
-  .wb-ask-foot { margin-top: 22px; padding-top: 14px; border-top: 1px solid var(--color-border);
-    font-size: var(--font-size-sm); color: var(--color-text-muted); display: flex;
-    justify-content: space-between; }
-
   /* Epistemic provenance chips (Methods / Workforce panel headers) —
      three-way source labels: literature / case data / model logic. */
   .wb-prov-chip { display: inline-block; font-size: 10px; font-weight: 600;
@@ -1289,10 +1263,9 @@ function Header() {
 
 function TabBar({ active, setActive }) {
   const tabs = [
-    { id: 'strategy', label: 'Strategy' },
     { id: 'workforce', label: 'Workforce' },
+    { id: 'strategy', label: 'Strategy' },
     { id: 'methods', label: 'Methods' },
-    { id: 'ask', label: 'Next Steps' },
   ];
   return (
     <div className="wb-chrome" style={{ paddingTop: 0, paddingBottom: 0,
@@ -2589,74 +2562,11 @@ function MethodsTab() {
 }
 
 /* ════════════════════════════════════════════════════════════════════
-   WHAT WE'D ASK YOU — closing screen
-   Styled as the first page of an engagement deliverable. Five
-   precision-improving discovery questions, each mapped to the model
-   input it would sharpen. Implies a longer list (see footer).
-   ════════════════════════════════════════════════════════════════════ */
-
-const ASK_QUESTIONS = [
-  {
-    q: 'For the wellbeing programs you offer today, what do completion and 12-month retention actually look like, by program and by workforce segment?',
-    sharpens: 'Program value hinges on completion and retention — data that public sources and vendor reporting rarely expose. Replaces our assumed dial positions with measured engagement.',
-  },
-  {
-    q: 'Can we work from member-level medical + Rx claims, even a single plan year?',
-    sharpens: 'Converts the synthetic-inferred share of the health profile into exact measurement, and anchors the no-action cost trajectory to your book instead of a modeled trend.',
-  },
-  {
-    q: 'Which programs are in place today, at what incentive levels, and with what participation by segment?',
-    sharpens: 'Sets the true status-quo arm. Every savings figure in this tool is a delta against it — today that arm is an assumption.',
-  },
-  {
-    q: 'What are your actual per-employee program costs and incentive spend, by vendor?',
-    sharpens: 'Replaces our blended per-lever spend rates, making the payback months and the $-saved-per-$1 ratio yours rather than literature-anchored.',
-  },
-  {
-    q: 'Can we get the employee census with dependent / coverage-tier detail and turnover by segment?',
-    sharpens: 'Grounds the household population the strategy can actually reach — the employees-vs-full-population contrast on the Workforce page is modeled from public data today.',
-  },
-];
-
-function AskTab() {
-  return (
-    <div className="wb-tab-active">
-      <div className="wb-ask-page">
-        <div className="wb-ask-doc-label">
-          <span>Engagement discovery · page 1</span>
-          <span>Epistemix · {CASE.name}</span>
-        </div>
-        <div className="wb-ask-title">Top questions we&rsquo;d ask you</div>
-        <div className="wb-ask-sub">
-          Everything in this tool sharpens as these are answered. The first five,
-          in the order they most improve precision:
-        </div>
-        {ASK_QUESTIONS.map((item, i) => (
-          <div key={i} className="wb-ask-item">
-            <div className="wb-ask-num">{String(i + 1).padStart(2, '0')}</div>
-            <div>
-              <div className="wb-ask-q">{item.q}</div>
-              <div className="wb-ask-sharpens">
-                <strong>Sharpens:</strong> {item.sharpens}
-              </div>
-            </div>
-          </div>
-        ))}
-        <div className="wb-ask-foot">
-          <span>Questions 6–14 cover plan design, network, vendor contracts, and data governance.</span>
-          <span>1 of 3</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ════════════════════════════════════════════════════════════════════
    APP
    ════════════════════════════════════════════════════════════════════ */
 
 function App() {
-  const [activeTab, setActiveTab] = useState('strategy');
+  const [activeTab, setActiveTab] = useState('workforce');
   const [lens, setLens] = useState('cfo');
   const [subgroupDecomp, setSubgroupDecomp] = useState(false);
   const [leverValues, setLeverValues] = useState(SCENARIOS.recommended.values);
@@ -2704,11 +2614,6 @@ function App() {
         {activeTab === 'methods' && (
           <main className="wb-main">
             <MethodsTab />
-          </main>
-        )}
-        {activeTab === 'ask' && (
-          <main className="wb-main">
-            <AskTab />
           </main>
         )}
       </div>
