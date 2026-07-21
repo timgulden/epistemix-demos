@@ -1,0 +1,52 @@
+{
+  "step": "Form 5500 data",
+  "tier": "factual",
+  "prospect": "Sparefoot / Storable",
+  "summary": [
+    "Everything on this page comes directly from the company's own annual benefits filing \u2014 the Form 5500 that nearly every U.S. employer with a benefits plan must file with the Department of Labor, together with its Schedule A insurance attachments. Nothing here is estimated: the participant count, covered lives, carriers, and broker commissions are shown as filed.",
+    "For this demonstration the company and carrier names are anonymized, but the figures are real. Filings publish on a lag, so this snapshot reflects the 2024 plan year \u2014 the most recent available."
+  ],
+  "moves": [
+    {
+      "headline": "Find the filing",
+      "detail": "Filtered the DOL all-filers dataset to this employer's EIN + plan number and took the most recent plan year (2024-01-01 \u2192 2024-12-31).",
+      "citations": [
+        {
+          "label": "DOL/EBSA Form 5500, PY2024 latest release",
+          "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_5500_2024_Latest.zip"
+        },
+        {
+          "label": "Schedule A (insurance), PY2024",
+          "url": "https://www.askebsa.dol.gov/FOIA Files/2024/Latest/F_SCH_A_2024_Latest.zip"
+        }
+      ]
+    },
+    {
+      "headline": "Report it as filed",
+      "detail": "Participants (active employees) from the main form; covered lives, carriers, and per-carrier broker commissions from Schedule A; benefit codes decoded per the DOL line-8b instructions. Nothing modeled or imputed \u2014 absent items (e.g. Schedule C) are flagged, not filled.",
+      "citations": []
+    },
+    {
+      "headline": "Participants vs. covered lives",
+      "detail": "Participants counts EMPLOYEES; covered lives counts everyone enrolled, including spouses and children (Schedule A enrollment). Both appear on this page and they answer different questions.",
+      "citations": [
+        {
+          "label": "KFF \u2014 Employer-Sponsored Health Insurance 101",
+          "url": "https://www.kff.org/health-costs/health-policy-101-employer-sponsored-health-insurance/"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Annual filing \u2014 figures are roughly a year old by the time they publish.",
+    "The broker of record is disclosed on Schedule C, which is not attached to this filing; the broker name shown is illustrative. Commissions are as filed.",
+    "Filing fields are self-reported by the plan sponsor.",
+    "Anonymization changes names only \u2014 never counts or dollars."
+  ],
+  "filing_identity": {
+    "ack_id": "20250715105312NAL0002011505001",
+    "sponsor_ein": "262653591",
+    "plan_number": "501",
+    "retrieved": "2026-07-21"
+  }
+}

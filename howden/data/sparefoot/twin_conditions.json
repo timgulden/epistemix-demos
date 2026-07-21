@@ -1,0 +1,427 @@
+{
+  "prospect": "sparefoot",
+  "n_twins": 2800,
+  "min_state_twins": 50,
+  "covered_adults_per_participant": 1.339,
+  "conditions": {
+    "obesity": {
+      "label": "Obesity",
+      "national_prevalence_pct": 40.3,
+      "by_state_prevalence_pct": {
+        "CA": 45.6,
+        "NJ": 45.1,
+        "VA": 44.6,
+        "FL": 43.7,
+        "GA": 42.1,
+        "NC": 42.0,
+        "UT": 41.5,
+        "MA": 40.6,
+        "MO": 40.6,
+        "CO": 39.5,
+        "TX": 39.4,
+        "MI": 37.7,
+        "IL": 36.6,
+        "PA": 35.2,
+        "OH": 34.3,
+        "KS": 34.0,
+        "WA": 33.3,
+        "NY": 31.6
+      },
+      "affected_covered_adults": 272,
+      "cost_per_person_usd": [
+        1900,
+        3400
+      ],
+      "annual_burden_usd": [
+        516800,
+        924800
+      ],
+      "cost_basis": "Excess annual medical expenditure per adult with non-severe obesity. Cawley et al. 2021 (~$2,505, MEPS); class 1\u20132 ~$2,580 (Ward et al. 2021). Severe (class 3) materially higher (~$6,300)."
+    },
+    "hypertension": {
+      "label": "Hypertension",
+      "national_prevalence_pct": 33.4,
+      "by_state_prevalence_pct": {
+        "MI": 43.4,
+        "GA": 38.6,
+        "NJ": 38.0,
+        "VA": 35.7,
+        "CA": 35.1,
+        "NC": 34.3,
+        "FL": 33.8,
+        "TX": 33.3,
+        "UT": 33.1,
+        "IL": 32.4,
+        "MA": 31.9,
+        "OH": 31.4,
+        "MO": 30.5,
+        "KS": 30.0,
+        "CO": 29.6,
+        "PA": 26.1,
+        "WA": 23.5,
+        "NY": 22.8
+      },
+      "affected_covered_adults": 226,
+      "cost_per_person_usd": [
+        1920,
+        3045
+      ],
+      "annual_burden_usd": [
+        433920,
+        688170
+      ],
+      "cost_basis": "Incremental per-person annual expenditure attributable to hypertension. Kirkland et al. 2018 (~$1,920, MEPS); 2024 MEPS analysis of privately-insured adults 18\u201364 ~$1,761\u2013$3,045 (2021 USD)."
+    },
+    "depression": {
+      "label": "Depression",
+      "national_prevalence_pct": 21.7,
+      "by_state_prevalence_pct": {
+        "NY": 31.6,
+        "WA": 28.4,
+        "MA": 26.1,
+        "MO": 25.0,
+        "UT": 24.6,
+        "TX": 23.4,
+        "OH": 22.9,
+        "NC": 22.0,
+        "NJ": 21.1,
+        "KS": 21.0,
+        "PA": 20.5,
+        "IL": 19.7,
+        "CO": 17.3,
+        "FL": 15.5,
+        "CA": 14.9,
+        "GA": 14.0,
+        "MI": 13.2,
+        "VA": 12.5
+      },
+      "affected_covered_adults": 147,
+      "cost_per_person_usd": [
+        2343,
+        2966
+      ],
+      "annual_burden_usd": [
+        344421,
+        436002
+      ],
+      "cost_basis": "MEPS 2004\u201311 incremental expenditure for diagnosed depression (Egede et al. 2016, 95% CI $2,343\u2013$2,966; USD ~2011)."
+    },
+    "arthritis": {
+      "label": "Arthritis / MSK",
+      "national_prevalence_pct": 16.7,
+      "by_state_prevalence_pct": {
+        "MI": 32.1,
+        "IL": 19.7,
+        "CO": 18.5,
+        "TX": 18.1,
+        "NC": 18.0,
+        "FL": 17.6,
+        "WA": 17.3,
+        "MO": 17.2,
+        "CA": 14.9,
+        "OH": 14.3,
+        "VA": 14.3,
+        "NJ": 14.1,
+        "GA": 14.0,
+        "KS": 12.0,
+        "MA": 11.6,
+        "PA": 11.4,
+        "NY": 10.5,
+        "UT": 9.3
+      },
+      "affected_covered_adults": 113,
+      "cost_per_person_usd": [
+        1391,
+        2117
+      ],
+      "annual_burden_usd": [
+        157183,
+        239221
+      ],
+      "cost_basis": "MEPS arthritis-attributable medical expenditures per adult (Yelin et al., $1,391 in 1997; Murphy et al., ~$2,117 in 2013)."
+    },
+    "prediabetes": {
+      "label": "Prediabetes",
+      "national_prevalence_pct": 19.1,
+      "by_state_prevalence_pct": {
+        "FL": 23.9,
+        "NJ": 22.5,
+        "VA": 21.4,
+        "CA": 21.1,
+        "MA": 20.3,
+        "TX": 20.2,
+        "WA": 19.8,
+        "NC": 19.6,
+        "GA": 19.3,
+        "PA": 19.3,
+        "CO": 18.5,
+        "IL": 16.9,
+        "MO": 16.4,
+        "MI": 15.1,
+        "OH": 14.3,
+        "UT": 11.9,
+        "KS": 11.0,
+        "NY": 8.8
+      },
+      "affected_covered_adults": 129,
+      "cost_per_person_usd": [
+        400,
+        600
+      ],
+      "annual_burden_usd": [
+        51600,
+        77400
+      ],
+      "cost_basis": "\u2248$500/yr excess medical cost per person with prediabetes (Dall et al., Diabetes Care 2019; 2017 data)."
+    },
+    "asthma": {
+      "label": "Asthma (current)",
+      "national_prevalence_pct": 9.8,
+      "by_state_prevalence_pct": {
+        "VA": 16.1,
+        "MA": 15.9,
+        "PA": 13.6,
+        "IL": 12.7,
+        "CA": 12.3,
+        "NY": 12.3,
+        "KS": 12.0,
+        "OH": 11.4,
+        "MI": 11.3,
+        "NJ": 9.9,
+        "MO": 9.4,
+        "UT": 9.3,
+        "NC": 9.2,
+        "TX": 7.8,
+        "WA": 7.4,
+        "FL": 7.0,
+        "GA": 7.0,
+        "CO": 3.7
+      },
+      "affected_covered_adults": 66,
+      "cost_per_person_usd": [
+        900,
+        3300
+      ],
+      "annual_burden_usd": [
+        59400,
+        217800
+      ],
+      "cost_basis": "Treated-asthma-attributable ~$901/yr among workers (CDC MMWR 2020, MEPS 2011\u201315) to incremental $3,266/yr all-adult (Nurmagambetov 2018, MEPS 2008\u201313)."
+    },
+    "smoker": {
+      "label": "Current smoker",
+      "national_prevalence_pct": 13.4,
+      "by_state_prevalence_pct": {
+        "MI": 18.9,
+        "MA": 18.8,
+        "VA": 16.1,
+        "CO": 14.8,
+        "IL": 14.1,
+        "GA": 14.0,
+        "TX": 14.0,
+        "NC": 13.4,
+        "KS": 13.0,
+        "PA": 12.5,
+        "NJ": 11.3,
+        "CA": 10.5,
+        "MO": 10.2,
+        "FL": 9.9,
+        "WA": 9.9,
+        "OH": 8.6,
+        "UT": 8.5,
+        "NY": 3.5
+      },
+      "affected_covered_adults": 91,
+      "cost_per_person_usd": [
+        2000,
+        6000
+      ],
+      "annual_burden_usd": [
+        182000,
+        546000
+      ],
+      "cost_basis": "Wide literature range for excess annual medical spending per current smoker: selection-adjusted estimates (NBER w29885) at the low end to raw per-smoker excess (~$6K, 2018) at the high end."
+    },
+    "diabetes": {
+      "label": "Diabetes",
+      "national_prevalence_pct": 6.3,
+      "by_state_prevalence_pct": {
+        "PA": 10.2,
+        "NC": 8.8,
+        "NY": 8.8,
+        "KS": 8.0,
+        "GA": 7.0,
+        "MO": 7.0,
+        "FL": 6.3,
+        "TX": 6.2,
+        "WA": 6.2,
+        "CA": 6.1,
+        "MI": 5.7,
+        "NJ": 5.6,
+        "VA": 5.4,
+        "CO": 4.9,
+        "MA": 4.3,
+        "IL": 4.2,
+        "UT": 3.4,
+        "OH": 2.9
+      },
+      "affected_covered_adults": 43,
+      "cost_per_person_usd": [
+        9600,
+        12022
+      ],
+      "annual_burden_usd": [
+        412800,
+        516946
+      ],
+      "cost_basis": "Excess per-person annual medical expenditure attributable to diabetes. ADA Economic Costs of Diabetes (2022 data): ~$19,736 vs ~$7,714 \u2192 excess ~$12,022; ~$9,600 lower bound from prior MEPS analyses."
+    },
+    "copd": {
+      "label": "COPD",
+      "national_prevalence_pct": 3.8,
+      "by_state_prevalence_pct": {
+        "NJ": 7.0,
+        "IL": 5.6,
+        "PA": 4.5,
+        "CA": 4.4,
+        "TX": 4.3,
+        "VA": 3.6,
+        "UT": 3.4,
+        "MA": 2.9,
+        "NC": 2.9,
+        "OH": 2.9,
+        "FL": 2.8,
+        "CO": 2.5,
+        "MO": 2.3,
+        "KS": 2.0,
+        "MI": 1.9,
+        "NY": 1.8,
+        "GA": 0.0,
+        "WA": 0.0
+      },
+      "affected_covered_adults": 25,
+      "cost_per_person_usd": [
+        700,
+        4300
+      ],
+      "annual_burden_usd": [
+        17500,
+        107500
+      ],
+      "cost_basis": "COPD-attributable ~$681/yr among workers (CDC MMWR 2020) to ~$4,300/patient/yr (Ford et al. 2015 projections)."
+    },
+    "kidney": {
+      "label": "Kidney disease",
+      "national_prevalence_pct": 1.5,
+      "by_state_prevalence_pct": {
+        "NJ": 5.6,
+        "OH": 2.9,
+        "CA": 2.6,
+        "CO": 2.5,
+        "WA": 2.5,
+        "GA": 1.8,
+        "NY": 1.8,
+        "VA": 1.8,
+        "MO": 1.6,
+        "TX": 1.6,
+        "IL": 1.4,
+        "PA": 1.1,
+        "UT": 0.8,
+        "FL": 0.7,
+        "NC": 0.4,
+        "KS": 0.0,
+        "MA": 0.0,
+        "MI": 0.0
+      },
+      "affected_covered_adults": 10,
+      "cost_per_person_usd": [
+        3000,
+        10000
+      ],
+      "annual_burden_usd": [
+        30000,
+        100000
+      ],
+      "cost_basis": "Early-stage (G3a) CKD ~$3,060/patient/yr rising to ~$10K/yr excess in comorbid analyses (Inside CKD programme; AJMC CKD cost studies). Non-dialysis basis \u2014 dialysis is far higher."
+    },
+    "heart": {
+      "label": "Heart disease",
+      "national_prevalence_pct": 3.2,
+      "by_state_prevalence_pct": {
+        "MA": 8.7,
+        "IL": 7.0,
+        "NY": 7.0,
+        "WA": 4.9,
+        "NJ": 4.2,
+        "TX": 3.9,
+        "MI": 3.8,
+        "VA": 3.6,
+        "FL": 3.5,
+        "NC": 2.6,
+        "MO": 2.3,
+        "PA": 2.3,
+        "KS": 2.0,
+        "GA": 1.8,
+        "UT": 1.7,
+        "CO": 1.2,
+        "CA": 0.9,
+        "OH": 0.0
+      },
+      "affected_covered_adults": 21,
+      "cost_per_person_usd": [
+        8000,
+        13000
+      ],
+      "annual_burden_usd": [
+        168000,
+        273000
+      ],
+      "cost_basis": "Established cardiovascular disease ~$8K/yr excess to coronary heart disease ~$13,000/person/yr (2020-data CVD burden analyses)."
+    },
+    "stroke": {
+      "label": "Stroke (history)",
+      "national_prevalence_pct": 1.5,
+      "by_state_prevalence_pct": {
+        "VA": 5.4,
+        "KS": 4.0,
+        "MA": 2.9,
+        "IL": 2.8,
+        "NJ": 2.8,
+        "CO": 2.5,
+        "TX": 2.0,
+        "GA": 1.8,
+        "NC": 1.5,
+        "WA": 1.2,
+        "CA": 0.9,
+        "UT": 0.8,
+        "FL": 0.7,
+        "MI": 0.0,
+        "MO": 0.0,
+        "NY": 0.0,
+        "OH": 0.0,
+        "PA": 0.0
+      },
+      "affected_covered_adults": 10,
+      "cost_per_person_usd": [
+        10000,
+        35000
+      ],
+      "annual_burden_usd": [
+        100000,
+        350000
+      ],
+      "cost_basis": "Stroke-survivor excess ~$10,168/yr (comorbid analyses) to ~$35,000/person/yr incl. acute-year care (2020-data CVD burden). Wide because ongoing vs acute-year costs differ sharply."
+    }
+  },
+  "comorbidity": {
+    "conditions": [
+      "obesity",
+      "diabetes",
+      "hypertension"
+    ],
+    "all_three_pct": 2.0,
+    "two_plus_pct": 21.9,
+    "none_pct": 43.9
+  },
+  "tier": "modeled"
+}

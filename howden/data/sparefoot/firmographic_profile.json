@@ -1,0 +1,81 @@
+{
+  "prospect": {
+    "slug": "sparefoot",
+    "name": "Sparefoot / Storable",
+    "sponsor_legal_name": "SPAREFOOT, INC.",
+    "ein": "26-2653591",
+    "hq_city": "Austin",
+    "hq_state": "TX",
+    "naics": "519100",
+    "naics_label": "Other Information Services"
+  },
+  "plan": {
+    "name": "SPAREFOOT AKA STORABLE MEDICAL PLAN",
+    "plan_number": "501",
+    "effective_date": "2015-01-01",
+    "plan_year_begin": "2024-01-01",
+    "plan_year_end": "2024-12-31",
+    "type": "Welfare benefit plan",
+    "final_filing": false,
+    "administrator": ""
+  },
+  "participants": {
+    "total_beginning_of_year": 513,
+    "active": 505
+  },
+  "population": {
+    "participants_basis": 505,
+    "estimated_covered_lives": 914,
+    "estimated_covered_adults": 676,
+    "covered_lives_source": "modeled",
+    "covered_lives_ratio": 1.809,
+    "tier": "modeled",
+    "note": "Covered lives are MODELED from public data. The naive national anchor is 1.9\u00d7 participants (KFF ESI 101). Adjusted to 1.809\u00d7 for this workforce: a younger age mix carries fewer dependents (age factor 1.083\u00d7) and dual-coverage households put the spouse \u2014 and ~half their kids \u2014 on the spouse's plan (haircut 0.79\u00d7), shrunk toward the anchor by \u03bb=0.3. The client's census (Mode 1B) reconciles it.",
+    "estimated_covered_lives_naive": 960,
+    "covered_lives_ratio_naive": 1.9,
+    "covered_lives_adjustment": {
+      "age_factor": 1.083,
+      "dual_coverage_haircut": 0.79,
+      "lambda": 0.3,
+      "workforce_age_profile": {
+        "le_29": 0.1221,
+        "30_to_54": 0.7129,
+        "ge_55": 0.165
+      }
+    }
+  },
+  "funding": {
+    "insurance": true,
+    "general_assets": false,
+    "trust": false,
+    "interpretation": "Fully-insured (insurance funding only on this filing)."
+  },
+  "welfare_benefits": [
+    {
+      "code": "4A",
+      "label": "Health (other than vision or dental)"
+    }
+  ],
+  "welfare_benefit_code_raw": "4A",
+  "insurance": {
+    "arrangement_count": 1,
+    "fully_insured_medical_lives_eoy": 505,
+    "total_broker_commission_usd": 0,
+    "arrangements": [
+      {
+        "carrier": "CIGNA HEALTH AND LIFE INSURANCE COMPANY AND AFFILIATES",
+        "carrier_ein": "591031071",
+        "benefit": "Medical",
+        "covered_lives_eoy": 505,
+        "broker_commission_usd": 0,
+        "is_medical": true
+      }
+    ]
+  },
+  "broker_disclosure": {
+    "schedule_c_attached": false,
+    "broker_of_record": null,
+    "note": "Broker of record is not itemized on Schedule A (it would appear on Schedule C, not attached here); the commission IS disclosed per carrier. The broker name shown is illustrative."
+  },
+  "ack_id": "20250715105312NAL0002011505001"
+}

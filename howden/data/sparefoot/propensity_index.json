@@ -1,0 +1,1147 @@
+{
+  "prospect": "sparefoot",
+  "geography_unit": "state",
+  "acs_release": "ACS 2023 5-year",
+  "bea_release": "BEA Regional Price Parities (state, latest year), 'All items'",
+  "anchor_retail_wage_usd": 105000,
+  "anchor_note": "Constant nominal wage; CANCELS in the relative ranking (kept for interpretable dollar values only). State wage variation (OEWS) = refinement.",
+  "candidate_basis": "All 50 states + DC scored (CT excluded \u2014 PLACES tract-vintage gap). Burden enters via the volume-aware priority, not a hidden pre-filter.",
+  "default_view": "workforce_adjusted",
+  "default_focus": "volume_aware",
+  "focus_geographies": {
+    "volume_aware": [
+      "NC",
+      "TX",
+      "MO"
+    ],
+    "relative_standing": [
+      "OK",
+      "LA",
+      "MS"
+    ],
+    "naive": [
+      "CO",
+      "MA",
+      "MD"
+    ]
+  },
+  "priority_definition": "Opportunity = the selected condition's member prevalence (individual-level, from the enriched digital twins) \u00d7 workforce-adjusted engageability (how far the wage goes locally) \u00d7 log(members) \u2014 volume-aware without collapsing to the biggest states, normalized 0\u2013100. Switch the condition and the map + ranking re-rank on that condition's burden. $-at-stake is context, not the ranking basis.",
+  "index_definitions": {
+    "opportunity": "Default. burden-rate \u00d7 engageability \u00d7 log(members), normalized 0\u2013100.",
+    "naive": "Mean of min-max-normalized ACS median income, broadband, bachelor's+, vehicle access. Describes neighbors, not members; a wealth map.",
+    "workforce_adjusted": "Mean of min-max-normalized real_wage_value (anchor/RPP), wage_to_local_median (anchor/median income), broadband. Relative standing of a constant HD wage \u2014 'good job here / bad job here'."
+  },
+  "interpretation_caveat": "A relative SCREENING heuristic across the material member states \u2014 not a probability, and not a verdict that low-index geographies aren't worth serving. Condition prevalence is modeled (enriched twins); the ranking is state-level guidance.",
+  "ranking": [
+    {
+      "state": "NC",
+      "opportunity_rank": 1,
+      "opportunity_index": 100.0,
+      "obesity_burden_usd": 106078,
+      "adjusted_index": 59.1,
+      "naive_index": 58.2,
+      "obesity_prevalence_pct": 34.72,
+      "modeled_members": 82,
+      "real_wage_value_usd": 111316,
+      "wage_to_local_median": 1.502,
+      "rpp": 94.326,
+      "adjusted_components": {
+        "real_wage_value": 0.636,
+        "wage_to_local_median": 0.534,
+        "broadband_rate": 0.602
+      },
+      "naive_components": {
+        "median_income": 0.321,
+        "broadband_rate": 0.602,
+        "bachelor_plus_rate": 0.47,
+        "vehicle_access_rate": 0.937
+      },
+      "correlates_raw": {
+        "median_income": 69904.0,
+        "broadband_rate": 0.8855,
+        "bachelor_plus_rate": 0.3472,
+        "vehicle_access_rate": 0.9467
+      }
+    },
+    {
+      "state": "TX",
+      "opportunity_rank": 2,
+      "opportunity_index": 97.7,
+      "obesity_burden_usd": 134003,
+      "adjusted_index": 54.4,
+      "naive_index": 63.0,
+      "obesity_prevalence_pct": 35.26,
+      "modeled_members": 102,
+      "real_wage_value_usd": 108184,
+      "wage_to_local_median": 1.376,
+      "rpp": 97.057,
+      "adjusted_components": {
+        "real_wage_value": 0.515,
+        "wage_to_local_median": 0.39,
+        "broadband_rate": 0.728
+      },
+      "naive_components": {
+        "median_income": 0.457,
+        "broadband_rate": 0.728,
+        "bachelor_plus_rate": 0.397,
+        "vehicle_access_rate": 0.937
+      },
+      "correlates_raw": {
+        "median_income": 76292.0,
+        "broadband_rate": 0.8995,
+        "bachelor_plus_rate": 0.3308,
+        "vehicle_access_rate": 0.9468
+      }
+    },
+    {
+      "state": "MO",
+      "opportunity_rank": 3,
+      "opportunity_index": 78.0,
+      "obesity_burden_usd": 30850,
+      "adjusted_index": 64.2,
+      "naive_index": 52.4,
+      "obesity_prevalence_pct": 36.0,
+      "modeled_members": 23,
+      "real_wage_value_usd": 115617,
+      "wage_to_local_median": 1.524,
+      "rpp": 90.817,
+      "adjusted_components": {
+        "real_wage_value": 0.802,
+        "wage_to_local_median": 0.559,
+        "broadband_rate": 0.564
+      },
+      "naive_components": {
+        "median_income": 0.3,
+        "broadband_rate": 0.564,
+        "bachelor_plus_rate": 0.344,
+        "vehicle_access_rate": 0.888
+      },
+      "correlates_raw": {
+        "median_income": 68920.0,
+        "broadband_rate": 0.8813,
+        "bachelor_plus_rate": 0.319,
+        "vehicle_access_rate": 0.9343
+      }
+    },
+    {
+      "state": "KS",
+      "opportunity_rank": 4,
+      "opportunity_index": 73.1,
+      "obesity_burden_usd": 24010,
+      "adjusted_index": 66.1,
+      "naive_index": 62.2,
+      "obesity_prevalence_pct": 35.8,
+      "modeled_members": 18,
+      "real_wage_value_usd": 116579,
+      "wage_to_local_median": 1.446,
+      "rpp": 90.068,
+      "adjusted_components": {
+        "real_wage_value": 0.839,
+        "wage_to_local_median": 0.47,
+        "broadband_rate": 0.673
+      },
+      "naive_components": {
+        "median_income": 0.379,
+        "broadband_rate": 0.673,
+        "bachelor_plus_rate": 0.489,
+        "vehicle_access_rate": 0.946
+      },
+      "correlates_raw": {
+        "median_income": 72639.0,
+        "broadband_rate": 0.8934,
+        "bachelor_plus_rate": 0.3516,
+        "vehicle_access_rate": 0.9491
+      }
+    },
+    {
+      "state": "OH",
+      "opportunity_rank": 5,
+      "opportunity_index": 58.2,
+      "obesity_burden_usd": 17064,
+      "adjusted_index": 62.4,
+      "naive_index": 52.4,
+      "obesity_prevalence_pct": 35.23,
+      "modeled_members": 13,
+      "real_wage_value_usd": 113178,
+      "wage_to_local_median": 1.507,
+      "rpp": 92.774,
+      "adjusted_components": {
+        "real_wage_value": 0.708,
+        "wage_to_local_median": 0.539,
+        "broadband_rate": 0.625
+      },
+      "naive_components": {
+        "median_income": 0.316,
+        "broadband_rate": 0.625,
+        "bachelor_plus_rate": 0.302,
+        "vehicle_access_rate": 0.853
+      },
+      "correlates_raw": {
+        "median_income": 69680.0,
+        "broadband_rate": 0.8881,
+        "bachelor_plus_rate": 0.3095,
+        "vehicle_access_rate": 0.9255
+      }
+    },
+    {
+      "state": "FL",
+      "opportunity_rank": 6,
+      "opportunity_index": 53.6,
+      "obesity_burden_usd": 31900,
+      "adjusted_index": 50.1,
+      "naive_index": 60.8,
+      "obesity_prevalence_pct": 32.93,
+      "modeled_members": 26,
+      "real_wage_value_usd": 101534,
+      "wage_to_local_median": 1.464,
+      "rpp": 103.414,
+      "adjusted_components": {
+        "real_wage_value": 0.258,
+        "wage_to_local_median": 0.49,
+        "broadband_rate": 0.754
+      },
+      "naive_components": {
+        "median_income": 0.359,
+        "broadband_rate": 0.754,
+        "bachelor_plus_rate": 0.403,
+        "vehicle_access_rate": 0.914
+      },
+      "correlates_raw": {
+        "median_income": 71711.0,
+        "broadband_rate": 0.9024,
+        "bachelor_plus_rate": 0.3321,
+        "vehicle_access_rate": 0.941
+      }
+    },
+    {
+      "state": "UT",
+      "opportunity_rank": 7,
+      "opportunity_index": 49.3,
+      "obesity_burden_usd": 25108,
+      "adjusted_index": 51.5,
+      "naive_index": 83.2,
+      "obesity_prevalence_pct": 32.09,
+      "modeled_members": 21,
+      "real_wage_value_usd": 106207,
+      "wage_to_local_median": 1.144,
+      "rpp": 98.864,
+      "adjusted_components": {
+        "real_wage_value": 0.439,
+        "wage_to_local_median": 0.126,
+        "broadband_rate": 0.981
+      },
+      "naive_components": {
+        "median_income": 0.788,
+        "broadband_rate": 0.981,
+        "bachelor_plus_rate": 0.568,
+        "vehicle_access_rate": 0.991
+      },
+      "correlates_raw": {
+        "median_income": 91750.0,
+        "broadband_rate": 0.9275,
+        "bachelor_plus_rate": 0.3692,
+        "vehicle_access_rate": 0.9605
+      }
+    },
+    {
+      "state": "MI",
+      "opportunity_rank": 8,
+      "opportunity_index": 43.4,
+      "obesity_burden_usd": 12590,
+      "adjusted_index": 57.3,
+      "naive_index": 55.4,
+      "obesity_prevalence_pct": 33.79,
+      "modeled_members": 10,
+      "real_wage_value_usd": 109128,
+      "wage_to_local_median": 1.476,
+      "rpp": 96.217,
+      "adjusted_components": {
+        "real_wage_value": 0.551,
+        "wage_to_local_median": 0.504,
+        "broadband_rate": 0.665
+      },
+      "naive_components": {
+        "median_income": 0.347,
+        "broadband_rate": 0.665,
+        "bachelor_plus_rate": 0.338,
+        "vehicle_access_rate": 0.867
+      },
+      "correlates_raw": {
+        "median_income": 71149.0,
+        "broadband_rate": 0.8926,
+        "bachelor_plus_rate": 0.3176,
+        "vehicle_access_rate": 0.9291
+      }
+    },
+    {
+      "state": "PA",
+      "opportunity_rank": 9,
+      "opportunity_index": 43.1,
+      "obesity_burden_usd": 19595,
+      "adjusted_index": 49.6,
+      "naive_index": 56.1,
+      "obesity_prevalence_pct": 32.87,
+      "modeled_members": 16,
+      "real_wage_value_usd": 107613,
+      "wage_to_local_median": 1.38,
+      "rpp": 97.572,
+      "adjusted_components": {
+        "real_wage_value": 0.493,
+        "wage_to_local_median": 0.395,
+        "broadband_rate": 0.599
+      },
+      "naive_components": {
+        "median_income": 0.453,
+        "broadband_rate": 0.599,
+        "bachelor_plus_rate": 0.46,
+        "vehicle_access_rate": 0.734
+      },
+      "correlates_raw": {
+        "median_income": 76081.0,
+        "broadband_rate": 0.8853,
+        "bachelor_plus_rate": 0.3449,
+        "vehicle_access_rate": 0.8955
+      }
+    },
+    {
+      "state": "AL",
+      "opportunity_rank": 10,
+      "opportunity_index": 39.4,
+      "obesity_burden_usd": 6790,
+      "adjusted_index": 66.3,
+      "naive_index": 39.6,
+      "obesity_prevalence_pct": 36.45,
+      "modeled_members": 5,
+      "real_wage_value_usd": 118213,
+      "wage_to_local_median": 1.693,
+      "rpp": 88.823,
+      "adjusted_components": {
+        "real_wage_value": 0.902,
+        "wage_to_local_median": 0.751,
+        "broadband_rate": 0.337
+      },
+      "naive_components": {
+        "median_income": 0.152,
+        "broadband_rate": 0.337,
+        "bachelor_plus_rate": 0.16,
+        "vehicle_access_rate": 0.934
+      },
+      "correlates_raw": {
+        "median_income": 62027.0,
+        "broadband_rate": 0.8562,
+        "bachelor_plus_rate": 0.2776,
+        "vehicle_access_rate": 0.9461
+      }
+    },
+    {
+      "state": "GA",
+      "opportunity_rank": 11,
+      "opportunity_index": 39.3,
+      "obesity_burden_usd": 12221,
+      "adjusted_index": 55.0,
+      "naive_index": 61.5,
+      "obesity_prevalence_pct": 32.8,
+      "modeled_members": 10,
+      "real_wage_value_usd": 109042,
+      "wage_to_local_median": 1.406,
+      "rpp": 96.293,
+      "adjusted_components": {
+        "real_wage_value": 0.548,
+        "wage_to_local_median": 0.424,
+        "broadband_rate": 0.679
+      },
+      "naive_components": {
+        "median_income": 0.423,
+        "broadband_rate": 0.679,
+        "bachelor_plus_rate": 0.447,
+        "vehicle_access_rate": 0.912
+      },
+      "correlates_raw": {
+        "median_income": 74664.0,
+        "broadband_rate": 0.894,
+        "bachelor_plus_rate": 0.342,
+        "vehicle_access_rate": 0.9405
+      }
+    },
+    {
+      "state": "IN",
+      "opportunity_rank": 12,
+      "opportunity_index": 37.2,
+      "obesity_burden_usd": 8008,
+      "adjusted_index": 59.7,
+      "naive_index": 50.3,
+      "obesity_prevalence_pct": 35.82,
+      "modeled_members": 6,
+      "real_wage_value_usd": 112505,
+      "wage_to_local_median": 1.499,
+      "rpp": 93.329,
+      "adjusted_components": {
+        "real_wage_value": 0.682,
+        "wage_to_local_median": 0.53,
+        "broadband_rate": 0.58
+      },
+      "naive_components": {
+        "median_income": 0.324,
+        "broadband_rate": 0.58,
+        "bachelor_plus_rate": 0.207,
+        "vehicle_access_rate": 0.902
+      },
+      "correlates_raw": {
+        "median_income": 70051.0,
+        "broadband_rate": 0.8831,
+        "bachelor_plus_rate": 0.288,
+        "vehicle_access_rate": 0.938
+      }
+    },
+    {
+      "state": "LA",
+      "opportunity_rank": 13,
+      "opportunity_index": 35.9,
+      "obesity_burden_usd": 5604,
+      "adjusted_index": 67.1,
+      "naive_index": 32.5,
+      "obesity_prevalence_pct": 37.6,
+      "modeled_members": 4,
+      "real_wage_value_usd": 119038,
+      "wage_to_local_median": 1.749,
+      "rpp": 88.207,
+      "adjusted_components": {
+        "real_wage_value": 0.934,
+        "wage_to_local_median": 0.815,
+        "broadband_rate": 0.263
+      },
+      "naive_components": {
+        "median_income": 0.109,
+        "broadband_rate": 0.263,
+        "bachelor_plus_rate": 0.106,
+        "vehicle_access_rate": 0.82
+      },
+      "correlates_raw": {
+        "median_income": 60023.0,
+        "broadband_rate": 0.8481,
+        "bachelor_plus_rate": 0.2655,
+        "vehicle_access_rate": 0.9171
+      }
+    },
+    {
+      "state": "WI",
+      "opportunity_rank": 14,
+      "opportunity_index": 34.1,
+      "obesity_burden_usd": 7912,
+      "adjusted_index": 56.9,
+      "naive_index": 59.5,
+      "obesity_prevalence_pct": 35.39,
+      "modeled_members": 6,
+      "real_wage_value_usd": 111589,
+      "wage_to_local_median": 1.388,
+      "rpp": 94.095,
+      "adjusted_components": {
+        "real_wage_value": 0.646,
+        "wage_to_local_median": 0.404,
+        "broadband_rate": 0.657
+      },
+      "naive_components": {
+        "median_income": 0.444,
+        "broadband_rate": 0.657,
+        "bachelor_plus_rate": 0.383,
+        "vehicle_access_rate": 0.897
+      },
+      "correlates_raw": {
+        "median_income": 75670.0,
+        "broadband_rate": 0.8917,
+        "bachelor_plus_rate": 0.3276,
+        "vehicle_access_rate": 0.9367
+      }
+    },
+    {
+      "state": "IL",
+      "opportunity_rank": 15,
+      "opportunity_index": 33.6,
+      "obesity_burden_usd": 15727,
+      "adjusted_index": 45.3,
+      "naive_index": 63.7,
+      "obesity_prevalence_pct": 32.47,
+      "modeled_members": 13,
+      "real_wage_value_usd": 105044,
+      "wage_to_local_median": 1.285,
+      "rpp": 99.958,
+      "adjusted_components": {
+        "real_wage_value": 0.394,
+        "wage_to_local_median": 0.287,
+        "broadband_rate": 0.678
+      },
+      "naive_components": {
+        "median_income": 0.573,
+        "broadband_rate": 0.678,
+        "bachelor_plus_rate": 0.58,
+        "vehicle_access_rate": 0.716
+      },
+      "correlates_raw": {
+        "median_income": 81702.0,
+        "broadband_rate": 0.894,
+        "bachelor_plus_rate": 0.3719,
+        "vehicle_access_rate": 0.891
+      }
+    },
+    {
+      "state": "TN",
+      "opportunity_rank": 16,
+      "opportunity_index": 32.6,
+      "obesity_burden_usd": 6379,
+      "adjusted_index": 61.9,
+      "naive_index": 49.5,
+      "obesity_prevalence_pct": 34.24,
+      "modeled_members": 5,
+      "real_wage_value_usd": 114292,
+      "wage_to_local_median": 1.565,
+      "rpp": 91.87,
+      "adjusted_components": {
+        "real_wage_value": 0.751,
+        "wage_to_local_median": 0.605,
+        "broadband_rate": 0.502
+      },
+      "naive_components": {
+        "median_income": 0.261,
+        "broadband_rate": 0.502,
+        "bachelor_plus_rate": 0.277,
+        "vehicle_access_rate": 0.941
+      },
+      "correlates_raw": {
+        "median_income": 67097.0,
+        "broadband_rate": 0.8745,
+        "bachelor_plus_rate": 0.3039,
+        "vehicle_access_rate": 0.9478
+      }
+    },
+    {
+      "state": "CO",
+      "opportunity_rank": 17,
+      "opportunity_index": 30.0,
+      "obesity_burden_usd": 15856,
+      "adjusted_index": 45.7,
+      "naive_index": 91.2,
+      "obesity_prevalence_pct": 28.37,
+      "modeled_members": 15,
+      "real_wage_value_usd": 101890,
+      "wage_to_local_median": 1.136,
+      "rpp": 103.052,
+      "adjusted_components": {
+        "real_wage_value": 0.272,
+        "wage_to_local_median": 0.117,
+        "broadband_rate": 0.983
+      },
+      "naive_components": {
+        "median_income": 0.804,
+        "broadband_rate": 0.983,
+        "bachelor_plus_rate": 0.916,
+        "vehicle_access_rate": 0.945
+      },
+      "correlates_raw": {
+        "median_income": 92470.0,
+        "broadband_rate": 0.9277,
+        "bachelor_plus_rate": 0.4473,
+        "vehicle_access_rate": 0.9488
+      }
+    },
+    {
+      "state": "OK",
+      "opportunity_rank": 18,
+      "opportunity_index": 29.0,
+      "obesity_burden_usd": 3976,
+      "adjusted_index": 71.3,
+      "naive_index": 44.0,
+      "obesity_prevalence_pct": 35.57,
+      "modeled_members": 3,
+      "real_wage_value_usd": 119531,
+      "wage_to_local_median": 1.651,
+      "rpp": 87.843,
+      "adjusted_components": {
+        "real_wage_value": 0.953,
+        "wage_to_local_median": 0.703,
+        "broadband_rate": 0.482
+      },
+      "naive_components": {
+        "median_income": 0.186,
+        "broadband_rate": 0.482,
+        "bachelor_plus_rate": 0.161,
+        "vehicle_access_rate": 0.93
+      },
+      "correlates_raw": {
+        "median_income": 63603.0,
+        "broadband_rate": 0.8722,
+        "bachelor_plus_rate": 0.2778,
+        "vehicle_access_rate": 0.945
+      }
+    },
+    {
+      "state": "SC",
+      "opportunity_rank": 19,
+      "opportunity_index": 28.8,
+      "obesity_burden_usd": 6355,
+      "adjusted_index": 57.3,
+      "naive_index": 48.7,
+      "obesity_prevalence_pct": 34.11,
+      "modeled_members": 5,
+      "real_wage_value_usd": 112001,
+      "wage_to_local_median": 1.571,
+      "rpp": 93.749,
+      "adjusted_components": {
+        "real_wage_value": 0.662,
+        "wage_to_local_median": 0.612,
+        "broadband_rate": 0.445
+      },
+      "naive_components": {
+        "median_income": 0.255,
+        "broadband_rate": 0.445,
+        "bachelor_plus_rate": 0.325,
+        "vehicle_access_rate": 0.922
+      },
+      "correlates_raw": {
+        "median_income": 66818.0,
+        "broadband_rate": 0.8682,
+        "bachelor_plus_rate": 0.3147,
+        "vehicle_access_rate": 0.9431
+      }
+    },
+    {
+      "state": "WA",
+      "opportunity_rank": 20,
+      "opportunity_index": 28.4,
+      "obesity_burden_usd": 17381,
+      "adjusted_index": 40.3,
+      "naive_index": 84.5,
+      "obesity_prevalence_pct": 31.1,
+      "modeled_members": 15,
+      "real_wage_value_usd": 98119,
+      "wage_to_local_median": 1.106,
+      "rpp": 107.013,
+      "adjusted_components": {
+        "real_wage_value": 0.127,
+        "wage_to_local_median": 0.083,
+        "broadband_rate": 1.0
+      },
+      "naive_components": {
+        "median_income": 0.857,
+        "broadband_rate": 1.0,
+        "bachelor_plus_rate": 0.65,
+        "vehicle_access_rate": 0.873
+      },
+      "correlates_raw": {
+        "median_income": 94952.0,
+        "broadband_rate": 0.9296,
+        "bachelor_plus_rate": 0.3877,
+        "vehicle_access_rate": 0.9306
+      }
+    },
+    {
+      "state": "MN",
+      "opportunity_rank": 21,
+      "opportunity_index": 25.7,
+      "obesity_burden_usd": 8536,
+      "adjusted_index": 47.9,
+      "naive_index": 76.0,
+      "obesity_prevalence_pct": 32.73,
+      "modeled_members": 7,
+      "real_wage_value_usd": 106468,
+      "wage_to_local_median": 1.199,
+      "rpp": 98.621,
+      "adjusted_components": {
+        "real_wage_value": 0.449,
+        "wage_to_local_median": 0.189,
+        "broadband_rate": 0.799
+      },
+      "naive_components": {
+        "median_income": 0.698,
+        "broadband_rate": 0.799,
+        "bachelor_plus_rate": 0.653,
+        "vehicle_access_rate": 0.889
+      },
+      "correlates_raw": {
+        "median_income": 87556.0,
+        "broadband_rate": 0.9073,
+        "bachelor_plus_rate": 0.3883,
+        "vehicle_access_rate": 0.9347
+      }
+    },
+    {
+      "state": "IA",
+      "opportunity_rank": 22,
+      "opportunity_index": 24.4,
+      "obesity_burden_usd": 3970,
+      "adjusted_index": 64.2,
+      "naive_index": 53.3,
+      "obesity_prevalence_pct": 35.52,
+      "modeled_members": 3,
+      "real_wage_value_usd": 119642,
+      "wage_to_local_median": 1.435,
+      "rpp": 87.762,
+      "adjusted_components": {
+        "real_wage_value": 0.957,
+        "wage_to_local_median": 0.457,
+        "broadband_rate": 0.511
+      },
+      "naive_components": {
+        "median_income": 0.39,
+        "broadband_rate": 0.511,
+        "bachelor_plus_rate": 0.298,
+        "vehicle_access_rate": 0.932
+      },
+      "correlates_raw": {
+        "median_income": 73147.0,
+        "broadband_rate": 0.8755,
+        "bachelor_plus_rate": 0.3086,
+        "vehicle_access_rate": 0.9456
+      }
+    },
+    {
+      "state": "VA",
+      "opportunity_rank": 23,
+      "opportunity_index": 23.9,
+      "obesity_burden_usd": 11975,
+      "adjusted_index": 40.5,
+      "naive_index": 79.5,
+      "obesity_prevalence_pct": 32.14,
+      "modeled_members": 10,
+      "real_wage_value_usd": 103853,
+      "wage_to_local_median": 1.154,
+      "rpp": 101.104,
+      "adjusted_components": {
+        "real_wage_value": 0.348,
+        "wage_to_local_median": 0.138,
+        "broadband_rate": 0.728
+      },
+      "naive_components": {
+        "median_income": 0.772,
+        "broadband_rate": 0.728,
+        "bachelor_plus_rate": 0.771,
+        "vehicle_access_rate": 0.91
+      },
+      "correlates_raw": {
+        "median_income": 90974.0,
+        "broadband_rate": 0.8995,
+        "bachelor_plus_rate": 0.4148,
+        "vehicle_access_rate": 0.94
+      }
+    },
+    {
+      "state": "OR",
+      "opportunity_rank": 24,
+      "opportunity_index": 21.0,
+      "obesity_burden_usd": 6237,
+      "adjusted_index": 48.2,
+      "naive_index": 70.6,
+      "obesity_prevalence_pct": 33.48,
+      "modeled_members": 5,
+      "real_wage_value_usd": 101586,
+      "wage_to_local_median": 1.306,
+      "rpp": 103.361,
+      "adjusted_components": {
+        "real_wage_value": 0.26,
+        "wage_to_local_median": 0.311,
+        "broadband_rate": 0.875
+      },
+      "naive_components": {
+        "median_income": 0.546,
+        "broadband_rate": 0.875,
+        "bachelor_plus_rate": 0.537,
+        "vehicle_access_rate": 0.867
+      },
+      "correlates_raw": {
+        "median_income": 80426.0,
+        "broadband_rate": 0.9157,
+        "bachelor_plus_rate": 0.3622,
+        "vehicle_access_rate": 0.929
+      }
+    },
+    {
+      "state": "AZ",
+      "opportunity_rank": 25,
+      "opportunity_index": 21.0,
+      "obesity_burden_usd": 5974,
+      "adjusted_index": 50.3,
+      "naive_index": 63.6,
+      "obesity_prevalence_pct": 32.07,
+      "modeled_members": 5,
+      "real_wage_value_usd": 104294,
+      "wage_to_local_median": 1.366,
+      "rpp": 100.677,
+      "adjusted_components": {
+        "real_wage_value": 0.365,
+        "wage_to_local_median": 0.379,
+        "broadband_rate": 0.766
+      },
+      "naive_components": {
+        "median_income": 0.47,
+        "broadband_rate": 0.766,
+        "bachelor_plus_rate": 0.376,
+        "vehicle_access_rate": 0.933
+      },
+      "correlates_raw": {
+        "median_income": 76872.0,
+        "broadband_rate": 0.9037,
+        "bachelor_plus_rate": 0.3261,
+        "vehicle_access_rate": 0.9457
+      }
+    },
+    {
+      "state": "MD",
+      "opportunity_rank": 26,
+      "opportunity_index": 20.4,
+      "obesity_burden_usd": 11666,
+      "adjusted_index": 35.5,
+      "naive_index": 87.4,
+      "obesity_prevalence_pct": 34.79,
+      "modeled_members": 9,
+      "real_wage_value_usd": 100039,
+      "wage_to_local_median": 1.033,
+      "rpp": 104.959,
+      "adjusted_components": {
+        "real_wage_value": 0.201,
+        "wage_to_local_median": 0.0,
+        "broadband_rate": 0.865
+      },
+      "naive_components": {
+        "median_income": 1.0,
+        "broadband_rate": 0.865,
+        "bachelor_plus_rate": 0.827,
+        "vehicle_access_rate": 0.803
+      },
+      "correlates_raw": {
+        "median_income": 101652.0,
+        "broadband_rate": 0.9147,
+        "bachelor_plus_rate": 0.4274,
+        "vehicle_access_rate": 0.9129
+      }
+    },
+    {
+      "state": "MA",
+      "opportunity_rank": 27,
+      "opportunity_index": 19.8,
+      "obesity_burden_usd": 14361,
+      "adjusted_index": 35.8,
+      "naive_index": 89.3,
+      "obesity_prevalence_pct": 29.65,
+      "modeled_members": 13,
+      "real_wage_value_usd": 99284,
+      "wage_to_local_median": 1.036,
+      "rpp": 105.757,
+      "adjusted_components": {
+        "real_wage_value": 0.172,
+        "wage_to_local_median": 0.003,
+        "broadband_rate": 0.898
+      },
+      "naive_components": {
+        "median_income": 0.993,
+        "broadband_rate": 0.898,
+        "bachelor_plus_rate": 1.0,
+        "vehicle_access_rate": 0.681
+      },
+      "correlates_raw": {
+        "median_income": 101341.0,
+        "broadband_rate": 0.9183,
+        "bachelor_plus_rate": 0.4662,
+        "vehicle_access_rate": 0.8819
+      }
+    },
+    {
+      "state": "MS",
+      "opportunity_rank": 28,
+      "opportunity_index": 19.3,
+      "obesity_burden_usd": 2808,
+      "adjusted_index": 66.7,
+      "naive_index": 22.6,
+      "obesity_prevalence_pct": 37.68,
+      "modeled_members": 2,
+      "real_wage_value_usd": 120755,
+      "wage_to_local_median": 1.912,
+      "rpp": 86.953,
+      "adjusted_components": {
+        "real_wage_value": 1.0,
+        "wage_to_local_median": 1.0,
+        "broadband_rate": 0.0
+      },
+      "naive_components": {
+        "median_income": 0.0,
+        "broadband_rate": 0.0,
+        "bachelor_plus_rate": 0.0,
+        "vehicle_access_rate": 0.903
+      },
+      "correlates_raw": {
+        "median_income": 54915.0,
+        "broadband_rate": 0.8189,
+        "bachelor_plus_rate": 0.2416,
+        "vehicle_access_rate": 0.9383
+      }
+    },
+    {
+      "state": "CA",
+      "opportunity_rank": 29,
+      "opportunity_index": 18.8,
+      "obesity_burden_usd": 20203,
+      "adjusted_index": 34.1,
+      "naive_index": 81.6,
+      "obesity_prevalence_pct": 25.82,
+      "modeled_members": 21,
+      "real_wage_value_usd": 94834,
+      "wage_to_local_median": 1.09,
+      "rpp": 110.72,
+      "adjusted_components": {
+        "real_wage_value": 0.0,
+        "wage_to_local_median": 0.065,
+        "broadband_rate": 0.959
+      },
+      "naive_components": {
+        "median_income": 0.886,
+        "broadband_rate": 0.959,
+        "bachelor_plus_rate": 0.549,
+        "vehicle_access_rate": 0.871
+      },
+      "correlates_raw": {
+        "median_income": 96334.0,
+        "broadband_rate": 0.9251,
+        "bachelor_plus_rate": 0.365,
+        "vehicle_access_rate": 0.9301
+      }
+    },
+    {
+      "state": "NJ",
+      "opportunity_rank": 30,
+      "opportunity_index": 16.5,
+      "obesity_burden_usd": 14521,
+      "adjusted_index": 32.1,
+      "naive_index": 85.4,
+      "obesity_prevalence_pct": 29.98,
+      "modeled_members": 13,
+      "real_wage_value_usd": 96503,
+      "wage_to_local_median": 1.039,
+      "rpp": 108.805,
+      "adjusted_components": {
+        "real_wage_value": 0.064,
+        "wage_to_local_median": 0.007,
+        "broadband_rate": 0.893
+      },
+      "naive_components": {
+        "median_income": 0.987,
+        "broadband_rate": 0.893,
+        "bachelor_plus_rate": 0.835,
+        "vehicle_access_rate": 0.702
+      },
+      "correlates_raw": {
+        "median_income": 101050.0,
+        "broadband_rate": 0.9177,
+        "bachelor_plus_rate": 0.4291,
+        "vehicle_access_rate": 0.8873
+      }
+    },
+    {
+      "state": "NE",
+      "opportunity_rank": 31,
+      "opportunity_index": 16.1,
+      "obesity_burden_usd": 2622,
+      "adjusted_index": 65.0,
+      "naive_index": 62.7,
+      "obesity_prevalence_pct": 35.18,
+      "modeled_members": 2,
+      "real_wage_value_usd": 116533,
+      "wage_to_local_median": 1.4,
+      "rpp": 90.103,
+      "adjusted_components": {
+        "real_wage_value": 0.837,
+        "wage_to_local_median": 0.418,
+        "broadband_rate": 0.696
+      },
+      "naive_components": {
+        "median_income": 0.429,
+        "broadband_rate": 0.696,
+        "bachelor_plus_rate": 0.443,
+        "vehicle_access_rate": 0.941
+      },
+      "correlates_raw": {
+        "median_income": 74985.0,
+        "broadband_rate": 0.896,
+        "bachelor_plus_rate": 0.3412,
+        "vehicle_access_rate": 0.9477
+      }
+    },
+    {
+      "state": "CT",
+      "opportunity_rank": 32,
+      "opportunity_index": 12.2,
+      "obesity_burden_usd": 5809,
+      "adjusted_index": 39.5,
+      "naive_index": 81.6,
+      "obesity_prevalence_pct": 31.18,
+      "modeled_members": 5,
+      "real_wage_value_usd": 101342,
+      "wage_to_local_median": 1.12,
+      "rpp": 103.61,
+      "adjusted_components": {
+        "real_wage_value": 0.251,
+        "wage_to_local_median": 0.099,
+        "broadband_rate": 0.835
+      },
+      "naive_components": {
+        "median_income": 0.831,
+        "broadband_rate": 0.835,
+        "bachelor_plus_rate": 0.792,
+        "vehicle_access_rate": 0.807
+      },
+      "correlates_raw": {
+        "median_income": 93760.0,
+        "broadband_rate": 0.9113,
+        "bachelor_plus_rate": 0.4194,
+        "vehicle_access_rate": 0.914
+      }
+    },
+    {
+      "state": "NY",
+      "opportunity_rank": 33,
+      "opportunity_index": 8.3,
+      "obesity_burden_usd": 8640,
+      "adjusted_index": 34.2,
+      "naive_index": 50.3,
+      "obesity_prevalence_pct": 23.19,
+      "modeled_members": 10,
+      "real_wage_value_usd": 97293,
+      "wage_to_local_median": 1.241,
+      "rpp": 107.921,
+      "adjusted_components": {
+        "real_wage_value": 0.095,
+        "wage_to_local_median": 0.237,
+        "broadband_rate": 0.693
+      },
+      "naive_components": {
+        "median_income": 0.635,
+        "broadband_rate": 0.693,
+        "bachelor_plus_rate": 0.685,
+        "vehicle_access_rate": 0.0
+      },
+      "correlates_raw": {
+        "median_income": 84578.0,
+        "broadband_rate": 0.8956,
+        "bachelor_plus_rate": 0.3955,
+        "vehicle_access_rate": 0.7097
+      }
+    },
+    {
+      "state": "NV",
+      "opportunity_rank": 34,
+      "opportunity_index": 6.3,
+      "obesity_burden_usd": 2276,
+      "adjusted_index": 51.9,
+      "naive_index": 55.3,
+      "obesity_prevalence_pct": 30.54,
+      "modeled_members": 2,
+      "real_wage_value_usd": 105022,
+      "wage_to_local_median": 1.39,
+      "rpp": 99.979,
+      "adjusted_components": {
+        "real_wage_value": 0.393,
+        "wage_to_local_median": 0.406,
+        "broadband_rate": 0.757
+      },
+      "naive_components": {
+        "median_income": 0.442,
+        "broadband_rate": 0.757,
+        "bachelor_plus_rate": 0.144,
+        "vehicle_access_rate": 0.868
+      },
+      "correlates_raw": {
+        "median_income": 75561.0,
+        "broadband_rate": 0.9027,
+        "bachelor_plus_rate": 0.2738,
+        "vehicle_access_rate": 0.9293
+      }
+    },
+    {
+      "state": "WY",
+      "opportunity_rank": 35,
+      "opportunity_index": 1.4,
+      "obesity_burden_usd": 1229,
+      "adjusted_index": 59.4,
+      "naive_index": 58.1,
+      "obesity_prevalence_pct": 32.98,
+      "modeled_members": 1,
+      "real_wage_value_usd": 113280,
+      "wage_to_local_median": 1.403,
+      "rpp": 92.691,
+      "adjusted_components": {
+        "real_wage_value": 0.712,
+        "wage_to_local_median": 0.421,
+        "broadband_rate": 0.65
+      },
+      "naive_components": {
+        "median_income": 0.426,
+        "broadband_rate": 0.65,
+        "bachelor_plus_rate": 0.256,
+        "vehicle_access_rate": 0.991
+      },
+      "correlates_raw": {
+        "median_income": 74815.0,
+        "broadband_rate": 0.8908,
+        "bachelor_plus_rate": 0.2992,
+        "vehicle_access_rate": 0.9604
+      }
+    },
+    {
+      "state": "ID",
+      "opportunity_rank": 36,
+      "opportunity_index": 1.3,
+      "obesity_burden_usd": 1190,
+      "adjusted_index": 61.1,
+      "naive_index": 64.0,
+      "obesity_prevalence_pct": 31.93,
+      "modeled_members": 1,
+      "real_wage_value_usd": 109955,
+      "wage_to_local_median": 1.407,
+      "rpp": 95.494,
+      "adjusted_components": {
+        "real_wage_value": 0.583,
+        "wage_to_local_median": 0.425,
+        "broadband_rate": 0.826
+      },
+      "naive_components": {
+        "median_income": 0.422,
+        "broadband_rate": 0.826,
+        "bachelor_plus_rate": 0.313,
+        "vehicle_access_rate": 1.0
+      },
+      "correlates_raw": {
+        "median_income": 74636.0,
+        "broadband_rate": 0.9103,
+        "bachelor_plus_rate": 0.3118,
+        "vehicle_access_rate": 0.9627
+      }
+    },
+    {
+      "state": "DE",
+      "opportunity_rank": 37,
+      "opportunity_index": 0.0,
+      "obesity_burden_usd": 1325,
+      "adjusted_index": 50.8,
+      "naive_index": 71.5,
+      "obesity_prevalence_pct": 35.56,
+      "modeled_members": 1,
+      "real_wage_value_usd": 105202,
+      "wage_to_local_median": 1.267,
+      "rpp": 99.808,
+      "adjusted_components": {
+        "real_wage_value": 0.4,
+        "wage_to_local_median": 0.266,
+        "broadband_rate": 0.858
+      },
+      "naive_components": {
+        "median_income": 0.598,
+        "broadband_rate": 0.858,
+        "bachelor_plus_rate": 0.495,
+        "vehicle_access_rate": 0.909
+      },
+      "correlates_raw": {
+        "median_income": 82855.0,
+        "broadband_rate": 0.9138,
+        "bachelor_plus_rate": 0.3528,
+        "vehicle_access_rate": 0.9398
+      }
+    }
+  ]
+}

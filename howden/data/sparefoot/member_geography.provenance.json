@@ -1,0 +1,33 @@
+{
+  "artifact": "member_geography",
+  "tier": "modeled",
+  "method": "residence_prior",
+  "generated": "2026-07-21 15:07 UTC",
+  "sources": [
+    {
+      "name": "LinkedIn People-tab state facets (storableinc)",
+      "date": "2026-07-20",
+      "role": "state prior \u2014 11 material states, 400/591"
+    },
+    {
+      "name": "Storable registered-hiring state list (job postings)",
+      "date": "2026-07-20",
+      "role": "tail-state support"
+    },
+    {
+      "name": "US_2025.v0 synth pop (national pull)",
+      "role": "NAICS-51 resident + working-age tract counts"
+    },
+    {
+      "name": "STORABLE-WORKFORCE-PROVENANCE.md",
+      "role": "evidence record; decisions 1-3, 7"
+    }
+  ],
+  "assumptions": {
+    "support_blend": 0.2,
+    "tail_mass": 0.3232,
+    "tail_allocation": "proportional to NAICS-51 residents, registered states only",
+    "zero_commute_anchor": "US staff fully remote (careers page, verified 3-0)"
+  },
+  "participants_basis": 505
+}

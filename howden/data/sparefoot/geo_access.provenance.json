@@ -1,0 +1,36 @@
+{
+  "step": "Access to care",
+  "tier": "modeled",
+  "prospect": "sparefoot",
+  "summary": [
+    "This page asks a simple question: how easy is it for members to reach primary care where they live? The federal Health Resources & Services Administration (HRSA) designates parts of the country that are short of primary-care providers and scores each shortage area from 0 to 25 by severity.",
+    "We overlay the modeled member geography on those designations: how many members live in a shortage county, and how severe the shortage is where they live. The shortage designations are federal fact; which members live in them comes from our commute-based model."
+  ],
+  "moves": [
+    {
+      "headline": "Score every county",
+      "detail": "HRSA geographic primary-care HPSA designations, reduced to the worst designated score per county (designations can be sub-county; taking the worst is the standard conservative mapping).",
+      "citations": [
+        {
+          "label": "HRSA HPSA \u2014 Primary Care (designated, full detail)",
+          "url": "https://data.hrsa.gov/DataDownload/DD_Files/BCD_HPSA_FCT_DET_PC.csv"
+        }
+      ]
+    },
+    {
+      "headline": "Overlay the members",
+      "detail": "exposure = modeled members living in designated counties \u00f7 all members; severity = the member-weighted mean HPSA score. Member locations come from the commute-based member geography (see the Synthetic member profile methodology).",
+      "citations": [
+        {
+          "label": "Member geography (Step 2b artifact)",
+          "url": null
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Shortage areas can be smaller than a county; mapping to counties is a standard approximation and can overstate exposure at the edges.",
+    "Which members live where is modeled from commute data, not actual addresses.",
+    "Primary care only in this version \u2014 dental and mental-health shortage designations are a straightforward extension."
+  ]
+}

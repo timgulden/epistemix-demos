@@ -1,0 +1,58 @@
+{
+  "step": "Clinical cost drivers",
+  "tier": "modeled",
+  "summary": [
+    "An employer's actual medical conditions can't be known without claims data \u2014 so this page models them. Each synthetic member is matched to real, anonymous respondents of the CDC's national health surveys who share their age, sex, race/ethnicity and income \u2014 drawn from their own state where possible \u2014 and inherits that respondent's health profile.",
+    "The result is condition rates that reflect this particular workforce \u2014 younger, hourly, retail \u2014 rather than the general population. Dollar figures appear only where published research provides a per-person annual cost for a condition; everywhere else we show how many people are affected and leave the dollars blank rather than invent them."
+  ],
+  "moves": [
+    {
+      "headline": "Conditions on the individual twins, not tract averages",
+      "detail": "Each twin gets condition flags (obesity BMI\u226530 measured, diabetes diagnosed, hypertension measured) via BRFSS 2024 + NHANES 2021\u201323 donor matching on age \u00d7 sex \u00d7 race \u00d7 income with a home-state geographic ring \u2014 so prevalence reflects the workforce's own demographics, fixing the ecological weakness.",
+      "citations": [
+        {
+          "label": "disease-enrichment/ (BRFSS 2024, NHANES 2021\u201323)",
+          "url": null
+        },
+        {
+          "label": "data-prep/RUN-HEALTH-ENRICHMENT.md",
+          "url": null
+        }
+      ]
+    },
+    {
+      "headline": "Burden = affected covered adults \u00d7 a cited cost basis",
+      "detail": "National prevalence \u00d7 covered adults \u00d7 the per-condition annual incremental cost range. Obesity/diabetes/hypertension use the MEPS/ADA ranges; depression (MEPS, Egede 2016), arthritis/MSK (MEPS, Yelin/Murphy) and smoking (literature range) are priced from published estimates. Conditions with no defensible cost basis show prevalence + headcount only \u2014 no invented dollars.",
+      "citations": [
+        {
+          "label": "AHRQ MEPS incremental cost",
+          "url": null
+        },
+        {
+          "label": "Egede et al. 2016 (depression, MEPS 2004\u201311)",
+          "url": null
+        },
+        {
+          "label": "Yelin 1997 / Murphy 2013 (arthritis, MEPS)",
+          "url": null
+        },
+        {
+          "label": "NBER w29885 + 2018 per-smoker excess (smoking range)",
+          "url": null
+        }
+      ]
+    },
+    {
+      "headline": "Real comorbidity",
+      "detail": "Per-twin overlap across obesity/diabetes/hypertension \u2014 impossible with ecological prevalence. Conditions may be summed within a person, never across the three.",
+      "citations": []
+    }
+  ],
+  "limitations": [
+    "Modeled imputation (donor hot-deck + conditional fusion), not claims \u2014 tier=modeled.",
+    "Employed-workforce burden, NOT general population (no PLACES calibration, on purpose).",
+    "Per-state prevalence only where \u226550 twins; smaller states omitted.",
+    "Worker condition rates applied to covered adults (including adult dependents).",
+    "Literature cost ranges are as published (not inflation-adjusted); the smoking range is wide because selection-adjusted estimates run well below raw per-smoker excess."
+  ]
+}

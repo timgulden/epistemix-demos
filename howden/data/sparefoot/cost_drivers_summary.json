@@ -1,0 +1,709 @@
+{
+  "prospect": "sparefoot",
+  "places_release": "CDC PLACES 2025 primary; 2024 fallback for states absent from 2025",
+  "places_vintage_mix": {
+    "2025": 73079,
+    "2024_fallback": 3395,
+    "note": "PLACES 2025 omits some states entirely (BRFSS data-sharing \u2014 e.g. PA, KY); those tracts use the 2024 release. CT is left as a no-data gap (2022 tract redefinition vs LODES 2020 blocks)."
+  },
+  "tracts_matched": 76474,
+  "member_match_rate": 1.0,
+  "modeled_members_matched": 505,
+  "conditions_reported_separately": [
+    "obesity",
+    "diabetes",
+    "hypertension"
+  ],
+  "comorbidity_note": "Obesity, diabetes, and hypertension overlap heavily and are reported SEPARATELY; burdens are NOT summed (that double-counts the same members).",
+  "workforce_adjustment": {
+    "applied": true,
+    "default_view": "workforce_adjusted",
+    "age_standardization_multipliers": {
+      "obesity": 1.018,
+      "diabetes": 0.902,
+      "hypertension": 0.964
+    },
+    "workforce_age_profile": {
+      "le_29": 0.1221,
+      "30_to_54": 0.7129,
+      "ge_55": 0.165
+    },
+    "residential_adult_age_dist": {
+      "le_29": 0.21,
+      "30_to_54": 0.41,
+      "ge_55": 0.38
+    },
+    "lambda_compositional": 0.3,
+    "national_member_mean_pct": {
+      "obesity": 33.97,
+      "diabetes": 10.42,
+      "hypertension": 32.18
+    },
+    "note": "Two corrections vs the naive residential view: (A1) age-standardize to the workforce age mix; (A2) shrink each tract toward the national member mean by \u03bb (members resemble each other more than their neighbors). See WORKFORCE_ADJUSTMENT.md. Limits: area-based LODES, national age rates, income/occupation uniformity only partially captured."
+  },
+  "prevalence_caveat": "PLACES gives residential CRUDE prevalence; the workforce-adjusted view corrects for the younger member age mix and compositional uniformity. Bands use PLACES' own 95% CIs on the residential figure.",
+  "national": {
+    "obesity": {
+      "residential": {
+        "member_weighted_prevalence_pct": 33.35,
+        "member_weighted_prevalence_band_pct": [
+          28.27,
+          38.7
+        ],
+        "affected_covered_adults_modeled": 225,
+        "affected_participants_basis": 168,
+        "annual_cost_driver_burden_usd": [
+          428347,
+          766515
+        ]
+      },
+      "workforce_adjusted": {
+        "member_weighted_prevalence_pct": 33.97,
+        "affected_covered_adults_modeled": 230,
+        "affected_participants_basis": 172,
+        "annual_cost_driver_burden_usd": [
+          436243,
+          780645
+        ]
+      },
+      "incremental_cost_per_person_usd": [
+        1900,
+        3400
+      ],
+      "burden_basis": "covered adults (employees + adult dependents); \u22481.34\u00d7 participants",
+      "cost_basis": "Excess annual medical expenditure per adult with non-severe obesity. Cawley et al. 2021 (~$2,505, MEPS); class 1\u20132 ~$2,580 (Ward et al. 2021). Severe (class 3) materially higher (~$6,300).",
+      "usd_year": "2014\u20132021"
+    },
+    "diabetes": {
+      "residential": {
+        "member_weighted_prevalence_pct": 11.54,
+        "member_weighted_prevalence_band_pct": [
+          10.04,
+          13.17
+        ],
+        "affected_covered_adults_modeled": 78,
+        "affected_participants_basis": 58,
+        "annual_cost_driver_burden_usd": [
+          749213,
+          938234
+        ]
+      },
+      "workforce_adjusted": {
+        "member_weighted_prevalence_pct": 10.42,
+        "affected_covered_adults_modeled": 70,
+        "affected_participants_basis": 53,
+        "annual_cost_driver_burden_usd": [
+          676021,
+          846575
+        ]
+      },
+      "incremental_cost_per_person_usd": [
+        9600,
+        12022
+      ],
+      "burden_basis": "covered adults (employees + adult dependents); \u22481.34\u00d7 participants",
+      "cost_basis": "Excess per-person annual medical expenditure attributable to diabetes. ADA Economic Costs of Diabetes (2022 data): ~$19,736 vs ~$7,714 \u2192 excess ~$12,022; ~$9,600 lower bound from prior MEPS analyses.",
+      "usd_year": "2017\u20132022"
+    },
+    "hypertension": {
+      "residential": {
+        "member_weighted_prevalence_pct": 33.37,
+        "member_weighted_prevalence_band_pct": [
+          30.11,
+          36.71
+        ],
+        "affected_covered_adults_modeled": 226,
+        "affected_participants_basis": 169,
+        "annual_cost_driver_burden_usd": [
+          433103,
+          686875
+        ]
+      },
+      "workforce_adjusted": {
+        "member_weighted_prevalence_pct": 32.18,
+        "affected_covered_adults_modeled": 218,
+        "affected_participants_basis": 163,
+        "annual_cost_driver_burden_usd": [
+          417705,
+          662454
+        ]
+      },
+      "incremental_cost_per_person_usd": [
+        1920,
+        3045
+      ],
+      "burden_basis": "covered adults (employees + adult dependents); \u22481.34\u00d7 participants",
+      "cost_basis": "Incremental per-person annual expenditure attributable to hypertension. Kirkland et al. 2018 (~$1,920, MEPS); 2024 MEPS analysis of privately-insured adults 18\u201364 ~$1,761\u2013$3,045 (2021 USD).",
+      "usd_year": "2018\u20132021"
+    }
+  },
+  "ranking_note": "Absolute burden (affected count) favors large metros; prevalence intensity (member-weighted rate) surfaces high-burden geographies. Both shown for the workforce-adjusted (default) and residential (naive) views.",
+  "absolute_burden_adjusted": {
+    "obesity": [
+      {
+        "county_geoid": "48201",
+        "modeled_members": 12,
+        "affected_members": 4
+      },
+      {
+        "county_geoid": "48113",
+        "modeled_members": 12,
+        "affected_members": 4
+      },
+      {
+        "county_geoid": "37183",
+        "modeled_members": 12,
+        "affected_members": 4
+      },
+      {
+        "county_geoid": "37119",
+        "modeled_members": 11,
+        "affected_members": 4
+      },
+      {
+        "county_geoid": "48453",
+        "modeled_members": 9,
+        "affected_members": 3
+      },
+      {
+        "county_geoid": "49035",
+        "modeled_members": 9,
+        "affected_members": 3
+      },
+      {
+        "county_geoid": "48029",
+        "modeled_members": 7,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "48439",
+        "modeled_members": 7,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "48085",
+        "modeled_members": 6,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "17031",
+        "modeled_members": 4,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "20091",
+        "modeled_members": 6,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "37081",
+        "modeled_members": 5,
+        "affected_members": 2
+      }
+    ],
+    "diabetes": [
+      {
+        "county_geoid": "48201",
+        "modeled_members": 12,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "48113",
+        "modeled_members": 12,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "37183",
+        "modeled_members": 12,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "37119",
+        "modeled_members": 11,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "48029",
+        "modeled_members": 7,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "48439",
+        "modeled_members": 7,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "48453",
+        "modeled_members": 9,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "49035",
+        "modeled_members": 9,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "48141",
+        "modeled_members": 4,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "17031",
+        "modeled_members": 4,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "37081",
+        "modeled_members": 5,
+        "affected_members": 1
+      },
+      {
+        "county_geoid": "48085",
+        "modeled_members": 6,
+        "affected_members": 1
+      }
+    ],
+    "hypertension": [
+      {
+        "county_geoid": "37183",
+        "modeled_members": 12,
+        "affected_members": 4
+      },
+      {
+        "county_geoid": "48113",
+        "modeled_members": 12,
+        "affected_members": 4
+      },
+      {
+        "county_geoid": "48201",
+        "modeled_members": 12,
+        "affected_members": 4
+      },
+      {
+        "county_geoid": "37119",
+        "modeled_members": 11,
+        "affected_members": 3
+      },
+      {
+        "county_geoid": "49035",
+        "modeled_members": 9,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "48453",
+        "modeled_members": 9,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "48029",
+        "modeled_members": 7,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "48439",
+        "modeled_members": 7,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "20091",
+        "modeled_members": 6,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "48085",
+        "modeled_members": 6,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "17031",
+        "modeled_members": 4,
+        "affected_members": 2
+      },
+      {
+        "county_geoid": "37081",
+        "modeled_members": 5,
+        "affected_members": 2
+      }
+    ]
+  },
+  "prevalence_intensity_by_state": {
+    "obesity": {
+      "workforce_adjusted": [
+        {
+          "geo": "MS",
+          "member_weighted_prevalence_pct": 39.0,
+          "modeled_members": 2
+        },
+        {
+          "geo": "LA",
+          "member_weighted_prevalence_pct": 38.5,
+          "modeled_members": 4
+        },
+        {
+          "geo": "AL",
+          "member_weighted_prevalence_pct": 38.1,
+          "modeled_members": 5
+        },
+        {
+          "geo": "OK",
+          "member_weighted_prevalence_pct": 37.6,
+          "modeled_members": 3
+        },
+        {
+          "geo": "IN",
+          "member_weighted_prevalence_pct": 37.5,
+          "modeled_members": 6
+        },
+        {
+          "geo": "IA",
+          "member_weighted_prevalence_pct": 37.0,
+          "modeled_members": 3
+        },
+        {
+          "geo": "WI",
+          "member_weighted_prevalence_pct": 36.8,
+          "modeled_members": 6
+        },
+        {
+          "geo": "NE",
+          "member_weighted_prevalence_pct": 36.6,
+          "modeled_members": 2
+        },
+        {
+          "geo": "OH",
+          "member_weighted_prevalence_pct": 36.5,
+          "modeled_members": 13
+        },
+        {
+          "geo": "TN",
+          "member_weighted_prevalence_pct": 36.4,
+          "modeled_members": 5
+        },
+        {
+          "geo": "MO",
+          "member_weighted_prevalence_pct": 36.0,
+          "modeled_members": 23
+        },
+        {
+          "geo": "KS",
+          "member_weighted_prevalence_pct": 35.8,
+          "modeled_members": 18
+        }
+      ],
+      "residential": [
+        {
+          "geo": "MS",
+          "member_weighted_prevalence_pct": 40.4,
+          "modeled_members": 2
+        },
+        {
+          "geo": "LA",
+          "member_weighted_prevalence_pct": 39.7,
+          "modeled_members": 4
+        },
+        {
+          "geo": "AL",
+          "member_weighted_prevalence_pct": 39.2,
+          "modeled_members": 5
+        },
+        {
+          "geo": "OK",
+          "member_weighted_prevalence_pct": 38.5,
+          "modeled_members": 3
+        },
+        {
+          "geo": "IN",
+          "member_weighted_prevalence_pct": 38.2,
+          "modeled_members": 6
+        },
+        {
+          "geo": "IA",
+          "member_weighted_prevalence_pct": 37.6,
+          "modeled_members": 3
+        },
+        {
+          "geo": "WI",
+          "member_weighted_prevalence_pct": 37.4,
+          "modeled_members": 6
+        },
+        {
+          "geo": "NE",
+          "member_weighted_prevalence_pct": 37.0,
+          "modeled_members": 2
+        },
+        {
+          "geo": "OH",
+          "member_weighted_prevalence_pct": 36.9,
+          "modeled_members": 13
+        },
+        {
+          "geo": "TN",
+          "member_weighted_prevalence_pct": 36.7,
+          "modeled_members": 5
+        },
+        {
+          "geo": "MO",
+          "member_weighted_prevalence_pct": 36.1,
+          "modeled_members": 23
+        },
+        {
+          "geo": "KS",
+          "member_weighted_prevalence_pct": 35.9,
+          "modeled_members": 18
+        }
+      ]
+    },
+    "diabetes": {
+      "workforce_adjusted": [
+        {
+          "geo": "MS",
+          "member_weighted_prevalence_pct": 13.0,
+          "modeled_members": 2
+        },
+        {
+          "geo": "LA",
+          "member_weighted_prevalence_pct": 12.7,
+          "modeled_members": 4
+        },
+        {
+          "geo": "AL",
+          "member_weighted_prevalence_pct": 12.4,
+          "modeled_members": 5
+        },
+        {
+          "geo": "SC",
+          "member_weighted_prevalence_pct": 11.8,
+          "modeled_members": 5
+        },
+        {
+          "geo": "FL",
+          "member_weighted_prevalence_pct": 11.5,
+          "modeled_members": 26
+        },
+        {
+          "geo": "TN",
+          "member_weighted_prevalence_pct": 11.5,
+          "modeled_members": 5
+        },
+        {
+          "geo": "OH",
+          "member_weighted_prevalence_pct": 11.4,
+          "modeled_members": 13
+        },
+        {
+          "geo": "IN",
+          "member_weighted_prevalence_pct": 11.3,
+          "modeled_members": 6
+        },
+        {
+          "geo": "DE",
+          "member_weighted_prevalence_pct": 11.2,
+          "modeled_members": 1
+        },
+        {
+          "geo": "OK",
+          "member_weighted_prevalence_pct": 11.2,
+          "modeled_members": 3
+        },
+        {
+          "geo": "TX",
+          "member_weighted_prevalence_pct": 11.0,
+          "modeled_members": 102
+        },
+        {
+          "geo": "GA",
+          "member_weighted_prevalence_pct": 11.0,
+          "modeled_members": 10
+        }
+      ],
+      "residential": [
+        {
+          "geo": "MS",
+          "member_weighted_prevalence_pct": 15.6,
+          "modeled_members": 2
+        },
+        {
+          "geo": "LA",
+          "member_weighted_prevalence_pct": 15.1,
+          "modeled_members": 4
+        },
+        {
+          "geo": "AL",
+          "member_weighted_prevalence_pct": 14.7,
+          "modeled_members": 5
+        },
+        {
+          "geo": "SC",
+          "member_weighted_prevalence_pct": 13.7,
+          "modeled_members": 5
+        },
+        {
+          "geo": "TN",
+          "member_weighted_prevalence_pct": 13.3,
+          "modeled_members": 5
+        },
+        {
+          "geo": "FL",
+          "member_weighted_prevalence_pct": 13.2,
+          "modeled_members": 26
+        },
+        {
+          "geo": "OH",
+          "member_weighted_prevalence_pct": 13.1,
+          "modeled_members": 13
+        },
+        {
+          "geo": "IN",
+          "member_weighted_prevalence_pct": 13.0,
+          "modeled_members": 6
+        },
+        {
+          "geo": "DE",
+          "member_weighted_prevalence_pct": 12.8,
+          "modeled_members": 1
+        },
+        {
+          "geo": "OK",
+          "member_weighted_prevalence_pct": 12.8,
+          "modeled_members": 3
+        },
+        {
+          "geo": "TX",
+          "member_weighted_prevalence_pct": 12.5,
+          "modeled_members": 102
+        },
+        {
+          "geo": "GA",
+          "member_weighted_prevalence_pct": 12.5,
+          "modeled_members": 10
+        }
+      ]
+    },
+    "hypertension": {
+      "workforce_adjusted": [
+        {
+          "geo": "MS",
+          "member_weighted_prevalence_pct": 40.0,
+          "modeled_members": 2
+        },
+        {
+          "geo": "AL",
+          "member_weighted_prevalence_pct": 38.5,
+          "modeled_members": 5
+        },
+        {
+          "geo": "LA",
+          "member_weighted_prevalence_pct": 38.0,
+          "modeled_members": 4
+        },
+        {
+          "geo": "TN",
+          "member_weighted_prevalence_pct": 35.7,
+          "modeled_members": 5
+        },
+        {
+          "geo": "OK",
+          "member_weighted_prevalence_pct": 35.6,
+          "modeled_members": 3
+        },
+        {
+          "geo": "SC",
+          "member_weighted_prevalence_pct": 35.3,
+          "modeled_members": 5
+        },
+        {
+          "geo": "IN",
+          "member_weighted_prevalence_pct": 35.1,
+          "modeled_members": 6
+        },
+        {
+          "geo": "DE",
+          "member_weighted_prevalence_pct": 34.6,
+          "modeled_members": 1
+        },
+        {
+          "geo": "OH",
+          "member_weighted_prevalence_pct": 34.5,
+          "modeled_members": 13
+        },
+        {
+          "geo": "MO",
+          "member_weighted_prevalence_pct": 33.9,
+          "modeled_members": 23
+        },
+        {
+          "geo": "MI",
+          "member_weighted_prevalence_pct": 33.9,
+          "modeled_members": 10
+        },
+        {
+          "geo": "NC",
+          "member_weighted_prevalence_pct": 33.8,
+          "modeled_members": 82
+        }
+      ],
+      "residential": [
+        {
+          "geo": "MS",
+          "member_weighted_prevalence_pct": 44.9,
+          "modeled_members": 2
+        },
+        {
+          "geo": "AL",
+          "member_weighted_prevalence_pct": 42.8,
+          "modeled_members": 5
+        },
+        {
+          "geo": "LA",
+          "member_weighted_prevalence_pct": 42.0,
+          "modeled_members": 4
+        },
+        {
+          "geo": "TN",
+          "member_weighted_prevalence_pct": 38.5,
+          "modeled_members": 5
+        },
+        {
+          "geo": "OK",
+          "member_weighted_prevalence_pct": 38.4,
+          "modeled_members": 3
+        },
+        {
+          "geo": "SC",
+          "member_weighted_prevalence_pct": 38.0,
+          "modeled_members": 5
+        },
+        {
+          "geo": "IN",
+          "member_weighted_prevalence_pct": 37.7,
+          "modeled_members": 6
+        },
+        {
+          "geo": "DE",
+          "member_weighted_prevalence_pct": 37.0,
+          "modeled_members": 1
+        },
+        {
+          "geo": "OH",
+          "member_weighted_prevalence_pct": 36.8,
+          "modeled_members": 13
+        },
+        {
+          "geo": "MO",
+          "member_weighted_prevalence_pct": 35.9,
+          "modeled_members": 23
+        },
+        {
+          "geo": "MI",
+          "member_weighted_prevalence_pct": 35.9,
+          "modeled_members": 10
+        },
+        {
+          "geo": "NC",
+          "member_weighted_prevalence_pct": 35.8,
+          "modeled_members": 82
+        }
+      ]
+    }
+  }
+}
