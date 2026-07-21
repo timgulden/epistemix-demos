@@ -61,6 +61,8 @@
     "arrangement_count": 1,
     "fully_insured_medical_lives_eoy": 505,
     "total_broker_commission_usd": 0,
+    "total_broker_fees_usd": 156324,
+    "total_broker_compensation_usd": 156324,
     "arrangements": [
       {
         "carrier": "CIGNA HEALTH AND LIFE INSURANCE COMPANY AND AFFILIATES",
@@ -68,6 +70,7 @@
         "benefit": "Medical",
         "covered_lives_eoy": 505,
         "broker_commission_usd": 0,
+        "broker_fees_usd": 156324,
         "is_medical": true
       }
     ]
