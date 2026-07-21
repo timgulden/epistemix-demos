@@ -29,7 +29,7 @@
   "index_definitions": {
     "opportunity": "Default. burden-rate \u00d7 engageability \u00d7 log(members), normalized 0\u2013100.",
     "naive": "Mean of min-max-normalized ACS median income, broadband, bachelor's+, vehicle access. Describes neighbors, not members; a wealth map.",
-    "workforce_adjusted": "Mean of min-max-normalized real_wage_value (anchor/RPP), wage_to_local_median (anchor/median income), broadband. Relative standing of a constant HD wage \u2014 'good job here / bad job here'."
+    "workforce_adjusted": "Mean of min-max-normalized real_wage_value (anchor/RPP), wage_to_local_median (anchor/median income), broadband. Relative standing of a constant nominal wage \u2014 'good job here / bad job here'."
   },
   "interpretation_caveat": "A relative SCREENING heuristic across the material member states \u2014 not a probability, and not a verdict that low-index geographies aren't worth serving. Condition prevalence is modeled (enriched twins); the ranking is state-level guidance.",
   "ranking": [

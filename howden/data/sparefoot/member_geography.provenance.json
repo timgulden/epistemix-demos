@@ -1,33 +1,60 @@
 {
-  "artifact": "member_geography",
+  "step": "member_geography",
+  "prospect": "sparefoot",
   "tier": "modeled",
-  "method": "residence_prior",
-  "generated": "2026-07-21 15:07 UTC",
-  "sources": [
+  "summary": [
+    "Storable is a fully distributed company \u2014 its own careers page says US staff are fully remote, living in 41 states. So unlike a store or factory workforce, members can't be placed by commute patterns around worksites. Instead, this page starts from where employees are observed to live (professional-network location data), and fills in the fine grain with where Information-sector workers live within each state.",
+    "The result is a residence model: eleven states hold about two-thirds of members (Texas and North Carolina lead \u2014 the legacy merger sites persist as residence patterns), and the rest spread across the ~37 states where the company is registered to hire."
+  ],
+  "moves": [
     {
-      "name": "LinkedIn People-tab state facets (storableinc)",
-      "date": "2026-07-20",
-      "role": "state prior \u2014 11 material states, 400/591"
+      "headline": "State shares from observed employee residence",
+      "detail": "LinkedIn company-page location facets (762 associated members, 591 US) give observed state counts for the 11 states holding \u22652% of members (400/591 = 67.7%). The remaining 32.3% is spread across the registered-hiring states in proportion to each state's Information-sector residents.",
+      "citations": [
+        {
+          "label": "LinkedIn: linkedin.com/company/storableinc People tab (2026-07-20)"
+        },
+        {
+          "label": "Storable careers page \u2014 'fully remote in the U.S.'",
+          "url": "https://www.storable.com/about-us/culture/careers/"
+        },
+        {
+          "label": "Registered-hiring states: Built In Austin job posting",
+          "url": "https://www.builtinaustin.com/job/global-payroll-tax-manager/7293200"
+        }
+      ]
     },
     {
-      "name": "Storable registered-hiring state list (job postings)",
-      "date": "2026-07-20",
-      "role": "tail-state support"
+      "headline": "Within states: members live where Information-sector workers live",
+      "detail": "Tract weights = 80% share of the state's NAICS-51-employed residents + 20% share of all working-age residents. The 20% support blend reflects customer-support/ops staff, who are under-represented on LinkedIn and less tech-metro concentrated; the blend weight is bounded by the coverage accounting in the evidence record (~15\u201325%).",
+      "citations": [
+        {
+          "label": "US_2025.v0 synthetic population \u2014 workplace NAICS by residence tract"
+        },
+        {
+          "label": "STORABLE-WORKFORCE-PROVENANCE.md \u2014 coverage & sampling bias"
+        }
+      ]
     },
     {
-      "name": "US_2025.v0 synth pop (national pull)",
-      "role": "NAICS-51 resident + working-age tract counts"
-    },
-    {
-      "name": "STORABLE-WORKFORCE-PROVENANCE.md",
-      "role": "evidence record; decisions 1-3, 7"
+      "headline": "No commute anchor \u2014 deliberately",
+      "detail": "The legacy offices (Austin, Wake Forest, Westwood KS, St. George) appear as residence concentrations, not commute destinations. Modeled office-anchored share: zero.",
+      "citations": [
+        {
+          "label": "Verified 3\u20130: 'fully distributed company' (multiple sources)"
+        }
+      ]
     }
+  ],
+  "limitations": [
+    "LinkedIn over-represents professional staff and under-represents hourly support staff; the support blend partially corrects this.",
+    "State counts are a 2026 snapshot including some former employees; shares, not absolute counts, carry the signal.",
+    "Tail states (each <2% of members) are modeled, not observed."
   ],
   "assumptions": {
     "support_blend": 0.2,
-    "tail_mass": 0.3232,
-    "tail_allocation": "proportional to NAICS-51 residents, registered states only",
-    "zero_commute_anchor": "US staff fully remote (careers page, verified 3-0)"
+    "tail_mass": 0.3232
   },
+  "generated": "2026-07-21 20:46 UTC",
   "participants_basis": 505
 }
