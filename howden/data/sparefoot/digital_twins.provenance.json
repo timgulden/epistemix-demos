@@ -1,0 +1,74 @@
+{
+  "artifact": "digital_twins",
+  "tier": "modeled",
+  "method": "selection_from_enriched_population",
+  "generated": "2026-07-21 23:47 UTC",
+  "seed": 42,
+  "cohorts": {
+    "workforce": "employed 18-74, age/sex/income post-stratified to Information-sector targets, enrollment tilt, one per household",
+    "baseline": "any adult 18-74 in member tracts, calibration weight only \u2014 the neighborhood-baseline toggle state"
+  },
+  "demographic_gate": {
+    "realized": {
+      "age": {
+        "18-29": 0.1143,
+        "30-44": 0.4618,
+        "45-54": 0.2455,
+        "55-64": 0.1516,
+        "65-74": 0.0267
+      },
+      "sex": {
+        "male": 0.5511,
+        "female": 0.4489
+      },
+      "income": {
+        "band_0": 0.0565,
+        "band_1": 0.2426,
+        "band_2": 0.3052,
+        "band_3": 0.2085,
+        "band_4": 0.1873
+      }
+    },
+    "age_target_tilted": {
+      "18-29": 0.1329,
+      "30-44": 0.451,
+      "45-54": 0.2273,
+      "55-64": 0.1572,
+      "65-74": 0.0316
+    },
+    "flags": []
+  },
+  "assumptions": {
+    "age_target": {
+      "18-29": 0.17,
+      "30-44": 0.45,
+      "45-54": 0.21,
+      "55-64": 0.14,
+      "65-74": 0.03
+    },
+    "sex_target": {
+      "male": 0.535,
+      "female": 0.465
+    },
+    "income_target": {
+      "band_0": 0.07,
+      "band_1": 0.25,
+      "band_2": 0.3,
+      "band_3": 0.2,
+      "band_4": 0.18
+    },
+    "enrollment_tilt": {
+      "18-29": 0.78,
+      "30-44": 1.0,
+      "45-54": 1.08,
+      "55-64": 1.12,
+      "65-74": 1.05
+    },
+    "targets_source": "BLS CPS/OES 2024 Information-sector shapes, support-blended; PUMS_REPLACEABLE (see script)",
+    "sex_coding": "synth-pop: 1=male, 0=female (vendor/logic/enrich.py; gate caught the earlier 1/2 assumption 2026-07-21)"
+  },
+  "participants_basis": 505,
+  "analysis_n": 50500,
+  "oversample_factor": 100.0,
+  "note": "provenance reconstructed from logged gate after a KeyError in the provenance-write step (parquets+summary were complete); script fixed."
+}
