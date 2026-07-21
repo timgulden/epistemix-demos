@@ -6,8 +6,10 @@
   "members_in_pc_hpsa_county": 89,
   "member_weighted_avg_hpsa_score": 13.98,
   "hpsa_score_scale": "0\u201325; higher = greater shortage",
-  "counties_with_members": 2605,
-  "counties_with_designation": 756,
+  "counties_with_members": 223,
+  "counties_with_designation": 36,
+  "counties_with_any_weight": 2605,
+  "member_county_floor": "expected members \u2265 0.5",
   "designation_types_all_designated": {
     "HPSA Population": 11733,
     "Geographic HPSA": 3091,
