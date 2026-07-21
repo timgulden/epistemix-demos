@@ -51,7 +51,7 @@
   "limitations": [
     "Modeled imputation (donor hot-deck + conditional fusion), not claims \u2014 tier=modeled.",
     "Employed-workforce burden, NOT general population (no PLACES calibration, on purpose).",
-    "Per-state prevalence only where \u226550 twins; smaller states omitted.",
+    "State values are model expectations (national cohort rate x the state's CDC PLACES geographic gradient), not per-state twin samples \u2014 per-state samples of 50-150 twins made rare-condition rankings Poisson noise. States below ~2 expected members show no estimate.",
     "Worker condition rates applied to covered adults (including adult dependents).",
     "Literature cost ranges are as published (not inflation-adjusted); the smoking range is wide because selection-adjusted estimates run well below raw per-smoker excess."
   ]
