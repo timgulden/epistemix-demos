@@ -1,6 +1,232 @@
 {
   "prospect": "sparefoot",
   "n_twins": 50000,
+  "engagement": {
+    "national": {
+      "digital_engagement_mean": 0.7163,
+      "telehealth_willing_share": 0.815,
+      "early_adopter_share": 0.2131
+    },
+    "by_state": {
+      "AL": {
+        "n": 447,
+        "digital_engagement_mean": 0.7136,
+        "telehealth_willing_share": 0.8166,
+        "early_adopter_share": 0.2327
+      },
+      "AZ": {
+        "n": 525,
+        "digital_engagement_mean": 0.7229,
+        "telehealth_willing_share": 0.8476,
+        "early_adopter_share": 0.2267
+      },
+      "CA": {
+        "n": 2030,
+        "digital_engagement_mean": 0.7161,
+        "telehealth_willing_share": 0.8153,
+        "early_adopter_share": 0.199
+      },
+      "CO": {
+        "n": 1438,
+        "digital_engagement_mean": 0.7038,
+        "telehealth_willing_share": 0.7851,
+        "early_adopter_share": 0.1732
+      },
+      "CT": {
+        "n": 489,
+        "digital_engagement_mean": 0.7088,
+        "telehealth_willing_share": 0.82,
+        "early_adopter_share": 0.2188
+      },
+      "DE": {
+        "n": 127,
+        "digital_engagement_mean": 0.7284,
+        "telehealth_willing_share": 0.811,
+        "early_adopter_share": 0.2598
+      },
+      "FL": {
+        "n": 2538,
+        "digital_engagement_mean": 0.7153,
+        "telehealth_willing_share": 0.8117,
+        "early_adopter_share": 0.2136
+      },
+      "GA": {
+        "n": 1015,
+        "digital_engagement_mean": 0.7214,
+        "telehealth_willing_share": 0.8315,
+        "early_adopter_share": 0.2158
+      },
+      "IA": {
+        "n": 300,
+        "digital_engagement_mean": 0.7098,
+        "telehealth_willing_share": 0.8133,
+        "early_adopter_share": 0.23
+      },
+      "ID": {
+        "n": 145,
+        "digital_engagement_mean": 0.7662,
+        "telehealth_willing_share": 0.8138,
+        "early_adopter_share": 0.269
+      },
+      "IL": {
+        "n": 1266,
+        "digital_engagement_mean": 0.7173,
+        "telehealth_willing_share": 0.8144,
+        "early_adopter_share": 0.233
+      },
+      "IN": {
+        "n": 546,
+        "digital_engagement_mean": 0.7112,
+        "telehealth_willing_share": 0.826,
+        "early_adopter_share": 0.2271
+      },
+      "KS": {
+        "n": 1777,
+        "digital_engagement_mean": 0.7158,
+        "telehealth_willing_share": 0.7997,
+        "early_adopter_share": 0.2302
+      },
+      "LA": {
+        "n": 363,
+        "digital_engagement_mean": 0.736,
+        "telehealth_willing_share": 0.8209,
+        "early_adopter_share": 0.2369
+      },
+      "MA": {
+        "n": 1240,
+        "digital_engagement_mean": 0.7144,
+        "telehealth_willing_share": 0.8234,
+        "early_adopter_share": 0.2016
+      },
+      "MD": {
+        "n": 851,
+        "digital_engagement_mean": 0.7165,
+        "telehealth_willing_share": 0.8143,
+        "early_adopter_share": 0.1786
+      },
+      "MI": {
+        "n": 949,
+        "digital_engagement_mean": 0.7204,
+        "telehealth_willing_share": 0.8093,
+        "early_adopter_share": 0.2255
+      },
+      "MN": {
+        "n": 678,
+        "digital_engagement_mean": 0.7274,
+        "telehealth_willing_share": 0.8142,
+        "early_adopter_share": 0.2242
+      },
+      "MO": {
+        "n": 2284,
+        "digital_engagement_mean": 0.7183,
+        "telehealth_willing_share": 0.8074,
+        "early_adopter_share": 0.2229
+      },
+      "MS": {
+        "n": 169,
+        "digital_engagement_mean": 0.7273,
+        "telehealth_willing_share": 0.8462,
+        "early_adopter_share": 0.2604
+      },
+      "NC": {
+        "n": 8122,
+        "digital_engagement_mean": 0.7183,
+        "telehealth_willing_share": 0.8158,
+        "early_adopter_share": 0.2281
+      },
+      "NE": {
+        "n": 207,
+        "digital_engagement_mean": 0.7314,
+        "telehealth_willing_share": 0.7923,
+        "early_adopter_share": 0.2126
+      },
+      "NJ": {
+        "n": 1266,
+        "digital_engagement_mean": 0.7146,
+        "telehealth_willing_share": 0.8183,
+        "early_adopter_share": 0.188
+      },
+      "NV": {
+        "n": 214,
+        "digital_engagement_mean": 0.7514,
+        "telehealth_willing_share": 0.8364,
+        "early_adopter_share": 0.2243
+      },
+      "NY": {
+        "n": 1015,
+        "digital_engagement_mean": 0.7151,
+        "telehealth_willing_share": 0.8207,
+        "early_adopter_share": 0.2069
+      },
+      "OH": {
+        "n": 1243,
+        "digital_engagement_mean": 0.72,
+        "telehealth_willing_share": 0.8238,
+        "early_adopter_share": 0.2269
+      },
+      "OK": {
+        "n": 310,
+        "digital_engagement_mean": 0.7204,
+        "telehealth_willing_share": 0.7548,
+        "early_adopter_share": 0.1871
+      },
+      "OR": {
+        "n": 528,
+        "digital_engagement_mean": 0.7118,
+        "telehealth_willing_share": 0.8068,
+        "early_adopter_share": 0.2027
+      },
+      "PA": {
+        "n": 1574,
+        "digital_engagement_mean": 0.7211,
+        "telehealth_willing_share": 0.8119,
+        "early_adopter_share": 0.2179
+      },
+      "SC": {
+        "n": 526,
+        "digital_engagement_mean": 0.7041,
+        "telehealth_willing_share": 0.8023,
+        "early_adopter_share": 0.192
+      },
+      "TN": {
+        "n": 526,
+        "digital_engagement_mean": 0.6988,
+        "telehealth_willing_share": 0.8061,
+        "early_adopter_share": 0.192
+      },
+      "TX": {
+        "n": 10068,
+        "digital_engagement_mean": 0.7152,
+        "telehealth_willing_share": 0.818,
+        "early_adopter_share": 0.2108
+      },
+      "UT": {
+        "n": 2115,
+        "digital_engagement_mean": 0.7186,
+        "telehealth_willing_share": 0.8298,
+        "early_adopter_share": 0.1924
+      },
+      "VA": {
+        "n": 1007,
+        "digital_engagement_mean": 0.7079,
+        "telehealth_willing_share": 0.8143,
+        "early_adopter_share": 0.1887
+      },
+      "WA": {
+        "n": 1438,
+        "digital_engagement_mean": 0.7065,
+        "telehealth_willing_share": 0.8143,
+        "early_adopter_share": 0.1968
+      },
+      "WI": {
+        "n": 612,
+        "digital_engagement_mean": 0.7176,
+        "telehealth_willing_share": 0.8137,
+        "early_adopter_share": 0.2304
+      }
+    },
+    "source": "HINTS-modeled per-twin digital engagement, aggregated over the analysis draw"
+  },
   "state_estimate_method": "per-state sample prevalence from the ~100-per-member analysis draw of the PLACES-raked enriched population; state shown only where the sample is expected to contain >= 10 cases of the condition",
   "covered_adults_per_participant": 1.339,
   "conditions": {

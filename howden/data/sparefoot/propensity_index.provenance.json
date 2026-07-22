@@ -71,17 +71,17 @@
         "B08201_001E",
         "B08201_002E"
       ],
-      "retrieved": "2026-07-21"
+      "retrieved": "2026-07-22"
     },
     {
       "dataset": "BEA Regional Price Parities (state, All items)",
       "url": "https://apps.bea.gov/regional/zip/SARPP.zip",
-      "retrieved": "2026-07-21"
+      "retrieved": "2026-07-22"
     },
     {
       "dataset": "Cost-driver burden (workforce-adjusted)",
       "url": "artifacts/<prospect>/cost_drivers_summary.json",
-      "retrieved": "2026-07-21"
+      "retrieved": "2026-07-22"
     }
   ]
 }
