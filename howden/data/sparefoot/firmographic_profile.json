@@ -80,5 +80,10 @@
     "broker_of_record": null,
     "note": "Broker of record is not itemized on Schedule A (it would appear on Schedule C, not attached here); the commission IS disclosed per carrier. The broker name shown is illustrative."
   },
-  "ack_id": "20250715105312NAL0002011505001"
+  "ack_id": "20250715105312NAL0002011505001",
+  "filing_pdf": {
+    "file": "form5500-2024-sparefoot-medical.pdf",
+    "label": "View the 2024 filing (PDF, 10 pages) \u2014 as filed with DOL",
+    "source": "EFAST2 public disclosure (efast2-filings-public S3), ACK 20250715105312NAL0002011505001"
+  }
 }
