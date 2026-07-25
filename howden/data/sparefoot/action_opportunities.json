@@ -1,0 +1,120 @@
+{
+  "dollars_note": "'Burden in reach' = the condition's modeled annual excess-cost burden carried by digitally-reachable members \u2014 the stakes, NOT an expected benefit. Expected benefit = this pool \u00d7 enrollment (the adoption modeling below) \u00d7 the clinical effect's impact on cost \u00d7 timing, less program cost \u2014 deliberately left to engagement scoping rather than multiplied here.",
+  "prospect": "sparefoot",
+  "tier": "modeled_illustrative",
+  "participants_basis": 505,
+  "telehealth_willing_share": 0.815,
+  "early_adopter_share": 0.2131,
+  "programs": [
+    {
+      "condition_key": "prediabetes",
+      "condition_label": "Prediabetes",
+      "program": "Diabetes prevention program (digital-delivered lifestyle intervention)",
+      "eligible_members": 95,
+      "reachable_members": 77,
+      "telehealth_willing_share": 0.815,
+      "effect_meaning": "reduction in progression to type 2 diabetes",
+      "citation": "DPP Research Group, NEJM 2002 (58% at 2.8y); Lancet 2009 10-year follow-up (34%)",
+      "citation_short": "NEJM 2002 \u00b7 Lancet 2009",
+      "effect_pct": [
+        34,
+        58
+      ],
+      "burden_in_reach_usd": [
+        41402,
+        62103
+      ],
+      "expected_enrolled": [
+        19,
+        27
+      ],
+      "enrollment_basis": "25\u201335% of reachable members (RAND Workplace Wellness Programs Study 2013; digital-DPP translation studies)",
+      "savings_5yr_gross_usd": [
+        17086,
+        41418
+      ],
+      "savings_basis": "avoided-diabetes cases: enrollment \u00d7 11.0/100 person-yr progression (DPP placebo, NEJM 2002) \u00d7 effect \u00d7 $12,022/yr excess cost (ADA 2023) \u00d7 ~2 benefit-years in the 5-yr window; gross, undiscounted"
+    },
+    {
+      "condition_key": "hypertension",
+      "condition_label": "Hypertension",
+      "program": "Remote blood-pressure self-monitoring with clinical support",
+      "eligible_members": 171,
+      "reachable_members": 139,
+      "telehealth_willing_share": 0.815,
+      "effect_meaning": "blood-pressure control improvement",
+      "citation": "TASMINH4, Lancet 2018 (self-monitoring \u00b1 telemonitoring vs usual care)",
+      "citation_short": "TASMINH4 \u00b7 Lancet 2018",
+      "effect_note": "systolic BP reduction of 3.5\u20138 mmHg at 12 months",
+      "burden_in_reach_usd": [
+        356774,
+        565822
+      ],
+      "expected_enrolled": [
+        35,
+        49
+      ],
+      "enrollment_basis": "25\u201335% of reachable members (RAND Workplace Wellness Programs Study 2013; digital-DPP translation studies)",
+      "savings_not_estimated_reason": "effect\u2192cost chain (BP\u2192events\u2192$ / symptom\u2192claims\u2192$) requires actuarial modeling beyond screening scope \u2014 not faked"
+    },
+    {
+      "condition_key": "arthritis",
+      "condition_label": "Arthritis / MSK",
+      "program": "Structured exercise therapy for joint pain (digitally delivered)",
+      "eligible_members": 87,
+      "reachable_members": 71,
+      "telehealth_willing_share": 0.815,
+      "effect_meaning": "pain reduction vs no-exercise control (moderate-quality evidence)",
+      "citation": "Fransen et al., Cochrane Review 2015 (land-based exercise for knee OA)",
+      "citation_short": "Cochrane 2015",
+      "effect_pct": [
+        25,
+        40
+      ],
+      "burden_in_reach_usd": [
+        131505,
+        200141
+      ],
+      "expected_enrolled": [
+        18,
+        25
+      ],
+      "enrollment_basis": "25\u201335% of reachable members (RAND Workplace Wellness Programs Study 2013; digital-DPP translation studies)",
+      "savings_not_estimated_reason": "effect\u2192cost chain (BP\u2192events\u2192$ / symptom\u2192claims\u2192$) requires actuarial modeling beyond screening scope \u2014 not faked"
+    },
+    {
+      "condition_key": "smoker",
+      "condition_label": "Current smoker",
+      "program": "Comprehensive tobacco-cessation support (counseling + pharmacotherapy)",
+      "eligible_members": 67,
+      "reachable_members": 55,
+      "telehealth_willing_share": 0.815,
+      "effect_meaning": "sustained 6-month quit rate (vs ~5% unaided)",
+      "citation": "Cochrane reviews: Matkin 2019 (quitlines); Cahill 2013 (combination pharmacotherapy)",
+      "citation_short": "Cochrane 2019 \u00b7 2013",
+      "effect_pct": [
+        13,
+        19
+      ],
+      "burden_in_reach_usd": [
+        145070,
+        435210
+      ],
+      "expected_enrolled": [
+        14,
+        19
+      ],
+      "enrollment_basis": "25\u201335% of reachable members (RAND Workplace Wellness Programs Study 2013; digital-DPP translation studies)",
+      "savings_5yr_gross_usd": [
+        7280,
+        43320
+      ],
+      "savings_basis": "quits (13\u201319% of enrolled, Cochrane) \u00d7 $2\u20136K/yr excess \u00d7 ~50% cost recovery (former-smoker trajectories, Fishman et al. HSR 2003) \u00d7 4 yrs; gross, undiscounted"
+    }
+  ],
+  "framing": "Program categories with peer-reviewed effect sizes \u2014 not vendor endorsements. Trial effects applied outside their trial populations are a screening heuristic, not a forecast.",
+  "stage2_teaser": "agent-level adoption modeling for this workforce \u2014 enrollment trajectories under outreach, incentive, and referral levers, using each member's modeled engagement propensity and adopter archetype.",
+  "exclusions_note": "Obesity/GLP-1 management deliberately excluded: the evidence and cost landscape is moving too fast for a screening demo; scoped properly in an engagement.",
+  "savings_note": "5-yr savings are GROSS (program fees excluded), undiscounted, and shown only where the effect-to-cost chain is published; hypertension and MSK savings are deliberately not estimated.",
+  "generated": "2026-07-25 00:56 UTC"
+}
