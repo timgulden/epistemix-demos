@@ -2,7 +2,7 @@
   "artifact": "digital_twins",
   "tier": "modeled",
   "method": "selection_from_enriched_population",
-  "generated": "2026-07-21 23:47 UTC",
+  "generated": "2026-08-06 03:03 UTC",
   "seed": 42,
   "cohorts": {
     "workforce": "employed 18-74, age/sex/income post-stratified to Information-sector targets, enrollment tilt, one per household",
@@ -11,40 +11,40 @@
   "demographic_gate": {
     "realized": {
       "age": {
-        "18-29": 0.1143,
-        "30-44": 0.4618,
-        "45-54": 0.2455,
-        "55-64": 0.1516,
-        "65-74": 0.0267
+        "18-29": 0.1154,
+        "30-44": 0.5475,
+        "45-54": 0.2237,
+        "55-64": 0.0959,
+        "65-74": 0.0175
       },
       "sex": {
-        "male": 0.5511,
-        "female": 0.4489
+        "male": 0.5501,
+        "female": 0.4499
       },
       "income": {
-        "band_0": 0.0565,
-        "band_1": 0.2426,
-        "band_2": 0.3052,
-        "band_3": 0.2085,
-        "band_4": 0.1873
+        "band_0": 0.055,
+        "band_1": 0.241,
+        "band_2": 0.3098,
+        "band_3": 0.2098,
+        "band_4": 0.1843
       }
     },
     "age_target_tilted": {
-      "18-29": 0.1329,
-      "30-44": 0.451,
-      "45-54": 0.2273,
-      "55-64": 0.1572,
-      "65-74": 0.0316
+      "18-29": 0.13399353274050124,
+      "30-44": 0.5355699272433306,
+      "45-54": 0.20735650767987066,
+      "55-64": 0.10185933710590137,
+      "65-74": 0.02122069523039612
     },
     "flags": []
   },
   "assumptions": {
     "age_target": {
       "18-29": 0.17,
-      "30-44": 0.45,
-      "45-54": 0.21,
-      "55-64": 0.14,
-      "65-74": 0.03
+      "30-44": 0.53,
+      "45-54": 0.19,
+      "55-64": 0.09,
+      "65-74": 0.02
     },
     "sex_target": {
       "male": 0.535,
@@ -64,11 +64,9 @@
       "55-64": 1.12,
       "65-74": 1.05
     },
-    "targets_source": "BLS CPS/OES 2024 Information-sector shapes, support-blended; PUMS_REPLACEABLE (see script)",
-    "sex_coding": "synth-pop: 1=male, 0=female (vendor/logic/enrich.py; gate caught the earlier 1/2 assumption 2026-07-21)"
+    "targets_source": "age: ACS 2023 1-yr PUMS, employed INDP 6490/6695/6781, HH income >= $100K (see AGE-TARGET-PUMS-FINDING.md); sex/income: BLS CPS/OES 2024 Information-sector shapes, support-blended; PUMS_REPLACEABLE"
   },
   "participants_basis": 505,
-  "analysis_n": 50500,
-  "oversample_factor": 100.0,
-  "note": "provenance reconstructed from logged gate after a KeyError in the provenance-write step (parquets+summary were complete); script fixed."
+  "analysis_n": 50000,
+  "oversample_factor": 99.01
 }
