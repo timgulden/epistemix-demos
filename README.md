@@ -16,4 +16,4 @@ static host (Netlify / Cloudflare Pages / GitHub Pages) serves them.
 - [`/howden/`](./howden/) — howden
 - [`/msk-eval/`](./msk-eval/) — msk-eval
 
-Last sync from the source repo: 2026-08-06 17:24 UTC
+Last sync from the source repo: 2026-08-06 18:19 UTC
