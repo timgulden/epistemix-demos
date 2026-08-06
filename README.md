@@ -14,5 +14,6 @@ static host (Netlify / Cloudflare Pages / GitHub Pages) serves them.
 - [`/wellbeing/`](./wellbeing/) — wellbeing
 - [`/tiered-copay/`](./tiered-copay/) — tiered-copay
 - [`/howden/`](./howden/) — howden
+- [`/msk-eval/`](./msk-eval/) — msk-eval
 
-Last sync from the source repo: 2026-07-25 00:56 UTC
+Last sync from the source repo: 2026-08-06 00:13 UTC
