@@ -60,14 +60,14 @@
         "ND": 36.6,
         "UT": 36.2
       },
-      "affected_covered_adults": 266,
+      "affected_covered_adults": 267,
       "cost_per_person_usd": [
         1900,
         3400
       ],
       "annual_burden_usd": [
-        505400,
-        904400
+        507300,
+        907800
       ]
     },
     "hypertension": {
@@ -126,14 +126,14 @@
         "ND": 32.0,
         "UT": 30.2
       },
-      "affected_covered_adults": 227,
+      "affected_covered_adults": 228,
       "cost_per_person_usd": [
         1920,
         3045
       ],
       "annual_burden_usd": [
-        435840,
-        691215
+        437760,
+        694260
       ]
     },
     "depression": {
@@ -192,14 +192,14 @@
         "NY": 19.8,
         "NJ": 18.0
       },
-      "affected_covered_adults": 164,
+      "affected_covered_adults": 165,
       "cost_per_person_usd": [
         2343,
         2966
       ],
       "annual_burden_usd": [
-        384252,
-        486424
+        386595,
+        489390
       ],
       "cost_basis": "MEPS 2004\u201311 incremental expenditure for diagnosed depression (Egede et al. 2016, 95% CI $2,343\u2013$2,966; USD ~2011)."
     },
@@ -259,14 +259,14 @@
         "UT": 19.8,
         "CA": 19.2
       },
-      "affected_covered_adults": 158,
+      "affected_covered_adults": 159,
       "cost_per_person_usd": [
         1391,
         2117
       ],
       "annual_burden_usd": [
-        219778,
-        334486
+        221169,
+        336603
       ],
       "cost_basis": "MEPS arthritis-attributable medical expenditures per adult (Yelin et al., $1,391 in 1997; Murphy et al., ~$2,117 in 2013)."
     },
@@ -326,14 +326,14 @@
         "ND": 16.9,
         "UT": 16.2
       },
-      "affected_covered_adults": 139,
+      "affected_covered_adults": 140,
       "cost_per_person_usd": [
         400,
         600
       ],
       "annual_burden_usd": [
-        55600,
-        83400
+        56000,
+        84000
       ],
       "cost_basis": "\u2248$500/yr excess medical cost per person with prediabetes (Dall et al., Diabetes Care 2019; 2017 data)."
     },
@@ -527,14 +527,14 @@
         "UT": 7.9,
         "VT": 7.9
       },
-      "affected_covered_adults": 72,
+      "affected_covered_adults": 73,
       "cost_per_person_usd": [
         9600,
         12022
       ],
       "annual_burden_usd": [
-        691200,
-        865584
+        700800,
+        877606
       ]
     },
     "copd": {
@@ -593,14 +593,14 @@
         "CA": 3.2,
         "UT": 3.2
       },
-      "affected_covered_adults": 32,
+      "affected_covered_adults": 33,
       "cost_per_person_usd": [
         700,
         4300
       ],
       "annual_burden_usd": [
-        22400,
-        137600
+        23100,
+        141900
       ],
       "cost_basis": "COPD-attributable ~$681/yr among workers (CDC MMWR 2020) to ~$4,300/patient/yr (Ford et al. 2015 projections)."
     },
@@ -727,14 +727,14 @@
         "WA": 3.7,
         "UT": 3.2
       },
-      "affected_covered_adults": 32,
+      "affected_covered_adults": 33,
       "cost_per_person_usd": [
         8000,
         13000
       ],
       "annual_burden_usd": [
-        256000,
-        416000
+        264000,
+        429000
       ],
       "cost_basis": "Established cardiovascular disease ~$8K/yr excess to coronary heart disease ~$13,000/person/yr (2020-data CVD burden analyses)."
     },
@@ -804,6 +804,73 @@
         665000
       ],
       "cost_basis": "Stroke-survivor excess ~$10,168/yr (comorbid analyses) to ~$35,000/person/yr incl. acute-year care (2020-data CVD burden). Wide because ongoing vs acute-year costs differ sharply."
+    },
+    "cancer": {
+      "label": "Cancer (history, non-skin)",
+      "national_prevalence_pct": 6.7,
+      "by_state_prevalence_pct": {
+        "DE": 8.5,
+        "ME": 8.5,
+        "WV": 8.5,
+        "VT": 8.3,
+        "KY": 8.1,
+        "FL": 7.8,
+        "MT": 7.7,
+        "OR": 7.7,
+        "SC": 7.7,
+        "NH": 7.6,
+        "OH": 7.5,
+        "VA": 7.4,
+        "AL": 7.3,
+        "TN": 7.3,
+        "ID": 7.2,
+        "RI": 7.2,
+        "SD": 7.2,
+        "MI": 7.1,
+        "MO": 7.1,
+        "AR": 7.0,
+        "AZ": 7.0,
+        "IA": 7.0,
+        "PA": 7.0,
+        "KS": 6.9,
+        "NC": 6.9,
+        "IN": 6.8,
+        "MA": 6.8,
+        "MN": 6.8,
+        "WY": 6.8,
+        "LA": 6.7,
+        "OK": 6.7,
+        "WA": 6.7,
+        "NE": 6.6,
+        "WI": 6.6,
+        "CO": 6.5,
+        "NY": 6.5,
+        "NV": 6.4,
+        "AK": 6.3,
+        "CT": 6.3,
+        "MS": 6.3,
+        "NM": 6.3,
+        "GA": 6.2,
+        "CA": 6.1,
+        "IL": 6.1,
+        "MD": 6.1,
+        "ND": 6.1,
+        "UT": 6.1,
+        "NJ": 5.9,
+        "HI": 5.8,
+        "TX": 5.6,
+        "DC": 5.0
+      },
+      "affected_covered_adults": 46,
+      "cost_per_person_usd": [
+        4427,
+        16213
+      ],
+      "annual_burden_usd": [
+        203642,
+        745798
+      ],
+      "cost_basis": "Excess annual medical expenditure per cancer survivor age 18-64: $4,427/yr previously diagnosed to $16,213/yr in the recently-diagnosed year (Guy et al. 2013, JCO; MEPS 2008-10). Wide because ongoing survivorship vs active-treatment years differ sharply; most of a workforce's survivors are in the ongoing band."
     }
   },
   "comorbidity": {
@@ -817,5 +884,5 @@
     "none_pct": 42.9
   },
   "tier": "modeled",
-  "generated": "2026-08-06 03:05 UTC"
+  "generated": "2026-08-06 22:38 UTC"
 }
